@@ -15,11 +15,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter:wght@300;400;500;600&display=swap');
 
         :root {
-            --bg-color: #050505;
+            --bg-color: #000000;
             --text-color: #FFFFFF;
-            --accent-color: #2E72F2;
-            --secondary-text: #AAAAAA;
-            --card-bg: #111111;
+            --accent-color: #D4FF00;
+            /* Neon Lime */
+            --secondary-text: #A1A1A1;
+            --card-bg: #0A0A0A;
         }
 
         * {
@@ -73,15 +74,14 @@
             pointer-events: none;
         }
 
-        /* Vignette Overlay */
+        /* Vignette Overlay (Framer Style Glow) */
         body::after {
             content: "";
             position: fixed;
             inset: 0;
             pointer-events: none;
-            box-shadow: inset 0 0 150px 50px rgba(31, 103, 241, 0.1);
+            box-shadow: inset 0 0 180px 60px rgba(31, 103, 241, 0.2);
             z-index: 998;
-            /* Above canvas, below content */
         }
 
         /* Decorative Grid */
@@ -99,10 +99,10 @@
         /* Typography Utilities */
         .display-text {
             font-family: 'Big Shoulders Display', sans-serif;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
             line-height: 0.8;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.04em;
         }
 
         /* Navigation */
@@ -112,7 +112,8 @@
             width: 100%;
             padding: 1.5rem 2rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            /* Center the logo */
             align-items: center;
             z-index: 1000;
             mix-blend-mode: difference;
@@ -121,12 +122,15 @@
 
         .logo {
             font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 900;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
         }
 
         .nav-right {
+            position: absolute;
+            right: 2rem;
             display: flex;
             gap: 1rem;
         }
@@ -275,11 +279,28 @@
         }
 
         .section-title {
-            font-size: 6rem;
+            font-size: 5rem;
             margin-bottom: 4rem;
             color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title::before {
+            content: "";
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+            position: absolute;
+            right: 2rem;
         }
 
         /* Experience Grid */
@@ -346,36 +367,34 @@
         }
 
         .project-card {
-            background: var(--card-bg);
+            background: #0A0A0A;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             color: white;
-            height: 500px;
-            border-radius: 20px;
+            height: 400px;
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            background: #0F0F0F;
         }
 
         .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-            transform: translateZ(0);
+            display: none;
+            /* Hide images for the minimalist logo look */
         }
 
         .project-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            position: relative;
             padding: 2rem;
-            width: 100%;
-            background: linear-gradient(to top, black, transparent);
-            transform: translateZ(20px);
-            pointer-events: none;
+            z-index: 10;
         }
 
         .project-title {
@@ -390,11 +409,13 @@
         }
 
         .p-tag {
-            font-size: 0.7rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 100px;
+            font-size: 0.65rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .card-glare {
@@ -470,346 +491,350 @@
     </section>
 
     <!-- Marquee -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <div class="marquee-item">DATA SCIENCE • MACHINE LEARNING • REACT • PYTHON • SQL • FINTECH • COMPUTER VISION
-                • </div>
-            <div class="marquee-item">DATA SCIENCE • MACHINE LEARNING • REACT • PYTHON • SQL • FINTECH • COMPUTER VISION
-                • </div>
-        </div>
-    </div>
-
-    <!-- Experience -->
-    <section class="section">
-        <h2 class="section-title display-text">EXPERIENCE</h2>
-
-        <div class="experience-row">
-            <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2025</div>
-            <div>
-                <div class="company-header">
-                    <img src="images/tjx-logo.png" alt="TJX Logo" class="company-logo">
-                    <div class="company-name">TJX COMPANIES</div>
-                </div>
-                <h3 class="role-title display-text">IT AUDIT CO-OP</h3>
-                <p class="exp-description">
-                    Ensuring compliance and system integrity for a Fortune 100 retailer. Analyzing IT controls and
-                    minimizing risk through data-driven auditing.
-                </p>
+    <div class="marquee-container"
+        style="background: black; border-color: #333; height: 120px; display: flex; align-items: center;">
+        <div class="marquee-content" style="animation-duration: 40s;">
+            <div class="marquee-item" style="color: var(--secondary-text); font-size: 2rem;">DATA SCIENCE < MACHINE
+                    LEARNING < REACT < PYTHON < SQL < FINTECH < </div>
+                    <div class="marquee-item" style="color: var(--secondary-text); font-size: 2rem;">DATA SCIENCE <
+                            MACHINE LEARNING < REACT < PYTHON < SQL < FINTECH < </div>
+                    </div>
             </div>
-        </div>
 
-        <div class="experience-row">
-            <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2023</div>
-            <div>
-                <div class="company-header">
-                    <img src="images/oofos-logo.png" alt="OOFOS Logo" class="company-logo">
-                    <div class="company-name">OOFOS</div>
-                </div>
-                <h3 class="role-title display-text">TECHNICAL SPECIALIST</h3>
-                <p class="exp-description">
-                    Managed technical operations and supported retail systems in a high-growth environment. Optimized
-                    workflows for better team efficiency.
-                </p>
-            </div>
-        </div>
+            <!-- Experience -->
+            <section class="section">
+                <h2 class="section-title display-text">EXPERIENCE</h2>
 
-        <div class="experience-row">
-            <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2022</div>
-            <div>
-                <div class="company-header">
-                    <img src="images/playlist-push-logo.jpg" alt="Cassette Technologies Logo" class="company-logo"
-                        style="border-radius: 50%;">
-                    <div class="company-name">CASSETTE TECHNOLOGIES</div>
-                </div>
-                <h3 class="role-title display-text">DIGITAL MARKETING INTERN</h3>
-                <p class="exp-description">
-                    Oversaw growth strategies for a music-tech startup. Managed digital marketing campaigns and analyzed
-                    data to drive user acquisition.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="section">
-        <h2 class="section-title display-text">PROJECTS</h2>
-        <div class="projects-grid">
-            <div class="project-card" data-tilt>
-                <div class="card-glare"></div>
-                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=1000&fit=crop"
-                    alt="Project">
-                <div class="project-info">
-                    <h3 class="project-title">HUSKYVISION</h3>
-                    <div class="project-tags">
-                        <span class="p-tag">PYTHON</span>
-                        <span class="p-tag">CV</span>
+                <div class="experience-row">
+                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2025</div>
+                    <div>
+                        <div class="company-header">
+                            <img src="images/tjx-logo.png" alt="TJX Logo" class="company-logo">
+                            <div class="company-name">TJX COMPANIES</div>
+                        </div>
+                        <h3 class="role-title display-text">IT AUDIT CO-OP</h3>
+                        <p class="exp-description">
+                            Ensuring compliance and system integrity for a Fortune 100 retailer. Analyzing IT controls
+                            and
+                            minimizing risk through data-driven auditing.
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="project-card" data-tilt>
-                <div class="card-glare"></div>
-                <img src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=800&h=1000&fit=crop"
-                    alt="Project">
-                <div class="project-info">
-                    <h3 class="project-title">CRYPTO VS S&P 500</h3>
-                    <div class="project-tags">
-                        <span class="p-tag">REACT</span>
-                        <span class="p-tag">D3.JS</span>
+
+                <div class="experience-row">
+                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2023</div>
+                    <div>
+                        <div class="company-header">
+                            <img src="images/oofos-logo.png" alt="OOFOS Logo" class="company-logo">
+                            <div class="company-name">OOFOS</div>
+                        </div>
+                        <h3 class="role-title display-text">TECHNICAL SPECIALIST</h3>
+                        <p class="exp-description">
+                            Managed technical operations and supported retail systems in a high-growth environment.
+                            Optimized
+                            workflows for better team efficiency.
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="project-card" data-tilt>
-                <div class="card-glare"></div>
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=1000&fit=crop"
-                    alt="Project">
-                <div class="project-info">
-                    <h3 class="project-title">AI FASHION CLASSIFIER</h3>
-                    <div class="project-tags">
-                        <span class="p-tag">ML</span>
-                        <span class="p-tag">TENSORFLOW</span>
+
+                <div class="experience-row">
+                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2022</div>
+                    <div>
+                        <div class="company-header">
+                            <img src="images/playlist-push-logo.jpg" alt="Cassette Technologies Logo"
+                                class="company-logo" style="border-radius: 50%;">
+                            <div class="company-name">CASSETTE TECHNOLOGIES</div>
+                        </div>
+                        <h3 class="role-title display-text">DIGITAL MARKETING INTERN</h3>
+                        <p class="exp-description">
+                            Oversaw growth strategies for a music-tech startup. Managed digital marketing campaigns and
+                            analyzed
+                            data to drive user acquisition.
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="project-card" data-tilt>
-                <div class="card-glare"></div>
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=1000&fit=crop"
-                    alt="Project">
-                <div class="project-info">
-                    <h3 class="project-title">NETWORK GRAPH</h3>
-                    <div class="project-tags">
-                        <span class="p-tag">ALGORITHMS</span>
-                        <span class="p-tag">PYTHON</span>
+            </section>
+
+            <!-- Projects -->
+            <section class="section">
+                <h2 class="section-title display-text">PROJECTS</h2>
+                <div class="projects-grid">
+                    <div class="project-card" data-tilt>
+                        <div class="card-glare"></div>
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=1000&fit=crop"
+                            alt="Project">
+                        <div class="project-info">
+                            <h3 class="project-title">HUSKYVISION</h3>
+                            <div class="project-tags">
+                                <span class="p-tag">PYTHON</span>
+                                <span class="p-tag">CV</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-tilt>
+                        <div class="card-glare"></div>
+                        <img src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=800&h=1000&fit=crop"
+                            alt="Project">
+                        <div class="project-info">
+                            <h3 class="project-title">CRYPTO VS S&P 500</h3>
+                            <div class="project-tags">
+                                <span class="p-tag">REACT</span>
+                                <span class="p-tag">D3.JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-tilt>
+                        <div class="card-glare"></div>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=1000&fit=crop"
+                            alt="Project">
+                        <div class="project-info">
+                            <h3 class="project-title">AI FASHION CLASSIFIER</h3>
+                            <div class="project-tags">
+                                <span class="p-tag">ML</span>
+                                <span class="p-tag">TENSORFLOW</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-tilt>
+                        <div class="card-glare"></div>
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=1000&fit=crop"
+                            alt="Project">
+                        <div class="project-info">
+                            <h3 class="project-title">NETWORK GRAPH</h3>
+                            <div class="project-tags">
+                                <span class="p-tag">ALGORITHMS</span>
+                                <span class="p-tag">PYTHON</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <footer style="text-align: center; padding: 4rem; background: black; color: white;">
-        <h2 class="display-text" style="font-size: 4rem; margin-bottom: 2rem;">LET'S TALK</h2>
-        <a href="jairajnarang1111@gmail.com"
-            style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem;">jairajnarang1111@gmail.com</a>
-    </footer>
+            <footer style="text-align: center; padding: 4rem; background: black; color: white;">
+                <h2 class="display-text" style="font-size: 4rem; margin-bottom: 2rem;">LET'S TALK</h2>
+                <a href="jairajnarang1111@gmail.com"
+                    style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem;">jairajnarang1111@gmail.com</a>
+            </footer>
 
-    <script>
-        // --- 0. SMOOTH SCROLL (Lenis) ---
-        const lenis = new Lenis()
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf)
-
-        // --- 0.1 SCROLL PROGRESS ---
-        window.addEventListener('scroll', () => {
-            const h = document.documentElement,
-                b = document.body,
-                st = 'scrollTop',
-                sh = 'scrollHeight';
-            const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
-            document.getElementById('progressBar').style.width = percent + '%';
-        });
-
-        // --- 1. DARK VEIL ANIMATION ---
-        const canvas = document.getElementById('darkVeil');
-        const ctx = canvas.getContext('2d');
-
-        let width, height;
-        let orbs = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initOrbs();
-        }
-
-        class Orb {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 300 + 200; // Large sizes
-                this.vx = (Math.random() - 0.5) * 0.5; // Slow movement
-                this.vy = (Math.random() - 0.5) * 0.5;
-                // Colors: Deep blue/purple variants
-                this.color = Math.random() > 0.5 ? 'rgba(31, 103, 241, 0.08)' : 'rgba(75, 0, 130, 0.05)';
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Bounce off edges (softly)
-                if (this.x < -this.size) this.x = width + this.size;
-                if (this.x > width + this.size) this.x = -this.size;
-                if (this.y < -this.size) this.y = height + this.size;
-                if (this.y > height + this.size) this.y = -this.size;
-            }
-
-            draw() {
-                ctx.beginPath();
-                // Radial gradient for soft edges
-                const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                g.addColorStop(0, this.color);
-                g.addColorStop(1, 'rgba(0,0,0,0)');
-
-                ctx.fillStyle = g;
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initOrbs() {
-            orbs = [];
-            for (let i = 0; i < 7; i++) { // Number of orbs
-                orbs.push(new Orb());
-            }
-        }
-
-        function animateVeil() {
-            ctx.clearRect(0, 0, width, height);
-
-            // Apply heavy blur for "fog" effect
-            ctx.filter = 'blur(60px)';
-
-            orbs.forEach(orb => {
-                orb.update();
-                orb.draw();
-            });
-
-            ctx.filter = 'none'; // Reset filter
-            requestAnimationFrame(animateVeil);
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-        animateVeil();
-
-
-        // --- 2. GSAP SplitText ---
-        const animateText = (elementId) => {
-            const element = document.getElementById(elementId);
-            const text = element.innerText;
-            element.innerHTML = text.split('').map(char => `<span class="char">${char}</span>`).join('');
-
-            gsap.from(`#${elementId} .char`, {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.05,
-                ease: "power4.out",
-                delay: 0.2
-            });
-        };
-
-        animateText('nameTop');
-        animateText('nameTopOutline');
-        animateText('nameBottom');
-        animateText('nameBottomOutline');
-
-        // --- 2.2 HERO PARALLAX & HOVER ---
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX - window.innerWidth / 2) * 0.01;
-            const y = (e.clientY - window.innerHeight / 2) * 0.01;
-
-            gsap.to('#heroPill', { x: x * 2, y: y * 2, duration: 1, ease: "power2.out" });
-            gsap.to('#nameTop', { x: -x * 3, y: -y * 3, duration: 1, ease: "power2.out" });
-            gsap.to('#nameBottom', { x: x * 1.5, y: y * 1.5, duration: 1, ease: "power2.out" });
-        });
-
-        // SplitText Animation
-        gsap.from('.pill-container', {
-            scale: 0.8,
-            y: 50,
-            opacity: 0,
-            duration: 2,
-            ease: "expo.out",
-            delay: 0.5
-        });
-
-        // --- 2.1 GSAP SCROLL REVEALS ---
-        gsap.registerPlugin(ScrollTrigger);
-
-        document.querySelectorAll('.section').forEach(section => {
-            gsap.from(section, {
-                opacity: 0,
-                y: 50,
-                duration: 1.2,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
+            <script>
+                // --- 0. SMOOTH SCROLL (Lenis) ---
+                const lenis = new Lenis()
+                function raf(time) {
+                    lenis.raf(time)
+                    requestAnimationFrame(raf)
                 }
-            });
-        });
+                requestAnimationFrame(raf)
 
-        // --- 3. Vanilla Tilt ---
-        const cards = document.querySelectorAll('[data-tilt]');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -10;
-                const rotateY = ((x - centerX) / centerX) * 10;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                const glare = card.querySelector('.card-glare');
-                if (glare) {
-                    glare.style.opacity = '1';
-                    glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent)`;
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                const glare = card.querySelector('.card-glare');
-                if (glare) glare.style.opacity = '0';
-            });
-        });
-
-
-        // --- 4. Custom Cursor ---
-        const cursor = document.createElement('div');
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        cursor.style.background = 'white';
-        cursor.style.borderRadius = '50%';
-        cursor.style.position = 'fixed';
-        cursor.style.pointerEvents = 'none';
-        cursor.style.mixBlendMode = 'difference';
-        cursor.style.zIndex = '9999';
-        cursor.style.transition = 'transform 0.1s ease';
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-        });
-
-        document.querySelectorAll('a, button, .project-card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(3)');
-            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
-        });
-
-        // --- 5. MAGNETIC BUTTONS ---
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                gsap.to(btn, {
-                    x: x * 0.3,
-                    y: y * 0.3,
-                    duration: 0.3,
-                    ease: "power2.out"
+                // --- 0.1 SCROLL PROGRESS ---
+                window.addEventListener('scroll', () => {
+                    const h = document.documentElement,
+                        b = document.body,
+                        st = 'scrollTop',
+                        sh = 'scrollHeight';
+                    const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+                    document.getElementById('progressBar').style.width = percent + '%';
                 });
-            });
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-            });
-        });
-    </script>
+
+                // --- 1. DARK VEIL ANIMATION ---
+                const canvas = document.getElementById('darkVeil');
+                const ctx = canvas.getContext('2d');
+
+                let width, height;
+                let orbs = [];
+
+                function resize() {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                    initOrbs();
+                }
+
+                class Orb {
+                    constructor() {
+                        this.x = Math.random() * width;
+                        this.y = Math.random() * height;
+                        this.size = Math.random() * 300 + 200; // Large sizes
+                        this.vx = (Math.random() - 0.5) * 0.5; // Slow movement
+                        this.vy = (Math.random() - 0.5) * 0.5;
+                        // Colors: Deep blue/purple variants
+                        this.color = Math.random() > 0.5 ? 'rgba(31, 103, 241, 0.08)' : 'rgba(75, 0, 130, 0.05)';
+                    }
+
+                    update() {
+                        this.x += this.vx;
+                        this.y += this.vy;
+
+                        // Bounce off edges (softly)
+                        if (this.x < -this.size) this.x = width + this.size;
+                        if (this.x > width + this.size) this.x = -this.size;
+                        if (this.y < -this.size) this.y = height + this.size;
+                        if (this.y > height + this.size) this.y = -this.size;
+                    }
+
+                    draw() {
+                        ctx.beginPath();
+                        // Radial gradient for soft edges
+                        const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                        g.addColorStop(0, this.color);
+                        g.addColorStop(1, 'rgba(0,0,0,0)');
+
+                        ctx.fillStyle = g;
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                function initOrbs() {
+                    orbs = [];
+                    for (let i = 0; i < 7; i++) { // Number of orbs
+                        orbs.push(new Orb());
+                    }
+                }
+
+                function animateVeil() {
+                    ctx.clearRect(0, 0, width, height);
+
+                    // Apply heavy blur for "fog" effect
+                    ctx.filter = 'blur(60px)';
+
+                    orbs.forEach(orb => {
+                        orb.update();
+                        orb.draw();
+                    });
+
+                    ctx.filter = 'none'; // Reset filter
+                    requestAnimationFrame(animateVeil);
+                }
+
+                window.addEventListener('resize', resize);
+                resize();
+                animateVeil();
+
+
+                // --- 2. GSAP SplitText ---
+                const animateText = (elementId) => {
+                    const element = document.getElementById(elementId);
+                    const text = element.innerText;
+                    element.innerHTML = text.split('').map(char => `<span class="char">${char}</span>`).join('');
+
+                    gsap.from(`#${elementId} .char`, {
+                        y: 100,
+                        opacity: 0,
+                        duration: 1,
+                        stagger: 0.05,
+                        ease: "power4.out",
+                        delay: 0.2
+                    });
+                };
+
+                animateText('nameTop');
+                animateText('nameTopOutline');
+                animateText('nameBottom');
+                animateText('nameBottomOutline');
+
+                // --- 2.2 HERO PARALLAX & HOVER ---
+                document.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX - window.innerWidth / 2) * 0.01;
+                    const y = (e.clientY - window.innerHeight / 2) * 0.01;
+
+                    gsap.to('#heroPill', { x: x * 2, y: y * 2, duration: 1, ease: "power2.out" });
+                    gsap.to('#nameTop', { x: -x * 3, y: -y * 3, duration: 1, ease: "power2.out" });
+                    gsap.to('#nameBottom', { x: x * 1.5, y: y * 1.5, duration: 1, ease: "power2.out" });
+                });
+
+                // SplitText Animation
+                gsap.from('.pill-container', {
+                    scale: 0.8,
+                    y: 50,
+                    opacity: 0,
+                    duration: 2,
+                    ease: "expo.out",
+                    delay: 0.5
+                });
+
+                // --- 2.1 GSAP SCROLL REVEALS ---
+                gsap.registerPlugin(ScrollTrigger);
+
+                document.querySelectorAll('.section').forEach(section => {
+                    gsap.from(section, {
+                        opacity: 0,
+                        y: 50,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    });
+                });
+
+                // --- 3. Vanilla Tilt ---
+                const cards = document.querySelectorAll('[data-tilt]');
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateX = ((y - centerY) / centerY) * -10;
+                        const rotateY = ((x - centerX) / centerX) * 10;
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                        const glare = card.querySelector('.card-glare');
+                        if (glare) {
+                            glare.style.opacity = '1';
+                            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent)`;
+                        }
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                        const glare = card.querySelector('.card-glare');
+                        if (glare) glare.style.opacity = '0';
+                    });
+                });
+
+
+                // --- 4. Custom Cursor ---
+                const cursor = document.createElement('div');
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.background = 'white';
+                cursor.style.borderRadius = '50%';
+                cursor.style.position = 'fixed';
+                cursor.style.pointerEvents = 'none';
+                cursor.style.mixBlendMode = 'difference';
+                cursor.style.zIndex = '9999';
+                cursor.style.transition = 'transform 0.1s ease';
+                document.body.appendChild(cursor);
+
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX - 10 + 'px';
+                    cursor.style.top = e.clientY - 10 + 'px';
+                });
+
+                document.querySelectorAll('a, button, .project-card').forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(3)');
+                    el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+                });
+
+                // --- 5. MAGNETIC BUTTONS ---
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.addEventListener('mousemove', (e) => {
+                        const rect = btn.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        gsap.to(btn, {
+                            x: x * 0.3,
+                            y: y * 0.3,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+                    });
+                });
+            </script>
 </body>
 
 </html>
