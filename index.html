@@ -565,20 +565,110 @@
             opacity: 1;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-            .projects-grid,
-            .experience-row {
-                grid-template-columns: 1fr;
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                justify-content: space-between;
+                mix-blend-mode: normal;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
             }
 
-            .pill-container {
-                margin: -2rem auto;
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-right {
+                position: static;
+                gap: 0.5rem;
+            }
+
+            .time-widget {
+                display: none;
+            }
+
+            .status-badge {
+                font-size: 0.6rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 100px;
             }
 
             .hero-name {
-                font-size: 20vw;
+                font-size: clamp(4rem, 15vw, 10rem);
+                line-height: 1;
             }
+
+            .pill-container {
+                width: 220px;
+                height: 320px;
+                margin: -4vh auto;
+            }
+
+            .section-title {
+                font-size: 3rem;
+                gap: 1rem;
+            }
+
+            .section-title::before {
+                display: none;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-large {
+                grid-column: span 1;
+            }
+
+            .experience-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                height: 350px;
+            }
+
+            .project-title {
+                font-size: 2.2rem;
+            }
+
+            .marquee-item {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Essential for iOS smooth scrolling with Lenis */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -1126,28 +1216,32 @@
                 });
 
 
-                // --- 4. Custom Cursor ---
-                const cursor = document.createElement('div');
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-                cursor.style.background = 'white';
-                cursor.style.borderRadius = '50%';
-                cursor.style.position = 'fixed';
-                cursor.style.pointerEvents = 'none';
-                cursor.style.mixBlendMode = 'difference';
-                cursor.style.zIndex = '9999';
-                cursor.style.transition = 'transform 0.1s ease';
-                document.body.appendChild(cursor);
+                // --- 4. Custom Cursor (Only on non-touch devices) ---
+                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-                document.addEventListener('mousemove', (e) => {
-                    cursor.style.left = e.clientX - 10 + 'px';
-                    cursor.style.top = e.clientY - 10 + 'px';
-                });
+                if (!isTouchDevice) {
+                    const cursor = document.createElement('div');
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursor.style.background = 'white';
+                    cursor.style.borderRadius = '50%';
+                    cursor.style.position = 'fixed';
+                    cursor.style.pointerEvents = 'none';
+                    cursor.style.mixBlendMode = 'difference';
+                    cursor.style.zIndex = '9999';
+                    cursor.style.transition = 'transform 0.1s ease';
+                    document.body.appendChild(cursor);
 
-                document.querySelectorAll('a, button, .project-card').forEach(el => {
-                    el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(3)');
-                    el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
-                });
+                    document.addEventListener('mousemove', (e) => {
+                        cursor.style.left = e.clientX - 10 + 'px';
+                        cursor.style.top = e.clientY - 10 + 'px';
+                    });
+
+                    document.querySelectorAll('a, button, .project-card').forEach(el => {
+                        el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(3)');
+                        el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+                    });
+                }
 
                 // --- 5. MAGNETIC BUTTONS ---
                 document.querySelectorAll('.nav-btn').forEach(btn => {
