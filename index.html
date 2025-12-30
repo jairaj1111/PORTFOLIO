@@ -39,6 +39,49 @@
 
         /* Noise Texture Removed for Performance */
 
+        /* Preloader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loader-percent {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 8vw;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--accent-color);
+        }
+
+        /* Essential for smooth reveals */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
         /* Scroll Progress Bar */
         .scroll-progress {
             position: fixed;
@@ -668,6 +711,14 @@
 </head>
 
 <body data-lenis-prevent-touch>
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-percent" id="loaderPercent">00</div>
+        <div class="loader-bar">
+            <div class="loader-progress" id="loaderProgress"></div>
+        </div>
+    </div>
+
     <!-- Noise removed -->
     <div class="grid-layers"></div>
     <div class="scroll-progress" id="progressBar"></div>
@@ -726,7 +777,7 @@
             <section class="section">
                 <h2 class="section-title display-text">TECH STACK</h2>
                 <div class="bento-grid">
-                    <div class="bento-item bento-large">
+                    <div class="bento-item bento-large reveal-item">
                         <h4>Core Languages</h4>
                         <div class="stack-list">
                             <span class="stack-tag">Java</span>
@@ -735,7 +786,7 @@
                             <span class="stack-tag">HTML</span>
                         </div>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>AI & Data</h4>
                         <div class="stack-list">
                             <span class="stack-tag">TensorFlow</span>
@@ -743,7 +794,7 @@
                             <span class="stack-tag">OpenCV</span>
                         </div>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Frontend</h4>
                         <div class="stack-list">
                             <span class="stack-tag">React.js</span>
@@ -751,7 +802,7 @@
                             <span class="stack-tag">D3.js</span>
                         </div>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Developer Tools</h4>
                         <div class="stack-list">
                             <span class="stack-tag">Git</span>
@@ -759,14 +810,14 @@
                             <span class="stack-tag">AWS</span>
                         </div>
                     </div>
-                    <div class="bento-item bento-large">
+                    <div class="bento-item bento-large reveal-item">
                         <h4>Current Focus</h4>
                         <p style="color: var(--secondary-text); font-size: 0.9rem; line-height: 1.5;">
                             Specializing in high-performance FinTech applications and Computer Vision models for
                             enterprise data auditing.
                         </p>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Cloud & DevOps</h4>
                         <div class="stack-list">
                             <span class="stack-tag">GitHub</span>
@@ -781,19 +832,19 @@
             <section class="section">
                 <h2 class="section-title display-text">STRATEGIC IMPACT</h2>
                 <div class="bento-grid">
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Risk Mitigation</h4>
                         <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">100%</div>
                         <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Compliance
                             coverage for Fortune 100 enterprise IT audits.</p>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Growth Oversight</h4>
                         <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">15%</div>
                         <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Increase in user
                             acquisition through data-driven marketing funnels.</p>
                     </div>
-                    <div class="bento-item bento-large">
+                    <div class="bento-item bento-large reveal-item">
                         <h4>Business Competencies</h4>
                         <div class="stack-list" style="margin-top: 1rem;">
                             <span class="p-tag" style="border-radius: 4px;">Strategic Planning</span>
@@ -812,7 +863,7 @@
             <section class="section">
                 <h2 class="section-title display-text">EXPERIENCE</h2>
 
-                <div class="experience-row">
+                <div class="experience-row reveal-item">
                     <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2025</div>
                     <div>
                         <div class="company-header">
@@ -832,7 +883,7 @@
                     </div>
                 </div>
 
-                <div class="experience-row">
+                <div class="experience-row reveal-item">
                     <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2025</div>
                     <div>
                         <div class="company-header">
@@ -855,7 +906,7 @@
                     </div>
                 </div>
 
-                <div class="experience-row">
+                <div class="experience-row reveal-item">
                     <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2022</div>
                     <div>
                         <div class="company-header">
@@ -877,7 +928,7 @@
                     </div>
                 </div>
 
-                <div class="experience-row">
+                <div class="experience-row reveal-item">
                     <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2022</div>
                     <div>
                         <div class="company-header">
@@ -903,7 +954,7 @@
             <section class="section" id="projects">
                 <h2 class="section-title display-text">PROJECTS</h2>
                 <div class="projects-grid">
-                    <div class="project-card" data-tilt>
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
                             alt="HuskyVision Visualization">
@@ -919,7 +970,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-tilt>
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80"
                             alt="Crypto Analysis Platform">
@@ -935,7 +986,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-tilt>
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800&h=1000&fit=crop"
                             alt="Fashion AI">
@@ -951,7 +1002,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-tilt>
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
                             alt="Network Graph Visualization">
@@ -967,7 +1018,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-tilt>
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
                             alt="Birthweight Analysis">
@@ -990,7 +1041,7 @@
             <section class="section">
                 <h2 class="section-title display-text">BEYOND THE CODE</h2>
                 <div class="bento-grid">
-                    <div class="bento-item bento-large"
+                    <div class="bento-item bento-large reveal-item"
                         style="position: relative; overflow: hidden; min-height: 300px;">
                         <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1200"
                             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; filter: grayscale(100%) contrast(1.2);"
@@ -1009,14 +1060,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Personal Projects</h4>
                         <div style="font-size: 0.9rem; color: var(--secondary-text); line-height: 1.6;">
                             Passionate about analyzing <span style="color: white;">Design Silhouettes</span> and the
                             evolution of consumer electronics in fashion.
                         </div>
                     </div>
-                    <div class="bento-item">
+                    <div class="bento-item reveal-item">
                         <h4>Focus</h4>
                         <div class="display-text" style="font-size: 2.5rem; color: var(--accent-color);">DESIGN X LOGIC
                         </div>
@@ -1167,20 +1218,6 @@
                 // --- 2.1 GSAP SCROLL REVEALS ---
                 gsap.registerPlugin(ScrollTrigger);
 
-                document.querySelectorAll('.section').forEach(section => {
-                    gsap.from(section, {
-                        opacity: 0,
-                        y: 50,
-                        duration: 1.2,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top 85%",
-                            toggleActions: "play none none reverse"
-                        }
-                    });
-                });
-
                 // --- 3. Vanilla Tilt ---
                 const cards = document.querySelectorAll('[data-tilt]');
                 cards.forEach(card => {
@@ -1235,20 +1272,79 @@
                 }
 
                 // --- 5. MAGNETIC BUTTONS ---
+                // --- 8. PRELOADER & STAGGERED REVEALS ---
+                function startLoader() {
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += Math.floor(Math.random() * 10) + 2;
+                        if (progress >= 100) {
+                            progress = 100;
+                            clearInterval(interval);
+                            revealSite();
+                        }
+                        document.getElementById('loaderPercent').innerText = progress.toString().padStart(2, '0');
+                        document.getElementById('loaderProgress').style.width = progress + '%';
+                    }, 50);
+                }
+
+                function revealSite() {
+                    const tl = gsap.timeline();
+                    tl.to('#loader', {
+                        yPercent: -100,
+                        duration: 1,
+                        ease: "power4.inOut"
+                    })
+                        .from('.hero-name .char', {
+                            y: 100,
+                            opacity: 0,
+                            duration: 1,
+                            stagger: 0.03,
+                            ease: "power4.out"
+                        }, "-=0.5")
+                        .from('.pill-container', {
+                            scale: 0.6,
+                            opacity: 0,
+                            duration: 1.5,
+                            ease: "expo.out"
+                        }, "-=0.8");
+                }
+
+                startLoader();
+
+                // Staggered reveals for bento items and rows
+                document.querySelectorAll('.section').forEach(section => {
+                    const items = section.querySelectorAll('.reveal-item');
+                    if (items.length > 0) {
+                        gsap.to(items, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1,
+                            stagger: 0.15,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: section,
+                                start: "top 80%",
+                                toggleActions: "play none none reverse"
+                            }
+                        });
+                    }
+                });
+
+                // Magnetic Button Update (Refined)
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.addEventListener('mousemove', (e) => {
                         const rect = btn.getBoundingClientRect();
                         const x = e.clientX - rect.left - rect.width / 2;
                         const y = e.clientY - rect.top - rect.height / 2;
                         gsap.to(btn, {
-                            x: x * 0.3,
-                            y: y * 0.3,
-                            duration: 0.3,
-                            ease: "power2.out"
+                            x: x * 0.35,
+                            y: y * 0.35,
+                            duration: 0.4,
+                            ease: "power3.out"
                         });
                     });
                     btn.addEventListener('mouseleave', () => {
-                        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+                        gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
                     });
                 });
 
