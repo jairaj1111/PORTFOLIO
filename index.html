@@ -12,7 +12,7 @@
     <!-- Lenis for Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
 
         :root {
             --bg-color: #000000;
@@ -456,6 +456,36 @@
             right: 2rem;
         }
 
+        /* Side Decorations */
+        .side-mark {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            color: rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            z-index: 1001;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .side-mark.left {
+            left: -100px;
+        }
+
+        .side-mark.right {
+            right: -100px;
+        }
+
+        .signature-font {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 4rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
         /* Experience Grid */
         .experience-row {
             display: grid;
@@ -723,6 +753,9 @@
     <div class="grid-layers"></div>
     <div class="scroll-progress" id="progressBar"></div>
 
+    <div class="side-mark left">LAT: 42.3398° N / LON: 71.0892° W</div>
+    <div class="side-mark right">SYSTEM_LOGIC_INIT_2026</div>
+
     <!-- DarkVeil Animated Background -->
     <canvas id="darkVeil"></canvas>
 
@@ -734,6 +767,7 @@
                 <span class="pulse"></span>
                 OPEN FOR INTERNSHIPS 2026
             </div>
+            <a href="resume.pdf" target="_blank" class="nav-btn">RESUME.PDF</a>
             <button class="nav-btn">MENU</button>
         </div>
     </nav>
@@ -1077,10 +1111,25 @@
                 </div>
             </section>
 
-            <footer style="text-align: center; padding: 4rem; background: black; color: white;">
-                <h2 class="display-text" style="font-size: 4rem; margin-bottom: 2rem;">LET'S TALK</h2>
-                <a href="mailto:jairajnarang1111@gmail.com"
-                    style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem; font-weight: 600; letter-spacing: 1px;">jairajnarang1111@gmail.com</a>
+            <footer
+                style="text-align: center; padding: 8rem 2rem; background: black; border-top: 1px solid rgba(255,255,255,0.05);">
+                <div class="reveal-item">
+                    <h2 class="display-text" style="font-size: 6rem; margin-bottom: 2rem;">LET'S TALK</h2>
+                    <a href="mailto:jairajnarang1111@gmail.com"
+                        style="color: var(--accent-color); text-decoration: none; font-size: 1.5rem; font-weight: 600; letter-spacing: 1px;">jairajnarang1111@gmail.com</a>
+
+                    <div style="margin-top: 5rem;">
+                        <p
+                            style="color: var(--secondary-text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 0.5rem;">
+                            Authentic Copy</p>
+                        <div class="signature-font">Jairaj Singh</div>
+                    </div>
+                </div>
+
+                <p
+                    style="color: rgba(255,255,255,0.3); font-size: 0.7rem; margin-top: 4rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    © 2026 JS[LOGIC] — DESIGNED FOR IMPACT
+                </p>
             </footer>
 
             <script>
