@@ -456,12 +456,17 @@
             right: 2rem;
         }
 
-        .signature-font {
+        .signature-hero {
+            position: absolute;
+            top: 20%;
+            left: 10%;
             font-family: 'Mrs Saint Delafield', cursive;
-            font-size: 4rem;
+            font-size: clamp(3rem, 8vw, 6rem);
             color: var(--accent-color);
-            opacity: 0.8;
-            margin-top: 1rem;
+            opacity: 0;
+            transform: rotate(-12deg) translateY(20px);
+            z-index: 5;
+            pointer-events: none;
         }
 
         /* Experience Grid */
@@ -750,6 +755,7 @@
     <!-- Rest of content same as before but now over canvas -->
     <section class="hero">
         <div class="name-container">
+            <div class="signature-hero" id="heroSignature">Jairaj Singh</div>
             <div class="hero-name display-text" id="nameTop">JAIRAJ</div>
             <div class="hero-name display-text outline" id="nameTopOutline">JAIRAJ</div>
 
@@ -1092,13 +1098,6 @@
                     <h2 class="display-text" style="font-size: 6rem; margin-bottom: 2rem;">LET'S TALK</h2>
                     <a href="mailto:jairajnarang1111@gmail.com"
                         style="color: var(--accent-color); text-decoration: none; font-size: 1.5rem; font-weight: 600; letter-spacing: 1px;">jairajnarang1111@gmail.com</a>
-
-                    <div style="margin-top: 5rem;">
-                        <p
-                            style="color: var(--secondary-text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 0.5rem;">
-                            Authentic Copy</p>
-                        <div class="signature-font">Jairaj Singh</div>
-                    </div>
                 </div>
 
                 <p
@@ -1330,7 +1329,13 @@
                             opacity: 0,
                             duration: 1.5,
                             ease: "expo.out"
-                        }, "-=0.8");
+                        }, "-=0.8")
+                        .to('#heroSignature', {
+                            opacity: 0.8,
+                            y: 0,
+                            duration: 1.2,
+                            ease: "power3.out"
+                        }, "-=1");
                 }
 
                 startLoader();
