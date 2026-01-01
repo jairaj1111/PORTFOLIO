@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAIRAJ SINGH | PORTFOLIO (LIGHT MODE)</title>
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis for Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
+
+        :root {
+            --bg-color: #F8F8F8;
+            --text-color: #000000;
+            --accent-color: #2D6DF2;
+            /* Royal Blue */
+            --secondary-text: #666666;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Preloader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #F8F8F8;
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loader-percent {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 8vw;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--accent-color);
+        }
+
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent-color);
+            z-index: 10001;
+            transition: width 0.1s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F8F8F8;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+            border: 2px solid #F8F8F8;
+        }
+
+        #darkVeil {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+
+        /* Decorative Grid */
+        .grid-layers {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            pointer-events: none;
+        }
+
+        .display-text {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.8;
+            letter-spacing: -0.04em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: black;
+            background: rgba(248, 248, 248, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .nav-right {
+            position: absolute;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: black;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(45, 109, 242, 0.05);
+            border: 1px solid var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            letter-spacing: 0.05em;
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(45, 109, 242, 0.4);
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(45, 109, 242, 0.4);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(45, 109, 242, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(45, 109, 242, 0);
+            }
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Bento Tech Stack */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .bento-item:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(45, 109, 242, 0.1);
+        }
+
+        .bento-item h4 {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .stack-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stack-tag {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: black;
+        }
+
+        .bento-large {
+            grid-column: span 2;
+        }
+
+        .time-widget {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 160px 2rem 200px 2rem;
+            z-index: 10;
+        }
+
+        .name-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-name {
+            font-size: clamp(6rem, 25vw, 24rem);
+            color: black;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-name.outline {
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            z-index: 3;
+        }
+
+        .pill-container {
+            width: clamp(250px, 32vw, 450px);
+            height: clamp(350px, 48vw, 650px);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin: -12vh auto;
+            z-index: 2;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(45, 109, 242, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            animation: fadeInPill 1.5s ease-out 0.8s forwards;
+            background: #EBEBEB;
+        }
+
+        @keyframes fadeInPill {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .pill-container:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .pill-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: multiply;
+        }
+
+        /* Marquee */
+        .marquee-container {
+            width: 100%;
+            background: var(--accent-color);
+            color: white;
+            padding: 1.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transform: rotate(-1.5deg) scale(1.02);
+            margin: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 5rem;
+            margin-bottom: 4rem;
+            color: black;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* Experience Grid */
+        .experience-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border-bottom: 1px solid var(--border-color);
+            padding: 4rem 0;
+            transition: all 0.4s ease;
+        }
+
+        .experience-row:hover {
+            background: rgba(45, 109, 242, 0.02);
+            padding-left: 2rem;
+            border-bottom-color: var(--accent-color);
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-logo {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .experience-row:hover .company-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .role-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Big Shoulders Display', sans-serif;
+        }
+
+        .company-name {
+            color: var(--accent-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+        }
+
+        .exp-description {
+            color: var(--secondary-text);
+            line-height: 1.7;
+            max-width: 650px;
+            font-size: 1.05rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            perspective: 1000px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: black;
+            height: 450px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(45, 109, 242, 0.12);
+        }
+
+        .project-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.08;
+            filter: grayscale(100%);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
+        }
+
+        .project-card:hover img {
+            opacity: 0.2;
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .project-info {
+            position: relative;
+            padding: 3rem;
+            z-index: 10;
+        }
+
+        .project-title {
+            font-family: 'Big Shoulders Display', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .p-tag {
+            font-size: 0.7rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .view-project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .view-project-btn {
+            background: black;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-glare {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(45, 109, 242, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .project-card:hover .card-glare {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 3.5rem;
+            }
+
+            .bento-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-name {
+                font-size: 15vw;
+            }
+
+            .nav-right {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body data-lenis-prevent-touch>
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-percent" id="loaderPercent">00</div>
+        <div class="loader-bar">
+            <div class="loader-progress" id="loaderProgress"></div>
+        </div>
+    </div>
+
+    <div class="grid-layers"></div>
+    <div class="scroll-progress" id="progressBar"></div>
+    <canvas id="darkVeil"></canvas>
+
+    <nav>
+        <div class="logo">Jairaj Singh</div>
+        <div class="nav-right">
+            <div class="time-widget" id="liveTime">00:00:00</div>
+            <div class="status-badge">
+                <span class="pulse"></span>
+                OPEN FOR INTERNSHIPS 2026
+            </div>
+            <a href="resume.pdf" target="_blank" class="nav-btn">RESUME.PDF</a>
+            <button class="nav-btn">MENU</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="name-container">
+            <div class="hero-name display-text" id="nameTop">JAIRAJ</div>
+            <div class="hero-name display-text outline" id="nameTopOutline">JAIRAJ</div>
+
+            <div class="pill-container" id="heroPill">
+                <img src="images/jairaj-new.png" alt="Jairaj Singh Profile">
+            </div>
+
+            <div class="hero-name display-text" id="nameBottom" style="margin-top: -2rem;">SINGH</div>
+            <div class="hero-name display-text outline" id="nameBottomOutline" style="margin-top: -2rem;">SINGH</div>
+        </div>
+
+        <p
+            style="margin-top: 3rem; max-width: 600px; color: var(--secondary-text); font-size: 1.25rem; line-height: 1.6; font-weight: 400;">
+            <span style="color: var(--accent-color); font-weight: 700;">Computer Science & Business</span> student at
+            Northeastern University. <br>
+            Bridging the gap between scalable engineering and strategic data auditing.
+        </p>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <div class="marquee-item">DATA SCIENCE • AI • FINTECH • QUANTITATIVE AUDIT • MACHINE LEARNING • PYTHON •
+                SCALABLE SYSTEMS • RETAIL TECH</div>
+            <div class="marquee-item">DATA SCIENCE • AI • FINTECH • QUANTITATIVE AUDIT • MACHINE LEARNING • PYTHON •
+                SCALABLE SYSTEMS • RETAIL TECH</div>
+        </div>
+    </div>
+
+    <section class="section">
+        <h2 class="section-title display-text">TECH STACK</h2>
+        <div class="bento-grid">
+            <div class="bento-item bento-large reveal-item">
+                <h4>Core Languages</h4>
+                <div class="stack-list">
+                    <span class="stack-tag">Java</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">SQL</span>
+                    <span class="stack-tag">HTML</span>
+                </div>
+            </div>
+            <div class="bento-item reveal-item">
+                <h4>AI & Data</h4>
+                <div class="stack-list">
+                    <span class="stack-tag">TensorFlow</span>
+                    <span class="stack-tag">PyTorch</span>
+                    <span class="stack-tag">OpenCV</span>
+                </div>
+            </div>
+            <div class="bento-item reveal-item">
+                <h4>Frontend</h4>
+                <div class="stack-list">
+                    <span class="stack-tag">React.js</span>
+                    <span class="stack-tag">GSAP</span>
+                    <span class="stack-tag">D3.js</span>
+                </div>
+            </div>
+            <div class="bento-item reveal-item">
+                <h4>Developer Tools</h4>
+                <div class="stack-list">
+                    <span class="stack-tag">Git</span>
+                    <span class="stack-tag">Docker</span>
+                    <span class="stack-tag">AWS</span>
+                </div>
+            </div>
+            <div class="bento-item bento-large reveal-item">
+                <h4>Current Focus</h4>
+                <p style="color: var(--secondary-text); font-size: 1rem; line-height: 1.6;">
+                    Specializing in high-performance FinTech applications and Computer Vision models for enterprise data
+                    auditing.
+                </p>
+            </div>
+            <div class="bento-item reveal-item">
+                <h4>Cloud & DevOps</h4>
+                <div class="stack-list">
+                    <span class="stack-tag">GitHub</span>
+                    <span class="stack-tag">CI/CD</span>
+                    <span class="stack-tag">Unix/Linux</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title display-text">EXPERIENCE</h2>
+
+        <div class="experience-row reveal-item">
+            <div class="date display-text" style="font-size: 2rem; color: var(--accent-color);">2025</div>
+            <div>
+                <div class="company-header">
+                    <img src="images/tjx-logo.png" alt="TJX Logo" class="company-logo">
+                    <div class="company-name">TJX COMPANIES</div>
+                </div>
+                <h3 class="role-title">IT AUDIT CO-OP</h3>
+                <p class="exp-description">
+                    Ensuring compliance and system integrity for a Fortune 100 retailer. Analyzing IT controls and
+                    protecting enterprise assets through rigorous data-driven auditing.
+                </p>
+                <div class="project-tags" style="justify-content: flex-start;">
+                    <span class="p-tag">COMPLIANCE</span>
+                    <span class="p-tag">RISK MANAGEMENT</span>
+                    <span class="p-tag">SOX</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="experience-row reveal-item">
+            <div class="date display-text" style="font-size: 2rem; color: var(--accent-color);">2025</div>
+            <div>
+                <div class="company-header">
+                    <img src="images/oofos-logo.png" alt="OOFOS Logo" class="company-logo">
+                    <div class="company-name">OOFOS</div>
+                </div>
+                <h3 class="role-title">TECHNICAL SPECIALIST</h3>
+                <p class="exp-description">
+                    Supporting technical infrastructure for a global leader in Recovery Footwear. Managing inventory
+                    systems and retail tech operations at the intersection of fashion and health-tech.
+                </p>
+                <div class="project-tags" style="justify-content: flex-start;">
+                    <span class="p-tag">FOOTWEAR TECH</span>
+                    <span class="p-tag">WORKFLOW OPTIMIZATION</span>
+                    <span class="p-tag">RETAIL STRATEGY</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2 class="section-title display-text">PROJECTS</h2>
+        <div class="projects-grid">
+            <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" class="project-card reveal-item" data-tilt
+                style="text-decoration: none;">
+                <div class="card-glare"></div>
+                <div class="project-info">
+                    <h3 class="project-title">SPY VS CRYPTO</h3>
+                    <p style="font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 1rem;">Comparative
+                        analysis tool for digital assets vs traditional equity markets.</p>
+                    <div class="project-tags">
+                        <span class="p-tag">REACT</span>
+                        <span class="p-tag">D3.JS</span>
+                        <span class="p-tag">FINTECH</span>
+                    </div>
+                    <div class="view-project-btn">View Project →</div>
+                </div>
+            </a>
+            <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" class="project-card reveal-item" data-tilt
+                style="text-decoration: none;">
+                <div class="card-glare"></div>
+                <div class="project-info">
+                    <h3 class="project-title">AI FASHION CLASSIFIER</h3>
+                    <p style="font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 1rem;">PyTorch
+                        implementation comparing CNN vs Feedforward architectures for image classification.</p>
+                    <div class="project-tags">
+                        <span class="p-tag">CV</span>
+                        <span class="p-tag">FASHION TECH</span>
+                        <span class="p-tag">TF</span>
+                    </div>
+                    <div class="view-project-btn">View Project →</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer
+        style="text-align: center; padding: 10rem 2rem; background: white; border-top: 1px solid var(--border-color);">
+        <div class="reveal-item">
+            <h2 class="display-text" style="font-size: clamp(4rem, 10vw, 8rem); margin-bottom: 2rem;">LET'S TALK</h2>
+            <a href="mailto:jairajnarang1111@gmail.com"
+                style="color: var(--accent-color); text-decoration: none; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px;">jairajnarang1111@gmail.com</a>
+        </div>
+        <p style="color: #999; font-size: 0.75rem; margin-top: 5rem; text-transform: uppercase; letter-spacing: 0.2em;">
+            © 2026 JS[LOGIC] — DESIGNED FOR IMPACT
+        </p>
+    </footer>
+
+    <script>
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement, b = document.body, st = 'scrollTop', sh = 'scrollHeight';
+            const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+            document.getElementById('progressBar').style.width = percent + '%';
+        });
+
+        // --- DARK VEIL (LIGHT VERSION) ---
+        const canvas = document.getElementById('darkVeil');
+        const ctx = canvas.getContext('2d');
+        let width, height, orbs = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initOrbs();
+        }
+
+        class Orb {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 400 + 200;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.color = 'rgba(45, 109, 242, 0.05)';
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < -this.size) this.x = width + this.size;
+                if (this.x > width + this.size) this.x = -this.size;
+                if (this.y < -this.size) this.y = height + this.size;
+                if (this.y > height + this.size) this.y = -this.size;
+            }
+            draw() {
+                ctx.beginPath();
+                const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                g.addColorStop(0, this.color);
+                g.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = g; ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+
+        function initOrbs() { orbs = []; for (let i = 0; i < 5; i++) orbs.push(new Orb()); }
+        function animateVeil() {
+            ctx.clearRect(0, 0, width, height);
+            orbs.forEach(orb => { orb.update(); orb.draw(); });
+            requestAnimationFrame(animateVeil);
+        }
+
+        window.addEventListener('resize', resize);
+        resize(); animateVeil();
+
+        // --- ANIMATIONS ---
+        const animateText = (id) => {
+            const el = document.getElementById(id);
+            const txt = el.innerText;
+            el.innerHTML = txt.split('').map(c => `<span class="char">${c}</span>`).join('');
+            gsap.from(`#${id} .char`, { y: 100, opacity: 0, duration: 1, stagger: 0.05, ease: "power4.out", delay: 0.2 });
+        };
+
+        ['nameTop', 'nameTopOutline', 'nameBottom', 'nameBottomOutline'].forEach(animateText);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) * 0.01;
+            const y = (e.clientY - window.innerHeight / 2) * 0.01;
+            gsap.to('#heroPill', { x: x * 2, y: y * 2, duration: 1 });
+        });
+
+        const cards = document.querySelectorAll('[data-tilt]');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left, y = e.clientY - rect.top;
+                const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5;
+                const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = 'none');
+        });
+
+        // Preloader
+        function startLoader() {
+            let p = 0;
+            const i = setInterval(() => {
+                p += Math.floor(Math.random() * 15) + 5;
+                if (p >= 100) { p = 100; clearInterval(i); revealSite(); }
+                document.getElementById('loaderPercent').innerText = p.toString().padStart(2, '0');
+                document.getElementById('loaderProgress').style.width = p + '%';
+            }, 60);
+        }
+
+        function revealSite() {
+            const tl = gsap.timeline();
+            tl.to('#loader', { yPercent: -100, duration: 1.2, ease: "expo.inOut" })
+                .from('.hero-name .char', { y: 100, opacity: 0, duration: 1, stagger: 0.03, ease: "power4.out" }, "-=0.6");
+        }
+        startLoader();
+
+        // Reveal animations
+        document.querySelectorAll('.reveal-item').forEach(item => {
+            gsap.to(item, {
+                opacity: 1, y: 0, duration: 1, ease: "power3.out",
+                scrollTrigger: { trigger: item, start: "top 90%" }
+            });
+        });
+
+        // Time
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('liveTime').innerText = now.toLocaleTimeString();
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

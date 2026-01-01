@@ -585,6 +585,28 @@
             letter-spacing: 0.1em;
         }
 
+        .view-project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--accent-color);
+            color: black;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .view-project-btn {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 255, 0, 0.3);
+        }
+
         .card-glare {
             position: absolute;
             width: 100%;
@@ -956,7 +978,8 @@
             <section class="section" id="projects">
                 <h2 class="section-title display-text">PROJECTS</h2>
                 <div class="projects-grid">
-                    <div class="project-card reveal-item" data-tilt>
+                    <a href="#" class="project-card reveal-item" data-tilt
+                        style="text-decoration: none; display: block;">
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
                             alt="HuskyVision Visualization">
@@ -971,13 +994,14 @@
                                 <span class="p-tag">OPEN_CV</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-card reveal-item" data-tilt>
+                    </a>
+                    <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" class="project-card reveal-item" data-tilt
+                        style="text-decoration: none; display: block;">
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80"
                             alt="Crypto Analysis Platform">
                         <div class="project-info">
-                            <h3 class="project-title">CRYPTO VS S&P 500</h3>
+                            <h3 class="project-title">SPY VS CRYPTO</h3>
                             <p
                                 style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
                                 Comparative analysis tool for digital assets vs traditional equity markets.</p>
@@ -986,9 +1010,11 @@
                                 <span class="p-tag">D3.JS</span>
                                 <span class="p-tag">FINTECH</span>
                             </div>
+                            <div class="view-project-btn">View Project →</div>
                         </div>
-                    </div>
-                    <div class="project-card reveal-item" data-tilt>
+                    </a>
+                    <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" class="project-card reveal-item" data-tilt
+                        style="text-decoration: none; display: block;">
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800&h=1000&fit=crop"
                             alt="Fashion AI">
@@ -996,15 +1022,18 @@
                             <h3 class="project-title">AI FASHION CLASSIFIER</h3>
                             <p
                                 style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
-                                Using Deep Learning to identify garment silhouettes and archival streetwear styles.</p>
+                                PyTorch implementation comparing CNN vs Feedforward architectures for image
+                                classification. Features model performance analytics and feature visualizations.</p>
                             <div class="project-tags">
                                 <span class="p-tag">CV</span>
                                 <span class="p-tag">FASHION TECH</span>
                                 <span class="p-tag">TF</span>
                             </div>
+                            <div class="view-project-btn">View Project →</div>
                         </div>
-                    </div>
-                    <div class="project-card reveal-item" data-tilt>
+                    </a>
+                    <a href="#" class="project-card reveal-item" data-tilt
+                        style="text-decoration: none; display: block;">
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
                             alt="Network Graph Visualization">
@@ -1019,8 +1048,9 @@
                                 <span class="p-tag">DATA_VIZ</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-card reveal-item" data-tilt>
+                    </a>
+                    <a href="#" class="project-card reveal-item" data-tilt
+                        style="text-decoration: none; display: block;">
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
                             alt="Birthweight Analysis">
@@ -1035,7 +1065,7 @@
                                 <span class="p-tag">PANDAS</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
