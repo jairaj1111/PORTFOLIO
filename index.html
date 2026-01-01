@@ -174,11 +174,11 @@
         }
 
         .logo {
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 0.1em;
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
             color: var(--accent-color);
+            line-height: 1;
         }
 
         .nav-right {
@@ -456,18 +456,6 @@
             right: 2rem;
         }
 
-        .signature-hero {
-            position: absolute;
-            top: 20%;
-            left: 10%;
-            font-family: 'Mrs Saint Delafield', cursive;
-            font-size: clamp(3rem, 8vw, 6rem);
-            color: var(--accent-color);
-            opacity: 0;
-            transform: rotate(-12deg) translateY(20px);
-            z-index: 5;
-            pointer-events: none;
-        }
 
         /* Experience Grid */
         .experience-row {
@@ -630,7 +618,7 @@
             }
 
             .logo {
-                font-size: 1.5rem;
+                font-size: 2.5rem;
             }
 
             .nav-right {
@@ -740,7 +728,7 @@
     <canvas id="darkVeil"></canvas>
 
     <nav>
-        <div class="logo">JS[LOGIC]</div>
+        <div class="logo">Jairaj Singh</div>
         <div class="nav-right">
             <div class="time-widget" id="liveTime">00:00:00</div>
             <div class="status-badge">
@@ -755,7 +743,6 @@
     <!-- Rest of content same as before but now over canvas -->
     <section class="hero">
         <div class="name-container">
-            <div class="signature-hero" id="heroSignature">Jairaj Singh</div>
             <div class="hero-name display-text" id="nameTop">JAIRAJ</div>
             <div class="hero-name display-text outline" id="nameTopOutline">JAIRAJ</div>
 
@@ -1329,13 +1316,7 @@
                             opacity: 0,
                             duration: 1.5,
                             ease: "expo.out"
-                        }, "-=0.8")
-                        .to('#heroSignature', {
-                            opacity: 0.8,
-                            y: 0,
-                            duration: 1.2,
-                            ease: "power3.out"
-                        }, "-=1");
+                        }, "-=0.8");
                 }
 
                 startLoader();
