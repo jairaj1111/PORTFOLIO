@@ -37,8 +37,6 @@
             cursor: default;
         }
 
-        /* Noise Texture Removed for Performance */
-
         /* Preloader */
         #loader {
             position: fixed;
@@ -113,7 +111,7 @@
             background: #fff;
         }
 
-        /* DarkVeil Canvas - Optimized with CSS Blur */
+        /* DarkVeil Canvas */
         #darkVeil {
             position: fixed;
             top: 0;
@@ -123,11 +121,10 @@
             z-index: -1;
             pointer-events: none;
             filter: blur(80px);
-            /* Static CSS blur is much faster than Canvas API filter */
             opacity: 0.6;
         }
 
-        /* Vignette Overlay (Framer Style Glow) */
+        /* Vignette Overlay */
         body::after {
             content: "";
             position: fixed;
@@ -166,7 +163,6 @@
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: center;
-            /* Center the logo */
             align-items: center;
             z-index: 1000;
             mix-blend-mode: difference;
@@ -200,47 +196,6 @@
             transition: all 0.3s ease;
             text-decoration: none;
             color: white;
-        }
-
-        /* Status Badge */
-        .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(212, 255, 0, 0.1);
-            border: 1px solid var(--accent-color);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            letter-spacing: 0.05em;
-        }
-
-        .pulse {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(212, 255, 0, 0.7);
-            animation: pulse-dot 1.5s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(212, 255, 0, 0.7);
-            }
-
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(212, 255, 0, 0);
-            }
-
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(212, 255, 0, 0);
-            }
         }
 
         .nav-btn:hover {
@@ -313,7 +268,6 @@
             text-align: center;
             position: relative;
             padding: 160px 2rem 200px 2rem;
-            /* Increased bottom padding */
             z-index: 10;
         }
 
@@ -334,7 +288,6 @@
             display: flex;
             justify-content: center;
             overflow: visible;
-            /* Changed from hidden */
         }
 
         .hero-name.outline {
@@ -346,11 +299,6 @@
             mix-blend-mode: overlay;
         }
 
-        .char {
-            display: inline-block;
-            transform-origin: bottom center;
-        }
-
         /* Pill Image */
         .pill-container {
             width: clamp(250px, 32vw, 450px);
@@ -358,7 +306,6 @@
             border-radius: 9999px;
             overflow: hidden;
             margin: -12vh auto;
-            /* More overlap */
             z-index: 2;
             position: relative;
             box-shadow: 0 40px 100px rgba(31, 103, 241, 0.4);
@@ -447,29 +394,17 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        .section-title::before {
-            content: "";
-            width: 40px;
-            height: 2px;
-            background: var(--accent-color);
-            position: absolute;
-            right: 2rem;
-        }
-
-
         /* Experience Grid */
         .experience-row {
             display: grid;
             grid-template-columns: 1fr 2fr;
             border-bottom: 1px solid #333;
-            /* Darker border */
             padding: 3rem 0;
             transition: background 0.3s ease;
         }
 
         .experience-row:hover {
             background: rgba(255, 255, 255, 0.05);
-            /* Subtle white overlay */
             padding-left: 2rem;
         }
 
@@ -572,6 +507,7 @@
 
         .project-tags {
             display: flex;
+            justify-content: center;
             gap: 0.5rem;
         }
 
@@ -622,12 +558,6 @@
 
         .project-card:hover .card-glare {
             opacity: 1;
-        }
-
-        @media (max-width: 992px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 768px) {
@@ -729,14 +659,6 @@
         .lenis.lenis-smooth {
             scroll-behavior: auto;
         }
-
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-
-        .lenis.lenis-stopped {
-            overflow: hidden;
-        }
     </style>
 </head>
 
@@ -749,11 +671,9 @@
         </div>
     </div>
 
-    <!-- Noise removed -->
     <div class="grid-layers"></div>
     <div class="scroll-progress" id="progressBar"></div>
 
-    <!-- DarkVeil Animated Background -->
     <canvas id="darkVeil"></canvas>
 
     <nav>
@@ -765,7 +685,6 @@
         </div>
     </nav>
 
-    <!-- Rest of content same as before but now over canvas -->
     <section class="hero">
         <div class="name-container">
             <div class="hero-name display-text" id="nameTop">JAIRAJ</div>
@@ -780,10 +699,10 @@
         </div>
 
         <p
-            style="margin-top: 2rem; max-width: 550px; color: var(--secondary-text); font-size: 1.15rem; line-height: 1.6;">
-            <span style="color: var(--accent-color); font-weight: 600;">Computer Science & Business</span> student at
-            Northeastern University. <br>
-            Bridging the gap between scalable engineering and strategic data auditing.
+            style="margin-top: 3rem; max-width: 500px; color: var(--secondary-text); font-size: 1.1rem; line-height: 1.8; font-weight: 400; letter-spacing: 0.01em;">
+            Studying <span style="color: #fff; font-weight: 500;">CS + Business</span> at Northeastern. <br>
+            Building at the intersection of <span style="color: var(--accent-color); font-weight: 500;">scalable
+                engineering</span> and <span style="color: var(--accent-color); font-weight: 500;">data strategy</span>.
         </p>
     </section>
 
@@ -855,21 +774,21 @@
                 </div>
             </section>
 
-            <!-- Strategic Impact Section (Business Elements) -->
+            <!-- Core Impact -->
             <section class="section">
-                <h2 class="section-title display-text">STRATEGIC IMPACT</h2>
+                <h2 class="section-title display-text">CORE IMPACT</h2>
                 <div class="bento-grid">
                     <div class="bento-item reveal-item">
-                        <h4>Risk Mitigation</h4>
+                        <h4>Data Integrity</h4>
                         <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">100%</div>
-                        <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Compliance
-                            coverage for Fortune 100 enterprise IT audits.</p>
+                        <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Accuracy ensured
+                            across core financial systems during large-scale enterprise data migrations.</p>
                     </div>
                     <div class="bento-item reveal-item">
-                        <h4>Growth Oversight</h4>
-                        <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">15%</div>
-                        <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Increase in user
-                            acquisition through data-driven marketing funnels.</p>
+                        <h4>Efficiency Gain</h4>
+                        <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">50%</div>
+                        <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Reduction in
+                            reporting time through automation of recurring financial dashboards and KPIs.</p>
                     </div>
                     <div class="bento-item bento-large reveal-item">
                         <h4>Business Competencies</h4>
@@ -884,28 +803,56 @@
                 </div>
             </section>
 
-
+            <!-- Beyond The Code -->
+            <section class="section">
+                <h2 class="section-title display-text">BEYOND THE CODE</h2>
+                <div class="bento-grid">
+                    <div class="bento-item bento-large reveal-item"
+                        style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80'); background-size: cover; background-position: center;">
+                        <div>
+                            <h4>Curated Interests</h4>
+                            <h3 class="display-text" style="font-size: 2.5rem; margin-top: 1rem; line-height: 1.1;">
+                                Exploration of <span style="color: var(--accent-color);">AI in Retail Tech</span> and
+                                enterprise automation.</h3>
+                        </div>
+                        <div class="stack-list" style="margin-top: 2rem;">
+                            <span class="p-tag">AI SYSTEMS</span>
+                            <span class="p-tag">RETAIL TECH</span>
+                            <span class="p-tag">DIGITAL ARCHIVE</span>
+                        </div>
+                    </div>
+                    <div class="bento-item bento-large reveal-item"
+                        style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                        <h4>Focus</h4>
+                        <h3 class="display-text"
+                            style="font-size: 3rem; color: var(--accent-color); margin-top: 0.5rem;">DESIGN X LOGIC</h3>
+                        <p style="color: var(--secondary-text); font-size: 1rem; margin-top: 1rem; max-width: 500px;">
+                            How aesthetic systems integrate with functional engineering to create impactful brand
+                            narratives.</p>
+                    </div>
+                </div>
+            </section>
 
             <!-- Experience -->
             <section class="section">
                 <h2 class="section-title display-text">EXPERIENCE</h2>
 
                 <div class="experience-row reveal-item">
-                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2025</div>
+                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2026</div>
                     <div>
                         <div class="company-header">
                             <img src="images/tjx-logo.png" alt="TJX Logo" class="company-logo">
                             <div class="company-name">TJX COMPANIES</div>
                         </div>
-                        <h3 class="role-title display-text">IT AUDIT CO-OP</h3>
+                        <h3 class="role-title display-text">INCOMING IT AUDIT CO-OP</h3>
                         <p class="exp-description">
-                            Ensuring compliance and system integrity for a Fortune 100 retailer. Analyzing IT controls
-                            and protecting enterprise assets through rigorous data-driven auditing.
+                            Assessing enterprise system integrity and data security. Supporting SOX compliance and IT
+                            governance through cross-functional collaboration and data extraction from SAP/SQL systems.
                         </p>
                         <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">COMPLIANCE</span>
-                            <span class="p-tag">RISK MANAGEMENT</span>
+                            <span class="p-tag">IT AUDIT</span>
                             <span class="p-tag">SOX</span>
+                            <span class="p-tag">SAP / SQL</span>
                         </div>
                     </div>
                 </div>
@@ -915,63 +862,36 @@
                     <div>
                         <div class="company-header">
                             <img src="images/oofos-logo.png" alt="OOFOS Logo" class="company-logo">
-                            <div class="company-name">OOFOS</div>
+                            <div class="company-name">OOFOS INC.</div>
                         </div>
-                        <h3 class="role-title display-text">TECHNICAL SPECIALIST</h3>
+                        <h3 class="role-title display-text">FINANCE & DATA CO-OP</h3>
                         <p class="exp-description">
-                            Supporting technical infrastructure for a global leader in <span
-                                style="color: white;">Recovery
-                                Footwear</span>.
-                            Managing inventory systems and retail tech operations at the intersection of fashion and
-                            health-tech.
+                            Automated core financial reporting to increase efficiency for Sales and FP&A teams.
+                            Reconciled data migrations between General Ledgers and Data Warehouses with 100% accuracy.
                         </p>
                         <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">FOOTWEAR TECH</span>
-                            <span class="p-tag">WORKFLOW OPTIMIZATION</span>
-                            <span class="p-tag">RETAIL STRATEGY</span>
+                            <span class="p-tag">DATA MIGRATION</span>
+                            <span class="p-tag">AUTOMATION</span>
+                            <span class="p-tag">FP&A</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="experience-row reveal-item">
-                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2022</div>
+                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2024</div>
                     <div>
                         <div class="company-header">
-                            <img src="images/singh-capital-logo.jpg" alt="Singh Capital Partners Logo"
-                                class="company-logo">
                             <div class="company-name">SINGH CAPITAL PARTNERS</div>
                         </div>
                         <h3 class="role-title display-text">INVESTMENT ANALYST INTERN</h3>
                         <p class="exp-description">
-                            Conducting financial modeling and market research for a multi-family office.
-                            Analyzing investment opportunities and assisting in due diligence for private equity and
-                            venture capital deals.
+                            Analyzed 50+ startup companies and business models to guide investment decisions. Conducted
+                            due diligence and prepared detailed investment memos for senior leadership.
                         </p>
                         <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">INVESTMENT ANALYSIS</span>
-                            <span class="p-tag">FINANCIAL MODELING</span>
+                            <span class="p-tag">VENTURE CAPITAL</span>
                             <span class="p-tag">DUE DILIGENCE</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="experience-row reveal-item">
-                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2022</div>
-                    <div>
-                        <div class="company-header">
-                            <img src="images/playlist-push-logo.jpg" alt="Cassette Technologies Logo"
-                                class="company-logo" style="border-radius: 50%;">
-                            <div class="company-name">CASSETTE TECHNOLOGIES</div>
-                        </div>
-                        <h3 class="role-title display-text">DIGITAL MARKETING INTERN</h3>
-                        <p class="exp-description">
-                            Oversaw growth strategies for a music-tech startup. Managed digital marketing campaigns and
-                            analyzed data to drive quantifiable user acquisition and market expansion.
-                        </p>
-                        <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">GROWTH STRATEGY</span>
-                            <span class="p-tag">MARKET ANALYSIS</span>
-                            <span class="p-tag">USER ACQUISITION</span>
+                            <span class="p-tag">ANALYSIS</span>
                         </div>
                     </div>
                 </div>
@@ -981,33 +901,30 @@
             <section class="section" id="projects">
                 <h2 class="section-title display-text">PROJECTS</h2>
                 <div class="projects-grid">
-                    <a href="#" class="project-card reveal-item" data-tilt
-                        style="text-decoration: none; display: block;">
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
-                            alt="HuskyVision Visualization">
+                            alt="HuskyVision">
                         <div class="project-info">
                             <h3 class="project-title">HUSKYVISION</h3>
-                            <p
-                                style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
-                                Advanced object detection system optimized for low-latency visual auditing.</p>
+                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">Advanced
+                                object detection system optimized for low-latency visual auditing.</p>
                             <div class="project-tags">
                                 <span class="p-tag">PYTHON</span>
                                 <span class="p-tag">CV</span>
                                 <span class="p-tag">OPEN_CV</span>
                             </div>
                         </div>
-                    </a>
+                    </div>
                     <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" class="project-card reveal-item" data-tilt
-                        style="text-decoration: none; display: block;">
+                        style="display: block; text-decoration: none;">
                         <div class="card-glare"></div>
                         <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80"
-                            alt="Crypto Analysis Platform">
+                            alt="Crypto Analysis">
                         <div class="project-info">
                             <h3 class="project-title">SPY VS CRYPTO</h3>
-                            <p
-                                style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
-                                Comparative analysis tool for digital assets vs traditional equity markets.</p>
+                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">Comparative
+                                analysis tool for digital assets vs traditional equity markets.</p>
                             <div class="project-tags">
                                 <span class="p-tag">REACT</span>
                                 <span class="p-tag">D3.JS</span>
@@ -1017,16 +934,14 @@
                         </div>
                     </a>
                     <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" class="project-card reveal-item" data-tilt
-                        style="text-decoration: none; display: block;">
+                        style="display: block; text-decoration: none;">
                         <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800&h=1000&fit=crop"
+                        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800&fit=crop"
                             alt="Fashion AI">
                         <div class="project-info">
                             <h3 class="project-title">AI FASHION CLASSIFIER</h3>
-                            <p
-                                style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
-                                PyTorch implementation comparing CNN vs Feedforward architectures for image
-                                classification. Features model performance analytics and feature visualizations.</p>
+                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">PyTorch
+                                implementation comparing CNN vs Feedforward architectures.</p>
                             <div class="project-tags">
                                 <span class="p-tag">CV</span>
                                 <span class="p-tag">FASHION TECH</span>
@@ -1035,15 +950,13 @@
                             <div class="view-project-btn">View Project →</div>
                         </div>
                     </a>
-                    <a href="#" class="project-card reveal-item" data-tilt
-                        style="text-decoration: none; display: block;">
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
-                            alt="Network Graph Visualization">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?w=800&q=80"
+                            alt="Network Graph">
                         <div class="project-info">
                             <h3 class="project-title">NETWORK GRAPH</h3>
-                            <p
-                                style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
+                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">
                                 High-performance algorithmic visualization of complex relational data structures.</p>
                             <div class="project-tags">
                                 <span class="p-tag">ALGORITHMS</span>
@@ -1051,63 +964,21 @@
                                 <span class="p-tag">DATA_VIZ</span>
                             </div>
                         </div>
-                    </a>
-                    <a href="#" class="project-card reveal-item" data-tilt
-                        style="text-decoration: none; display: block;">
+                    </div>
+                    <div class="project-card reveal-item" data-tilt>
                         <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                        <img src="https://images.unsplash.com/photo-1454165833767-02a698d16d03?w=800&q=80"
                             alt="Birthweight Analysis">
                         <div class="project-info">
-                            <h3 class="project-title" style="font-size: 2.5rem;">BIRTHWEIGHT ANALYSIS</h3>
-                            <p
-                                style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem; max-width: 250px;">
-                                Statistical modeling and regression analysis of neonatal health data using Python.</p>
+                            <h3 class="project-title">BIRTHWEIGHT ANALYSIS</h3>
+                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">Statistical
+                                modeling and regression analysis of neonatal health data using Python.</p>
                             <div class="project-tags">
                                 <span class="p-tag">PYTHON</span>
                                 <span class="p-tag">STATISTICS</span>
                                 <span class="p-tag">PANDAS</span>
                             </div>
                         </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Beyond the Code (Personal Interests) -->
-            <section class="section">
-                <h2 class="section-title display-text">BEYOND THE CODE</h2>
-                <div class="bento-grid">
-                    <div class="bento-item bento-large reveal-item"
-                        style="position: relative; overflow: hidden; min-height: 300px;">
-                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1200"
-                            style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; filter: grayscale(100%) contrast(1.2);"
-                            alt="Retail AI Detail">
-                        <div style="position: relative; z-index: 2;">
-                            <h4>Curated Interests</h4>
-                            <p
-                                style="color: #fff; font-size: 1.4rem; font-weight: 600; line-height: 1.2; margin-top: 1rem; max-width: 400px;">
-                                Exploration of <span style="color: var(--accent-color);">Retail Tech</span> and the
-                                intersection of material science & fashion.
-                            </p>
-                            <div class="stack-list" style="margin-top: 2rem;">
-                                <span class="p-tag">FOOTWEAR ARTIFACTS</span>
-                                <span class="p-tag">RETAIL SYSTEMS</span>
-                                <span class="p-tag">AESTHETIC LOGIC</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>Personal Projects</h4>
-                        <div style="font-size: 0.9rem; color: var(--secondary-text); line-height: 1.6;">
-                            Passionate about analyzing <span style="color: white;">Design Silhouettes</span> and the
-                            evolution of consumer electronics in fashion.
-                        </div>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>Focus</h4>
-                        <div class="display-text" style="font-size: 2.5rem; color: var(--accent-color);">DESIGN X LOGIC
-                        </div>
-                        <p style="color: var(--secondary-text); font-size: 0.8rem; margin-top: 0.5rem;">How aesthetic
-                            systems integrate with functional engineering.</p>
                     </div>
                 </div>
             </section>
@@ -1117,280 +988,98 @@
                 <div class="reveal-item">
                     <h2 class="display-text" style="font-size: 6rem; margin-bottom: 2rem;">LET'S TALK</h2>
                     <a href="mailto:jairajnarang1111@gmail.com"
-                        style="color: var(--accent-color); text-decoration: none; font-size: 1.5rem; font-weight: 600; letter-spacing: 1px;">jairajnarang1111@gmail.com</a>
+                        style="color: var(--accent-color); text-decoration: none; font-size: 1.5rem; font-weight: 600;">jairajnarang1111@gmail.com</a>
                 </div>
-
                 <p
-                    style="color: rgba(255,255,255,0.3); font-size: 0.7rem; margin-top: 4rem; text-transform: uppercase; letter-spacing: 0.1em;">
-                    © 2026 JS[LOGIC] — DESIGNED FOR IMPACT
-                </p>
+                    style="color: rgba(255,255,255,0.3); font-size: 0.7rem; margin-top: 4rem; text-transform: uppercase;">
+                    © 2026 JAIRAJ SINGH — DESIGNED FOR IMPACT</p>
             </footer>
 
             <script>
-                // --- 0. SMOOTH SCROLL (Lenis) ---
-                const lenis = new Lenis()
-                function raf(time) {
-                    lenis.raf(time)
-                    requestAnimationFrame(raf)
-                }
-                requestAnimationFrame(raf)
+                const lenis = new Lenis();
+                function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+                requestAnimationFrame(raf);
 
-                // --- 0.1 SCROLL PROGRESS ---
                 window.addEventListener('scroll', () => {
-                    const h = document.documentElement,
-                        b = document.body,
-                        st = 'scrollTop',
-                        sh = 'scrollHeight';
+                    const h = document.documentElement, b = document.body, st = 'scrollTop', sh = 'scrollHeight';
                     const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
                     document.getElementById('progressBar').style.width = percent + '%';
                 });
 
-                // --- 1. DARK VEIL ANIMATION ---
                 const canvas = document.getElementById('darkVeil');
                 const ctx = canvas.getContext('2d');
-
-                let width, height;
-                let orbs = [];
-
+                let width, height, orbs = [];
                 function resize() {
                     width = canvas.width = window.innerWidth;
                     height = canvas.height = window.innerHeight;
                     initOrbs();
                 }
-
                 class Orb {
                     constructor() {
-                        this.x = Math.random() * width;
-                        this.y = Math.random() * height;
-                        this.size = Math.random() * 300 + 200; // Large sizes
-                        this.vx = (Math.random() - 0.5) * 0.5; // Slow movement
-                        this.vy = (Math.random() - 0.5) * 0.5;
-                        // Colors: Deep blue/purple variants
+                        this.x = Math.random() * width; this.y = Math.random() * height;
+                        this.size = Math.random() * 300 + 200; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5;
                         this.color = Math.random() > 0.5 ? 'rgba(31, 103, 241, 0.08)' : 'rgba(75, 0, 130, 0.05)';
                     }
-
                     update() {
-                        this.x += this.vx;
-                        this.y += this.vy;
-
-                        // Bounce off edges (softly)
-                        if (this.x < -this.size) this.x = width + this.size;
-                        if (this.x > width + this.size) this.x = -this.size;
-                        if (this.y < -this.size) this.y = height + this.size;
-                        if (this.y > height + this.size) this.y = -this.size;
+                        this.x += this.vx; this.y += this.vy;
+                        if (this.x < -this.size) this.x = width + this.size; if (this.x > width + this.size) this.x = -this.size;
+                        if (this.y < -this.size) this.y = height + this.size; if (this.y > height + this.size) this.y = -this.size;
                     }
-
                     draw() {
                         ctx.beginPath();
-                        // Radial gradient for soft edges
                         const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                        g.addColorStop(0, this.color);
-                        g.addColorStop(1, 'rgba(0,0,0,0)');
-
-                        ctx.fillStyle = g;
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fill();
+                        g.addColorStop(0, this.color); g.addColorStop(1, 'rgba(0,0,0,0)');
+                        ctx.fillStyle = g; ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
                     }
                 }
+                function initOrbs() { orbs = []; for (let i = 0; i < 7; i++) orbs.push(new Orb()); }
+                function animateVeil() { ctx.clearRect(0, 0, width, height); orbs.forEach(o => { o.update(); o.draw(); }); requestAnimationFrame(animateVeil); }
+                window.addEventListener('resize', resize); resize(); animateVeil();
 
-                function initOrbs() {
-                    orbs = [];
-                    for (let i = 0; i < 7; i++) { // Number of orbs
-                        orbs.push(new Orb());
-                    }
-                }
-
-                function animateVeil() {
-                    ctx.clearRect(0, 0, width, height);
-
-                    // Removed heavy Canvas filter loop
-                    orbs.forEach(orb => {
-                        orb.update();
-                        orb.draw();
-                    });
-
-                    requestAnimationFrame(animateVeil);
-                }
-
-                window.addEventListener('resize', resize);
-                resize();
-                animateVeil();
-
-
-                // --- 2. GSAP SplitText ---
-                const animateText = (elementId) => {
-                    const element = document.getElementById(elementId);
-                    const text = element.innerText;
-                    element.innerHTML = text.split('').map(char => `<span class="char">${char}</span>`).join('');
-
-                    gsap.from(`#${elementId} .char`, {
-                        y: 100,
-                        opacity: 0,
-                        duration: 1,
-                        stagger: 0.05,
-                        ease: "power4.out",
-                        delay: 0.2
-                    });
+                const animateText = (id) => {
+                    const el = document.getElementById(id); const txt = el.innerText;
+                    el.innerHTML = txt.split('').map(c => `<span class="char">${c}</span>`).join('');
+                    gsap.from(`#${id} .char`, { y: 100, opacity: 0, duration: 1, stagger: 0.05, ease: "power4.out", delay: 0.2 });
                 };
+                ['nameTop', 'nameTopOutline', 'nameBottom', 'nameBottomOutline'].forEach(animateText);
 
-                animateText('nameTop');
-                animateText('nameTopOutline');
-                animateText('nameBottom');
-                animateText('nameBottomOutline');
-
-                // --- 2.2 HERO PARALLAX & HOVER ---
                 document.addEventListener('mousemove', (e) => {
-                    const x = (e.clientX - window.innerWidth / 2) * 0.01;
-                    const y = (e.clientY - window.innerHeight / 2) * 0.01;
-
-                    gsap.to('#heroPill', { x: x * 2, y: y * 2, duration: 1, ease: "power2.out" });
-                    gsap.to('#nameTop', { x: -x * 3, y: -y * 3, duration: 1, ease: "power2.out" });
-                    gsap.to('#nameBottom', { x: x * 1.5, y: y * 1.5, duration: 1, ease: "power2.out" });
+                    const x = (e.clientX - window.innerWidth / 2) * 0.01; const y = (e.clientY - window.innerHeight / 2) * 0.01;
+                    gsap.to('#heroPill', { x: x * 2, y: y * 2, duration: 1 });
+                    gsap.to('#nameTop', { x: -x * 3, y: -y * 3, duration: 1 });
+                    gsap.to('#nameBottom', { x: x * 1.5, y: y * 1.5, duration: 1 });
                 });
 
-                // SplitText Animation
-                gsap.from('.pill-container', {
-                    scale: 0.8,
-                    y: 50,
-                    opacity: 0,
-                    duration: 2,
-                    ease: "expo.out",
-                    delay: 0.5
-                });
-
-                // --- 2.1 GSAP SCROLL REVEALS ---
                 gsap.registerPlugin(ScrollTrigger);
-
-                // --- 3. Vanilla Tilt ---
-                const cards = document.querySelectorAll('[data-tilt]');
-                cards.forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const centerX = rect.width / 2;
-                        const centerY = rect.height / 2;
-                        const rotateX = ((y - centerY) / centerY) * -10;
-                        const rotateY = ((x - centerX) / centerX) * 10;
-                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                        const glare = card.querySelector('.card-glare');
-                        if (glare) {
-                            glare.style.opacity = '1';
-                            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent)`;
-                        }
-                    });
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                        const glare = card.querySelector('.card-glare');
-                        if (glare) glare.style.opacity = '0';
-                    });
+                document.querySelectorAll('.reveal-item').forEach(s => {
+                    const items = s.querySelectorAll('.reveal-item, .bento-item, .experience-row, .project-card');
+                    gsap.to(items.length ? items : s, { opacity: 1, y: 0, duration: 1, stagger: 0.15, scrollTrigger: { trigger: s, start: "top 80%" } });
                 });
 
-
-                // --- 4. Custom Cursor (Only on non-touch devices) ---
-                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-                if (!isTouchDevice) {
-                    const cursor = document.createElement('div');
-                    cursor.style.width = '20px';
-                    cursor.style.height = '20px';
-                    cursor.style.background = 'white';
-                    cursor.style.borderRadius = '50%';
-                    cursor.style.position = 'fixed';
-                    cursor.style.pointerEvents = 'none';
-                    cursor.style.mixBlendMode = 'difference';
-                    cursor.style.zIndex = '9999';
-                    cursor.style.transition = 'transform 0.1s ease';
-                    document.body.appendChild(cursor);
-
-                    document.addEventListener('mousemove', (e) => {
-                        cursor.style.left = e.clientX - 10 + 'px';
-                        cursor.style.top = e.clientY - 10 + 'px';
-                    });
-
-                    document.querySelectorAll('a, button, .project-card').forEach(el => {
-                        el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(3)');
-                        el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
-                    });
-                }
-
-                // --- 5. MAGNETIC BUTTONS ---
-                // --- 8. PRELOADER & STAGGERED REVEALS ---
                 function startLoader() {
-                    let progress = 0;
-                    const interval = setInterval(() => {
-                        progress += Math.floor(Math.random() * 10) + 2;
-                        if (progress >= 100) {
-                            progress = 100;
-                            clearInterval(interval);
-                            revealSite();
-                        }
-                        document.getElementById('loaderPercent').innerText = progress.toString().padStart(2, '0');
-                        document.getElementById('loaderProgress').style.width = progress + '%';
+                    let p = 0; const i = setInterval(() => {
+                        p += Math.floor(Math.random() * 10) + 2; if (p >= 100) { p = 100; clearInterval(i); revealSite(); }
+                        document.getElementById('loaderPercent').innerText = p.toString().padStart(2, '0');
+                        document.getElementById('loaderProgress').style.width = p + '%';
                     }, 50);
                 }
-
                 function revealSite() {
-                    const tl = gsap.timeline();
-                    tl.to('#loader', {
-                        yPercent: -100,
-                        duration: 1,
-                        ease: "power4.inOut"
-                    })
-                        .from('.hero-name .char', {
-                            y: 100,
-                            opacity: 0,
-                            duration: 1,
-                            stagger: 0.03,
-                            ease: "power4.out"
-                        }, "-=0.5")
-                        .from('.pill-container', {
-                            scale: 0.6,
-                            opacity: 0,
-                            duration: 1.5,
-                            ease: "expo.out"
-                        }, "-=0.8");
+                    gsap.timeline().to('#loader', { yPercent: -100, duration: 1, ease: "power4.inOut" })
+                        .from('.hero-name .char', { y: 100, opacity: 0, duration: 1, stagger: 0.03 }, "-=0.5")
+                        .from('.pill-container', { scale: 0.6, opacity: 0, duration: 1.5 }, "-=0.8");
                 }
-
                 startLoader();
 
-                // Staggered reveals for bento items and rows
-                document.querySelectorAll('.section').forEach(section => {
-                    const items = section.querySelectorAll('.reveal-item');
-                    if (items.length > 0) {
-                        gsap.to(items, {
-                            opacity: 1,
-                            y: 0,
-                            duration: 1,
-                            stagger: 0.15,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: section,
-                                start: "top 80%",
-                                toggleActions: "play none none reverse"
-                            }
-                        });
-                    }
-                });
-
-                // Magnetic Button Update (Refined)
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    btn.addEventListener('mousemove', (e) => {
-                        const rect = btn.getBoundingClientRect();
-                        const x = e.clientX - rect.left - rect.width / 2;
-                        const y = e.clientY - rect.top - rect.height / 2;
-                        gsap.to(btn, {
-                            x: x * 0.35,
-                            y: y * 0.35,
-                            duration: 0.4,
-                            ease: "power3.out"
-                        });
+                const cards = document.querySelectorAll('[data-tilt]');
+                cards.forEach(c => {
+                    c.addEventListener('mousemove', (e) => {
+                        const r = c.getBoundingClientRect(); const x = e.clientX - r.left; const y = e.clientY - r.top;
+                        const rx = ((y - r.height / 2) / (r.height / 2)) * -10; const ry = ((x - r.width / 2) / (r.width / 2)) * 10;
+                        c.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`;
+                        const g = c.querySelector('.card-glare'); if (g) { g.style.opacity = '1'; g.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent)`; }
                     });
-                    btn.addEventListener('mouseleave', () => {
-                        gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" });
-                    });
+                    c.addEventListener('mouseleave', () => { c.style.transform = ''; const g = c.querySelector('.card-glare'); if (g) g.style.opacity = '0'; });
                 });
-
             </script>
 </body>
 
