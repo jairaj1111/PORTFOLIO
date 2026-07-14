@@ -4,23 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAIRAJ SINGH | PORTFOLIO</title>
+    <title>Jairaj Narang</title>
+    <meta name="description"
+        content="Jairaj Narang — rising senior at Northeastern building AI products at the intersection of consumer culture, data, and finance. Currently building SoleSight.">
 
-    <!-- GSAP for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Lenis for Smooth Scroll -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Inter:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Space+Grotesk:wght@400;500&family=Mrs+Saint+Delafield&display=swap');
 
         :root {
-            --bg-color: #000000;
-            --text-color: #FFFFFF;
-            --accent-color: #D4FF00;
-            /* Neon Lime */
-            --secondary-text: #A1A1A1;
-            --card-bg: #0A0A0A;
+            --paper: #F3EFE6;
+            --ink: #1C1914;
+            --muted: #6E6759;
+            --faint: #98917F;
+            --line: rgba(28, 25, 20, 0.16);
+            --accent: #A8431F;
+            --chip: #17140F;
         }
 
         * {
@@ -29,1058 +27,1189 @@
             box-sizing: border-box;
         }
 
+        ::selection {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            cursor: default;
-        }
-
-        /* Preloader */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 10002;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .loader-percent {
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 8vw;
-            color: var(--accent-color);
-            line-height: 1;
-        }
-
-        .loader-bar {
-            width: 200px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loader-progress {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0%;
-            background: var(--accent-color);
-        }
-
-        /* Essential for smooth reveals */
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--accent-color);
-            z-index: 10001;
-            transition: width 0.1s ease;
-        }
-
-        /* Custom Neon Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 10px;
-            border: 2px solid #000;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #fff;
-        }
-
-        /* DarkVeil Canvas */
-        #darkVeil {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(80px);
-            opacity: 0.6;
-        }
-
-        /* Vignette Overlay */
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            box-shadow: inset 0 0 180px 60px rgba(31, 103, 241, 0.2);
-            z-index: 998;
-        }
-
-        /* Decorative Grid */
-        .grid-layers {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100px 100px;
-            pointer-events: none;
-        }
-
-        /* Typography Utilities */
-        .display-text {
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            line-height: 0.8;
-            letter-spacing: -0.04em;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            mix-blend-mode: difference;
-            color: white;
-        }
-
-        .logo {
-            font-family: 'Mrs Saint Delafield', cursive;
-            font-size: 3.5rem;
+            font-family: 'Newsreader', serif;
+            background: var(--paper);
+            color: var(--ink);
             font-weight: 400;
-            color: var(--accent-color);
-            line-height: 1;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            /* faint paper grain */
+            background-image: radial-gradient(rgba(28, 25, 20, 0.035) 1px, transparent 0);
+            background-size: 22px 22px;
         }
 
-        .nav-right {
-            position: absolute;
-            right: 2rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: white;
-        }
-
-        .nav-btn:hover {
-            background: white;
-            color: black;
-        }
-
-        /* Bento Tech Stack */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .bento-item {
-            background: #0A0A0A;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .bento-item:hover {
-            border-color: var(--accent-color);
-            background: #0F0F0F;
-            transform: translateY(-5px);
-        }
-
-        .bento-item h4 {
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        .stack-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .stack-tag {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .bento-large {
-            grid-column: span 2;
-        }
-
-        .time-widget {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 160px 2rem 200px 2rem;
-            z-index: 10;
-        }
-
-        .name-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-        }
-
-        .hero-name {
-            font-size: clamp(6rem, 25vw, 24rem);
-            color: var(--accent-color);
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            overflow: visible;
-        }
-
-        .hero-name.outline {
-            color: transparent;
-            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
-            position: absolute;
-            top: 0;
-            z-index: 3;
-            mix-blend-mode: overlay;
-        }
-
-        /* Pill Image */
-        .pill-container {
-            width: clamp(250px, 32vw, 450px);
-            height: clamp(350px, 48vw, 650px);
-            border-radius: 9999px;
-            overflow: hidden;
-            margin: -12vh auto;
-            z-index: 2;
-            position: relative;
-            box-shadow: 0 40px 100px rgba(31, 103, 241, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            animation: fadeInPill 1.5s ease-out 0.8s forwards;
-            backdrop-filter: blur(10px);
-        }
-
-        @keyframes fadeInPill {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .pill-container:hover {
-            transform: scale(1.02) translateY(-10px);
-        }
-
-        .pill-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Marquee */
-        .marquee-container {
-            width: 100%;
-            background: var(--accent-color);
-            color: white;
-            padding: 1rem 0;
-            overflow: hidden;
-            white-space: nowrap;
-            transform: rotate(-2deg) scale(1.05);
-            margin: 4rem 0;
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
-        }
-
-        .marquee-item {
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin: 0 2rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 2rem;
-            max-width: 1400px;
+        .wrap {
+            max-width: 960px;
             margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        .section-title {
-            font-size: 5rem;
-            margin-bottom: 4rem;
-            color: var(--accent-color);
+        a {
+            color: inherit;
+        }
+
+        .display {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--muted);
+        }
+
+        .ital {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 350;
+        }
+
+        /* ---------- top bar ---------- */
+        .topline {
+            border-bottom: 1px solid var(--line);
+        }
+
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 2rem;
+            padding: 1.4rem 0;
         }
 
-        .section-title::after {
-            content: "";
+        .signature {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 2.3rem;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: baseline;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            text-decoration: none;
+            color: var(--muted);
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        #clock {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--faint);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ---------- masthead ---------- */
+        .masthead {
+            padding: 3.5rem 0 0;
+        }
+
+        .masthead-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-bottom: 1.2rem;
+        }
+
+        h1.masthead-name {
+            font-family: 'Fraunces', serif;
+            font-weight: 350;
+            font-size: clamp(3.4rem, 11vw, 8.2rem);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 2.5rem;
+        }
+
+        h1 .last {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--accent);
+        }
+
+        /* ---------- hero grid ---------- */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 3.5rem;
+            padding: 3.2rem 0 4.5rem;
+            align-items: start;
+        }
+
+        .statement {
+            font-family: 'Fraunces', serif;
+            font-weight: 340;
+            font-size: clamp(1.5rem, 3.4vw, 2.15rem);
+            line-height: 1.28;
+            letter-spacing: -0.015em;
+        }
+
+        .statement em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .bio {
+            margin-top: 1.8rem;
+            color: var(--muted);
+            font-size: 1.02rem;
+            max-width: 480px;
+        }
+
+        .bio strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .bio.dropcap::first-letter {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            float: left;
+            font-size: 3.4rem;
+            line-height: 0.8;
+            padding: 0.35rem 0.55rem 0 0;
+            color: var(--accent);
+        }
+
+
+        /* portrait */
+        figure.portrait {
+            position: relative;
+        }
+
+        .portrait img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            border: 1px solid var(--ink);
+            box-shadow: 8px 8px 0 var(--line);
+            filter: saturate(0.92) contrast(1.02);
+        }
+
+        .portrait figcaption {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        /* ---------- sections ---------- */
+        section {
+            border-top: 1px solid var(--line);
+            padding: 4rem 0 4.5rem;
+        }
+
+        .sec-head {
+            display: flex;
+            align-items: baseline;
+            gap: 1.4rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .index {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.6rem;
+            color: var(--accent);
+        }
+
+        .sec-head .rule {
             flex: 1;
             height: 1px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--line);
+            align-self: center;
         }
 
-        /* Experience Grid */
-        .experience-row {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            border-bottom: 1px solid #333;
-            padding: 3rem 0;
-            transition: background 0.3s ease;
-        }
-
-        .experience-row:hover {
-            background: rgba(255, 255, 255, 0.05);
-            padding-left: 2rem;
-        }
-
-        .company-header {
+        /* ---------- featured ---------- */
+        .feature-title {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            align-items: baseline;
+            gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
-        .company-logo {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
+        .feature-title h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: clamp(2.6rem, 6vw, 4rem);
+            letter-spacing: -0.02em;
+            line-height: 1;
         }
 
-        .experience-row:hover .company-logo {
-            filter: grayscale(0%);
+        .feature-title .tagline {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.4rem;
+            color: var(--muted);
         }
 
-        .role-title {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .feature-desc {
+            margin-top: 1.6rem;
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 1.08rem;
         }
 
-        .company-name {
-            color: var(--accent-color);
-            font-weight: 600;
+        .feature-desc em {
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        .stats {
+            display: flex;
+            margin-top: 2.6rem;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .stat {
+            flex: 1;
+            padding: 1.4rem 1.6rem 1.4rem 0;
+        }
+
+        .stat+.stat {
+            border-left: 1px solid var(--line);
+            padding-left: 1.6rem;
+        }
+
+        .stat b {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-weight: 350;
+            font-size: 2.6rem;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .stat span {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
+            color: var(--faint);
         }
 
-        .exp-description {
-            color: var(--secondary-text);
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        .links {
+            display: flex;
             gap: 2rem;
-            perspective: 1000px;
+            margin-top: 2.4rem;
         }
 
-        .project-card {
-            background: #0A0A0A;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            color: white;
-            height: 400px;
-            border-radius: 8px;
-            position: relative;
+        .arrow-link {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.74rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 3px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .arrow-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ---------- experience ---------- */
+        .xp-row {
+            display: grid;
+            grid-template-columns: 64px 1fr 70px;
+            gap: 1.6rem;
+            padding: 2rem 0;
+            align-items: start;
+        }
+
+        .xp-row+.xp-row {
+            border-top: 1px solid var(--line);
+        }
+
+        .logo-chip {
+            width: 64px;
+            height: 64px;
+            background: var(--chip);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .project-card:hover {
-            border-color: var(--accent-color);
-            background: #0F0F0F;
+        .logo-chip img {
+            max-width: 74%;
+            max-height: 58%;
+            object-fit: contain;
         }
 
-        .project-card img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15;
-            filter: grayscale(100%) contrast(1.1);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 1;
+        .logo-chip img.inverted {
+            filter: invert(1) grayscale(1) brightness(1.15);
+            max-width: 96%;
+            max-height: 96%;
         }
 
-        .project-card:hover img {
-            opacity: 0.4;
-            transform: scale(1.1);
-            filter: grayscale(0%) contrast(1);
+        .logo-chip img.round {
+            max-width: 82%;
+            max-height: 82%;
+            border-radius: 50%;
         }
 
-        .project-info {
-            position: relative;
-            padding: 2rem;
-            z-index: 10;
+        .xp-row h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: 1.45rem;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
 
-        .project-title {
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .p-tag {
-            font-size: 0.65rem;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
+        .xp-row .org {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.35rem;
         }
 
-        .view-project-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding: 0.6rem 1.2rem;
-            background: var(--accent-color);
-            color: black;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.7rem;
-            letter-spacing: 0.05em;
+        .xp-row p {
+            margin-top: 0.55rem;
+            color: var(--muted);
+            font-size: 0.98rem;
+            max-width: 560px;
+        }
+
+        .xp-row .year {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: var(--faint);
+            text-align: right;
+            padding-top: 0.3rem;
+        }
+
+        /* ---------- projects ---------- */
+        .project {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            gap: 1.4rem;
+            align-items: baseline;
+            padding: 1.7rem 0;
+            text-decoration: none;
+        }
+
+        .project+.project {
+            border-top: 1px solid var(--line);
+        }
+
+        .project .num {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--faint);
+        }
+
+        .project h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .project:hover h3 {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .project p {
+            margin-top: 0.35rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+            max-width: 540px;
+        }
+
+        .project .tag {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.64rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            transition: all 0.3s ease;
+            color: var(--faint);
+            white-space: nowrap;
         }
 
-        .project-card:hover .view-project-btn {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 255, 0, 0.3);
+        /* ---------- beyond ---------- */
+        .beyond-quote {
+            font-family: 'Fraunces', serif;
+            font-weight: 330;
+            font-size: clamp(1.5rem, 3.6vw, 2.3rem);
+            line-height: 1.35;
+            letter-spacing: -0.015em;
+            max-width: 760px;
         }
 
-        .card-glare {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+        .beyond-quote em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .beyond-note {
+            margin-top: 1.6rem;
+            color: var(--muted);
+            max-width: 560px;
+        }
+
+        .hobbies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 3rem;
+            border-top: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+        }
+
+        .hobby {
+            padding: 1.5rem 1.4rem;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hobby .h-num {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: var(--accent);
+            display: block;
+        }
+
+        .hobby .h-name {
+            font-family: 'Fraunces', serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: -0.01em;
+            display: block;
+            margin-top: 0.4rem;
+        }
+
+        .hobby .h-note {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--faint);
+            display: block;
+            margin-top: 0.45rem;
+        }
+
+        /* ---------- footer ---------- */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 5rem 0 0;
+        }
+
+        footer .big {
+            font-family: 'Fraunces', serif;
+            font-weight: 330;
+            font-size: clamp(2.4rem, 7vw, 4.6rem);
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+        }
+
+        footer .big em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .contact-list {
+            margin-top: 3rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .contact-row {
+            display: grid;
+            grid-template-columns: 160px 1fr auto;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding: 1.15rem 0;
+            border-bottom: 1px solid var(--line);
+            text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-row:hover {
+            transform: translateX(8px);
+        }
+
+        .c-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        .c-value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease, font-style 0.2s ease;
+        }
+
+        .contact-row:hover .c-value {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .c-arrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            color: var(--faint);
+            transition: color 0.2s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-row:hover .c-arrow {
+            color: var(--accent);
+            transform: translate(3px, -3px);
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 4.5rem;
+            padding: 1.4rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-meta,
+        .footer-meta a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.66rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--faint);
+            text-decoration: none;
+        }
+
+        .footer-meta a {
+            margin-right: 1.4rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-meta a:hover {
+            color: var(--accent);
+        }
+
+        /* ---------- animations ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* scroll progress line */
+        #progress {
+            position: fixed;
             top: 0;
             left: 0;
-            background: linear-gradient(125deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 40%);
+            height: 2px;
+            width: 0%;
+            background: var(--accent);
+            z-index: 100;
+        }
+
+        /* masthead letters rise in */
+        .masthead-name .ch {
+            display: inline-block;
             opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            mix-blend-mode: overlay;
+            transform: translateY(0.55em) rotate(2deg);
+            animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: calc(var(--i) * 50ms + 150ms);
         }
 
-        .project-card:hover .card-glare {
-            opacity: 1;
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: none;
+            }
         }
 
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-                justify-content: space-between;
-                mix-blend-mode: normal;
-                background: rgba(0, 0, 0, 0.9);
-                backdrop-filter: blur(10px);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* hero content fades up on load */
+        .hero-grid>div,
+        .hero-grid figure {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-grid>div {
+            animation-delay: 0.55s;
+        }
+
+        .hero-grid figure {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* section rules draw themselves */
+        .sec-head .rule {
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+        }
+
+        .reveal.in .rule {
+            transform: scaleX(1);
+        }
+
+        /* sweeping underline on nav + footer links */
+        .nav-links a,
+        .footer-meta a {
+            background-image: linear-gradient(var(--accent), var(--accent));
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: 0% 1px;
+            padding-bottom: 3px;
+            transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .footer-meta a:hover {
+            background-size: 100% 1px;
+        }
+
+        /* portrait lifts on hover */
+        .portrait img {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        figure.portrait:hover img {
+            transform: translate(-5px, -5px);
+            box-shadow: 14px 14px 0 var(--line);
+        }
+
+        /* experience rows drift + logo chips tilt */
+        .xp-row {
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .xp-row:hover {
+            transform: translateX(8px);
+        }
+
+        .logo-chip {
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .xp-row:hover .logo-chip {
+            transform: rotate(-4deg) scale(1.06);
+        }
+
+        /* project rows nudge */
+        .project {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project:hover {
+            transform: translateX(8px);
+        }
+
+        /* hobby cells */
+        .hobby {
+            transition: background 0.35s ease, transform 0.35s ease;
+        }
+
+        .hobby:hover {
+            background: rgba(28, 25, 20, 0.04);
+            transform: translateY(-4px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-delay: 0s !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ---------- mobile ---------- */
+        @media (max-width: 720px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.6rem;
+                padding: 2.6rem 0 3.5rem;
             }
 
-            .logo {
-                font-size: 2.2rem;
+            figure.portrait {
+                max-width: 340px;
             }
 
-            .nav-right {
-                position: static;
-                gap: 0.5rem;
+            .stats {
+                flex-direction: column;
             }
 
-            .time-widget {
+            .stat+.stat {
+                border-left: none;
+                border-top: 1px solid var(--line);
+                padding-left: 0;
+            }
+
+            .stat {
+                padding: 1.2rem 0;
+            }
+
+            .xp-row {
+                grid-template-columns: 48px 1fr;
+            }
+
+            .logo-chip {
+                width: 48px;
+                height: 48px;
+            }
+
+            .xp-row .year {
                 display: none;
             }
 
-            .hero {
-                padding-top: 100px;
-                padding-bottom: 60px;
-                min-height: auto;
-            }
-
-            .hero-name {
-                font-size: 18vw;
-                line-height: 0.9;
-            }
-
-            .pill-container {
-                width: 180px;
-                height: 260px;
-                margin: -2vh auto;
-            }
-
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .bento-grid {
+            .project {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 0.3rem;
             }
 
-            .bento-large {
-                grid-column: span 1;
+            .project .num {
+                display: none;
             }
 
-            .experience-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 2.5rem 0;
+            .hobbies {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .role-title {
-                font-size: 1.8rem;
+            .hobby {
+                padding: 1.1rem 1rem;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .contact-row {
+                grid-template-columns: 90px 1fr auto;
+                gap: 0.8rem;
             }
 
-            .project-card {
-                height: 320px;
+            .c-value {
+                font-size: 0.98rem;
+                word-break: break-all;
             }
 
-            .project-title {
-                font-size: 2.2rem;
+            #clock {
+                display: none;
             }
 
-            .marquee-item {
-                font-size: 1.5rem;
+            .nav-links {
+                gap: 1.1rem;
             }
-
-            .marquee-container {
-                margin: 2rem 0;
-                height: 80px;
-            }
-        }
-
-        /* Essential for iOS smooth scrolling with Lenis */
-        html.lenis {
-            height: auto;
-        }
-
-        .lenis.lenis-smooth {
-            scroll-behavior: auto;
         }
     </style>
 </head>
 
-<body data-lenis-prevent-touch>
-    <!-- Preloader -->
-    <div id="loader">
-        <div class="loader-percent" id="loaderPercent">00</div>
-        <div class="loader-bar">
-            <div class="loader-progress" id="loaderProgress"></div>
+<body>
+    <div id="progress"></div>
+    <div class="topline">
+        <div class="wrap">
+            <nav>
+                <a href="#" class="signature">Jairaj</a>
+                <div class="nav-links">
+                    <span id="clock">Boston —:—</span>
+                    <a href="#work">Work</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
         </div>
     </div>
 
-    <div class="grid-layers"></div>
-    <div class="scroll-progress" id="progressBar"></div>
+    <div class="wrap">
+        <header class="masthead">
+            <div class="masthead-meta">
+                <span class="label">Portfolio — Vol. 01</span>
+                <span class="label">AI Product · Finance · Tech</span>
+                <span class="label">Boston, MA</span>
+            </div>
+            <h1 class="masthead-name">Jairaj <span class="last">Narang</span></h1>
+        </header>
 
-    <canvas id="darkVeil"></canvas>
-
-    <nav>
-        <div class="logo">Jairaj Singh</div>
-        <div class="nav-right">
-            <div class="time-widget" id="liveTime">00:00:00</div>
-            <a href="resume.pdf" target="_blank" class="nav-btn">RESUME.PDF</a>
-            <button class="nav-btn">MENU</button>
+        <div class="hero-grid">
+            <div>
+                <p class="statement">
+                    I build AI products where <em>consumer culture</em> meets data &amp; finance.
+                </p>
+                <p class="bio dropcap">
+                    Senior at Northeastern — Business Administration (Fintech) + Computer Science, Class of 2027.
+                    I've audited a Fortune 100's retail data at <strong>TJX</strong>, driven product analytics at
+                    <strong>OOFOS</strong>, and evaluated 50+ startups at <strong>Singh Capital Partners</strong>.
+                    Most recently, I built an AI that tracks sneaker demand — it updates itself every night.
+                </p>
+            </div>
+            <figure class="portrait">
+                <img src="images/jairaj-new.png" alt="Portrait of Jairaj Narang">
+                <figcaption>
+                    <span>Fig. 01 — The Author</span>
+                    <span>NEU '27</span>
+                </figcaption>
+            </figure>
         </div>
-    </nav>
 
-    <section class="hero">
-        <div class="name-container">
-            <div class="hero-name display-text" id="nameTop">JAIRAJ</div>
-            <div class="hero-name display-text outline" id="nameTopOutline">JAIRAJ</div>
-
-            <div class="pill-container" id="heroPill">
-                <img src="images/jairaj-new.png" alt="Jairaj Singh Profile">
+        <section class="reveal" id="featured">
+            <div class="sec-head">
+                <span class="index">01</span>
+                <span class="label">Featured — Currently Building</span>
+                <span class="rule"></span>
             </div>
 
-            <div class="hero-name display-text" id="nameBottom" style="margin-top: -2rem;">SINGH</div>
-            <div class="hero-name display-text outline" id="nameBottomOutline" style="margin-top: -2rem;">SINGH</div>
-        </div>
+            <div class="feature-title">
+                <h2>SoleSight</h2>
+                <span class="tagline">hype, quantified.</span>
+            </div>
+            <p class="feature-desc">
+                An end-to-end AI data product for the sneaker market: <em>transformer sentiment</em> on community
+                chatter, <em>ML demand forecasts</em>, an <em>LLM insight engine</em>, and a fully autonomous
+                pipeline that pulls fresh data nightly, recomputes every Hype Score, and redeploys itself — no
+                human in the loop.
+            </p>
+            <div class="stats">
+                <div class="stat"><b data-count="90">0</b><span>Silhouettes tracked</span></div>
+                <div class="stat"><b data-count="12">0</b><span>Brands ranked</span></div>
+                <div class="stat"><b data-count="0">0</b><span>Humans in the loop</span></div>
+            </div>
+            <div class="links">
+                <a href="https://jairaj1111.github.io/solesight/" target="_blank" rel="noopener"
+                    class="arrow-link">Live Hype Index ↗</a>
+                <a href="https://github.com/jairaj1111/solesight" target="_blank" rel="noopener"
+                    class="arrow-link">GitHub ↗</a>
+            </div>
+        </section>
 
-        <p
-            style="margin-top: 3rem; max-width: 500px; color: var(--secondary-text); font-size: 1.1rem; line-height: 1.8; font-weight: 400; letter-spacing: 0.01em;">
-            Studying <span style="color: #fff; font-weight: 500;">CS + Business</span> at Northeastern. <br>
-            Building at the intersection of <span style="color: var(--accent-color); font-weight: 500;">scalable
-                engineering</span> and <span style="color: var(--accent-color); font-weight: 500;">data strategy</span>.
-        </p>
-    </section>
-
-    <!-- Marquee -->
-    <div class="marquee-container"
-        style="background: black; border-color: #333; height: 120px; display: flex; align-items: center; margin-top: 100px;">
-        <div class="marquee-content" style="animation-duration: 40s;">
-            <div class="marquee-item" style="color: var(--secondary-text); font-size: 2rem;">DATA SCIENCE < AI < FINTECH
-                    < QUANTITATIVE AUDIT < MACHINE LEARNING < PYTHON < SCALABLE SYSTEMS < RETAIL TECH < FOOTWEAR ARCHIVE
-                    < </div>
-                    <div class="marquee-item" style="color: var(--secondary-text); font-size: 2rem;">DATA SCIENCE < AI <
-                            FINTECH < QUANTITATIVE AUDIT < MACHINE LEARNING < PYTHON < SCALABLE SYSTEMS < RETAIL TECH <
-                            FOOTWEAR ARCHIVE < </div>
-                    </div>
+        <section class="reveal" id="work">
+            <div class="sec-head">
+                <span class="index">02</span>
+                <span class="label">Experience</span>
+                <span class="rule"></span>
             </div>
 
-            <!-- Tech Stack Bento -->
-            <section class="section">
-                <h2 class="section-title display-text">TECH STACK</h2>
-                <div class="bento-grid">
-                    <div class="bento-item bento-large reveal-item">
-                        <h4>Core Languages</h4>
-                        <div class="stack-list">
-                            <span class="stack-tag">Java</span>
-                            <span class="stack-tag">Python</span>
-                            <span class="stack-tag">SQL</span>
-                            <span class="stack-tag">HTML</span>
-                        </div>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>AI & Data</h4>
-                        <div class="stack-list">
-                            <span class="stack-tag">TensorFlow</span>
-                            <span class="stack-tag">PyTorch</span>
-                            <span class="stack-tag">OpenCV</span>
-                        </div>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>Frontend</h4>
-                        <div class="stack-list">
-                            <span class="stack-tag">React.js</span>
-                            <span class="stack-tag">GSAP</span>
-                            <span class="stack-tag">D3.js</span>
-                        </div>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>Developer Tools</h4>
-                        <div class="stack-list">
-                            <span class="stack-tag">Git</span>
-                            <span class="stack-tag">Docker</span>
-                            <span class="stack-tag">AWS</span>
-                        </div>
-                    </div>
-                    <div class="bento-item bento-large reveal-item">
-                        <h4>Current Focus</h4>
-                        <p style="color: var(--secondary-text); font-size: 0.9rem; line-height: 1.5;">
-                            Specializing in high-performance FinTech applications and Computer Vision models for
-                            enterprise data auditing.
-                        </p>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>Cloud & DevOps</h4>
-                        <div class="stack-list">
-                            <span class="stack-tag">GitHub</span>
-                            <span class="stack-tag">CI/CD</span>
-                            <span class="stack-tag">Unix/Linux</span>
-                        </div>
-                    </div>
+            <div class="xp-row">
+                <div class="logo-chip"><img src="images/tjx-logo.png" alt="TJX logo"></div>
+                <div>
+                    <span class="org">The TJX Companies</span>
+                    <h3>Internal Audit Co-op</h3>
+                    <p>Analyzed 1,000+ consumer transaction and merchandising records for a Fortune 100 retailer;
+                        built Power BI dashboards used by 10+ stakeholders across IT, Finance, and Risk.</p>
                 </div>
-            </section>
+                <span class="year">2026</span>
+            </div>
 
-            <!-- Core Impact -->
-            <section class="section">
-                <h2 class="section-title display-text">CORE IMPACT</h2>
-                <div class="bento-grid">
-                    <div class="bento-item reveal-item">
-                        <h4>Data Integrity</h4>
-                        <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">100%</div>
-                        <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Accuracy ensured
-                            across core financial systems during large-scale enterprise data migrations.</p>
-                    </div>
-                    <div class="bento-item reveal-item">
-                        <h4>Efficiency Gain</h4>
-                        <div class="display-text" style="font-size: 3rem; color: var(--accent-color);">50%</div>
-                        <p style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 1rem;">Reduction in
-                            reporting time through automation of recurring financial dashboards and KPIs.</p>
-                    </div>
-                    <div class="bento-item bento-large reveal-item">
-                        <h4>Business Competencies</h4>
-                        <div class="stack-list" style="margin-top: 1rem;">
-                            <span class="p-tag" style="border-radius: 4px;">Strategic Planning</span>
-                            <span class="p-tag" style="border-radius: 4px;">IT Governance</span>
-                            <span class="p-tag" style="border-radius: 4px;">Risk Assessment</span>
-                            <span class="p-tag" style="border-radius: 4px;">Data Auditing</span>
-                            <span class="p-tag" style="border-radius: 4px;">Market Analysis</span>
-                        </div>
-                    </div>
+            <div class="xp-row">
+                <div class="logo-chip"><img src="images/oofos-logo.png" alt="OOFOS logo"></div>
+                <div>
+                    <span class="org">OOFOS Inc.</span>
+                    <h3>Finance &amp; Product Analytics Co-op</h3>
+                    <p>Product performance reporting for merchandising and FP&amp;A; automated dashboards that cut
+                        reporting time by 50% and validated 100% data accuracy across 3 financial systems.</p>
                 </div>
-            </section>
+                <span class="year">2025</span>
+            </div>
 
-            <!-- Beyond The Code -->
-            <section class="section">
-                <h2 class="section-title display-text">BEYOND THE CODE</h2>
-                <div class="bento-grid">
-                    <div class="bento-item bento-large reveal-item"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80'); background-size: cover; background-position: center;">
-                        <div>
-                            <h4>Curated Interests</h4>
-                            <h3 class="display-text" style="font-size: 2.5rem; margin-top: 1rem; line-height: 1.1;">
-                                Exploration of <span style="color: var(--accent-color);">AI in Retail Tech</span> and
-                                enterprise automation.</h3>
-                        </div>
-                        <div class="stack-list" style="margin-top: 2rem;">
-                            <span class="p-tag">AI SYSTEMS</span>
-                            <span class="p-tag">RETAIL TECH</span>
-                            <span class="p-tag">DIGITAL ARCHIVE</span>
-                        </div>
-                    </div>
-                    <div class="bento-item bento-large reveal-item"
-                        style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
-                        <h4>Focus</h4>
-                        <h3 class="display-text"
-                            style="font-size: 3rem; color: var(--accent-color); margin-top: 0.5rem;">DESIGN X LOGIC</h3>
-                        <p style="color: var(--secondary-text); font-size: 1rem; margin-top: 1rem; max-width: 500px;">
-                            How aesthetic systems integrate with functional engineering to create impactful brand
-                            narratives.</p>
-                    </div>
+            <div class="xp-row">
+                <div class="logo-chip"><img src="images/singh-capital-logo.jpg" alt="Singh Capital Partners logo"
+                        class="inverted"></div>
+                <div>
+                    <span class="org">Singh Capital Partners</span>
+                    <h3>Investment Analyst Intern</h3>
+                    <p>Evaluated 50+ early-stage companies on product-market fit, TAM, and competitive positioning;
+                        synthesized findings into investment memos for senior leadership.</p>
                 </div>
-            </section>
+                <span class="year">2024</span>
+            </div>
 
-            <!-- Experience -->
-            <section class="section">
-                <h2 class="section-title display-text">EXPERIENCE</h2>
-
-                <div class="experience-row reveal-item">
-                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2026</div>
-                    <div>
-                        <div class="company-header">
-                            <img src="images/tjx-logo.png" alt="TJX Logo" class="company-logo">
-                            <div class="company-name">TJX COMPANIES</div>
-                        </div>
-                        <h3 class="role-title display-text">INCOMING IT AUDIT CO-OP</h3>
-                        <p class="exp-description">
-                            Assessing enterprise system integrity and data security. Supporting SOX compliance and IT
-                            governance through cross-functional collaboration and data extraction from SAP/SQL systems.
-                        </p>
-                        <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">IT AUDIT</span>
-                            <span class="p-tag">SOX</span>
-                            <span class="p-tag">SAP / SQL</span>
-                        </div>
-                    </div>
+            <div class="xp-row">
+                <div class="logo-chip"><img src="images/playlist-push-logo.jpg" alt="Cassette Technologies logo"
+                        class="round"></div>
+                <div>
+                    <span class="org">Cassette Technologies</span>
+                    <h3>Social Media &amp; Digital Analytics Intern</h3>
+                    <p>Drove data-driven audience growth across Reddit (16,625 new members), Instagram, LinkedIn,
+                        and Discord; built 20+ marketing assets and A/B-tested content strategy.</p>
                 </div>
+                <span class="year">2024</span>
+            </div>
+        </section>
 
-                <div class="experience-row reveal-item">
-                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2025</div>
-                    <div>
-                        <div class="company-header">
-                            <img src="images/oofos-logo.png" alt="OOFOS Logo" class="company-logo">
-                            <div class="company-name">OOFOS INC.</div>
-                        </div>
-                        <h3 class="role-title display-text">FINANCE & DATA CO-OP</h3>
-                        <p class="exp-description">
-                            Automated core financial reporting to increase efficiency for Sales and FP&A teams.
-                            Reconciled data migrations between General Ledgers and Data Warehouses with 100% accuracy.
-                        </p>
-                        <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">DATA MIGRATION</span>
-                            <span class="p-tag">AUTOMATION</span>
-                            <span class="p-tag">FP&A</span>
-                        </div>
-                    </div>
+        <section class="reveal" id="projects">
+            <div class="sec-head">
+                <span class="index">03</span>
+                <span class="label">Selected Projects</span>
+                <span class="rule"></span>
+            </div>
+
+            <a href="https://github.com/jairaj1111" target="_blank" rel="noopener" class="project">
+                <span class="num">i.</span>
+                <div>
+                    <h3>HuskyVision</h3>
+                    <p>GPS-free visual localization — dual-stream ResNeXt-50 CNNs with a POMDP framework, trained
+                        on 27,610 image pairs.</p>
                 </div>
+                <span class="tag">Python · PyTorch · CV</span>
+            </a>
 
-                <div class="experience-row reveal-item">
-                    <div class="date display-text" style="font-size: 1.5rem; color: var(--accent-color);">2024</div>
-                    <div>
-                        <div class="company-header">
-                            <div class="company-name">SINGH CAPITAL PARTNERS</div>
-                        </div>
-                        <h3 class="role-title display-text">INVESTMENT ANALYST INTERN</h3>
-                        <p class="exp-description">
-                            Analyzed 50+ startup companies and business models to guide investment decisions. Conducted
-                            due diligence and prepared detailed investment memos for senior leadership.
-                        </p>
-                        <div class="project-tags" style="margin-top: 1rem;">
-                            <span class="p-tag">VENTURE CAPITAL</span>
-                            <span class="p-tag">DUE DILIGENCE</span>
-                            <span class="p-tag">ANALYSIS</span>
-                        </div>
-                    </div>
+            <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" target="_blank" rel="noopener" class="project">
+                <span class="num">ii.</span>
+                <div>
+                    <h3>AI Fashion Classifier</h3>
+                    <p>CNN vs. FFN benchmark on 70,000 fashion images — 88% accuracy, 20+ experiments, insights for
+                        retail merchandising.</p>
                 </div>
-            </section>
+                <span class="tag">PyTorch · CNNs</span>
+            </a>
 
-            <!-- Projects -->
-            <section class="section" id="projects">
-                <h2 class="section-title display-text">PROJECTS</h2>
-                <div class="projects-grid">
-                    <div class="project-card reveal-item" data-tilt>
-                        <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
-                            alt="HuskyVision">
-                        <div class="project-info">
-                            <h3 class="project-title">HUSKYVISION</h3>
-                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">Advanced
-                                object detection system optimized for low-latency visual auditing.</p>
-                            <div class="project-tags">
-                                <span class="p-tag">PYTHON</span>
-                                <span class="p-tag">CV</span>
-                                <span class="p-tag">OPEN_CV</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" class="project-card reveal-item" data-tilt
-                        style="display: block; text-decoration: none;">
-                        <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80"
-                            alt="Crypto Analysis">
-                        <div class="project-info">
-                            <h3 class="project-title">SPY VS CRYPTO</h3>
-                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">Comparative
-                                analysis tool for digital assets vs traditional equity markets.</p>
-                            <div class="project-tags">
-                                <span class="p-tag">REACT</span>
-                                <span class="p-tag">D3.JS</span>
-                                <span class="p-tag">FINTECH</span>
-                            </div>
-                            <div class="view-project-btn">View Project →</div>
-                        </div>
-                    </a>
-                    <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" class="project-card reveal-item" data-tilt
-                        style="display: block; text-decoration: none;">
-                        <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800&fit=crop"
-                            alt="Fashion AI">
-                        <div class="project-info">
-                            <h3 class="project-title">AI FASHION CLASSIFIER</h3>
-                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">PyTorch
-                                implementation comparing CNN vs Feedforward architectures.</p>
-                            <div class="project-tags">
-                                <span class="p-tag">CV</span>
-                                <span class="p-tag">FASHION TECH</span>
-                                <span class="p-tag">TF</span>
-                            </div>
-                            <div class="view-project-btn">View Project →</div>
-                        </div>
-                    </a>
-                    <div class="project-card reveal-item" data-tilt>
-                        <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?w=800&q=80"
-                            alt="Network Graph">
-                        <div class="project-info">
-                            <h3 class="project-title">NETWORK GRAPH</h3>
-                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">
-                                High-performance algorithmic visualization of complex relational data structures.</p>
-                            <div class="project-tags">
-                                <span class="p-tag">ALGORITHMS</span>
-                                <span class="p-tag">PYTHON</span>
-                                <span class="p-tag">DATA_VIZ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card reveal-item" data-tilt>
-                        <div class="card-glare"></div>
-                        <img src="https://images.unsplash.com/photo-1454165833767-02a698d16d03?w=800&q=80"
-                            alt="Birthweight Analysis">
-                        <div class="project-info">
-                            <h3 class="project-title">BIRTHWEIGHT ANALYSIS</h3>
-                            <p style="font-size: 0.8rem; color: var(--secondary-text); margin-bottom: 1rem;">Statistical
-                                modeling and regression analysis of neonatal health data using Python.</p>
-                            <div class="project-tags">
-                                <span class="p-tag">PYTHON</span>
-                                <span class="p-tag">STATISTICS</span>
-                                <span class="p-tag">PANDAS</span>
-                            </div>
-                        </div>
-                    </div>
+            <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" target="_blank" rel="noopener" class="project">
+                <span class="num">iii.</span>
+                <div>
+                    <h3>SPY vs. Crypto</h3>
+                    <p>Comparative dashboard of digital assets against traditional equity markets.</p>
                 </div>
-            </section>
+                <span class="tag">React · D3.js · Fintech</span>
+            </a>
 
-            <footer
-                style="text-align: center; padding: 8rem 2rem; background: black; border-top: 1px solid rgba(255,255,255,0.05);">
-                <div class="reveal-item">
-                    <h2 class="display-text" style="font-size: 6rem; margin-bottom: 2rem;">LET'S TALK</h2>
-                    <a href="mailto:jairajnarang1111@gmail.com"
-                        style="color: var(--accent-color); text-decoration: none; font-size: 1.5rem; font-weight: 600;">jairajnarang1111@gmail.com</a>
+            <a href="https://github.com/jairaj1111" target="_blank" rel="noopener" class="project">
+                <span class="num">iv.</span>
+                <div>
+                    <h3>Birth Weight Prediction</h3>
+                    <p>ML regression on a 1,236-record maternal health dataset — KNN and Random Forest, feature
+                        importance analysis.</p>
                 </div>
-                <p
-                    style="color: rgba(255,255,255,0.3); font-size: 0.7rem; margin-top: 4rem; text-transform: uppercase;">
-                    © 2026 JAIRAJ SINGH — DESIGNED FOR IMPACT</p>
-            </footer>
+                <span class="tag">Scikit-learn · Pandas</span>
+            </a>
+        </section>
 
-            <script>
-                const lenis = new Lenis();
-                function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-                requestAnimationFrame(raf);
+        <section class="reveal">
+            <div class="sec-head">
+                <span class="index">04</span>
+                <span class="label">Beyond the Work</span>
+                <span class="rule"></span>
+            </div>
+            <p class="beyond-quote">
+                Off the clock: <em>pickup basketball</em>, <em>sneaker archives</em>, <em>tabla riyaz</em>, and NBA
+                box scores — and a growing conviction that good products come from <em>taste</em> as much as data.
+            </p>
 
-                window.addEventListener('scroll', () => {
-                    const h = document.documentElement, b = document.body, st = 'scrollTop', sh = 'scrollHeight';
-                    const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
-                    document.getElementById('progressBar').style.width = percent + '%';
+            <div class="hobbies">
+                <div class="hobby">
+                    <span class="h-num">i.</span>
+                    <span class="h-name">Graphic Design</span>
+                    <span class="h-note">Type · Layout · Brand</span>
+                </div>
+                <div class="hobby">
+                    <span class="h-num">ii.</span>
+                    <span class="h-name">Tabla</span>
+                    <span class="h-note">Indian Classical Music</span>
+                </div>
+                <div class="hobby">
+                    <span class="h-num">iii.</span>
+                    <span class="h-name">Sneakers</span>
+                    <span class="h-note">Archives · Silhouettes</span>
+                </div>
+                <div class="hobby">
+                    <span class="h-num">iv.</span>
+                    <span class="h-name">Sports</span>
+                    <span class="h-note">Basketball · Pickup Runs · The NBA</span>
+                </div>
+                <div class="hobby">
+                    <span class="h-num">v.</span>
+                    <span class="h-name">Weightlifting</span>
+                    <span class="h-note">Strength Training</span>
+                </div>
+                <div class="hobby">
+                    <span class="h-num">vi.</span>
+                    <span class="h-name">Markets</span>
+                    <span class="h-note">Before the Open</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="reveal" id="contact">
+            <div class="sec-head">
+                <span class="index">05</span>
+                <span class="label">Get in Touch</span>
+                <span class="rule"></span>
+            </div>
+
+            <p class="big">Let's build <em>something.</em></p>
+
+            <div class="contact-list">
+                <a class="contact-row" href="mailto:narang.ja@northeastern.edu">
+                    <span class="c-label">Email</span>
+                    <span class="c-value">narang.ja@northeastern.edu</span>
+                    <span class="c-arrow">↗</span>
+                </a>
+                <a class="contact-row" href="mailto:jairajnarang1111@gmail.com">
+                    <span class="c-label">Email · Alt</span>
+                    <span class="c-value">jairajnarang1111@gmail.com</span>
+                    <span class="c-arrow">↗</span>
+                </a>
+                <a class="contact-row" href="https://github.com/jairaj1111" target="_blank" rel="noopener">
+                    <span class="c-label">GitHub</span>
+                    <span class="c-value">@jairaj1111</span>
+                    <span class="c-arrow">↗</span>
+                </a>
+                <a class="contact-row" href="https://www.linkedin.com/in/jairaj-narang/" target="_blank"
+                    rel="noopener">
+                    <span class="c-label">LinkedIn</span>
+                    <span class="c-value">linkedin.com/in/jairaj-narang</span>
+                    <span class="c-arrow">↗</span>
+                </a>
+                <a class="contact-row" href="https://www.instagram.com/jairaj.wav/" target="_blank" rel="noopener">
+                    <span class="c-label">Instagram</span>
+                    <span class="c-value">@jairaj.wav</span>
+                    <span class="c-arrow">↗</span>
+                </a>
+            </div>
+
+            <div class="footer-meta">
+                <span>Boston, MA</span>
+                <span>© 2026 Jairaj Narang</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // live Boston clock
+        function tick() {
+            const t = new Date().toLocaleTimeString('en-US', {
+                timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'
+            });
+            document.getElementById('clock').textContent = 'Boston ' + t;
+        }
+        tick();
+        setInterval(tick, 30000);
+
+        // fade-in on scroll
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // masthead letters rise in one by one
+        (() => {
+            let i = 0;
+            const wrap = (node) => {
+                [...node.childNodes].forEach(n => {
+                    if (n.nodeType === 3) {
+                        const frag = document.createDocumentFragment();
+                        [...n.textContent].forEach(c => {
+                            if (c.trim() === '') {
+                                frag.appendChild(document.createTextNode(c));
+                                return;
+                            }
+                            const s = document.createElement('span');
+                            s.className = 'ch';
+                            s.style.setProperty('--i', i++);
+                            s.textContent = c;
+                            frag.appendChild(s);
+                        });
+                        n.replaceWith(frag);
+                    } else if (n.nodeType === 1) {
+                        wrap(n);
+                    }
                 });
+            };
+            wrap(document.querySelector('.masthead-name'));
+        })();
 
-                const canvas = document.getElementById('darkVeil');
-                const ctx = canvas.getContext('2d');
-                let width, height, orbs = [];
-                function resize() {
-                    width = canvas.width = window.innerWidth;
-                    height = canvas.height = window.innerHeight;
-                    initOrbs();
-                }
-                class Orb {
-                    constructor() {
-                        this.x = Math.random() * width; this.y = Math.random() * height;
-                        this.size = Math.random() * 300 + 200; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5;
-                        this.color = Math.random() > 0.5 ? 'rgba(31, 103, 241, 0.08)' : 'rgba(75, 0, 130, 0.05)';
-                    }
-                    update() {
-                        this.x += this.vx; this.y += this.vy;
-                        if (this.x < -this.size) this.x = width + this.size; if (this.x > width + this.size) this.x = -this.size;
-                        if (this.y < -this.size) this.y = height + this.size; if (this.y > height + this.size) this.y = -this.size;
-                    }
-                    draw() {
-                        ctx.beginPath();
-                        const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                        g.addColorStop(0, this.color); g.addColorStop(1, 'rgba(0,0,0,0)');
-                        ctx.fillStyle = g; ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-                    }
-                }
-                function initOrbs() { orbs = []; for (let i = 0; i < 7; i++) orbs.push(new Orb()); }
-                function animateVeil() { ctx.clearRect(0, 0, width, height); orbs.forEach(o => { o.update(); o.draw(); }); requestAnimationFrame(animateVeil); }
-                window.addEventListener('resize', resize); resize(); animateVeil();
-
-                const animateText = (id) => {
-                    const el = document.getElementById(id); const txt = el.innerText;
-                    el.innerHTML = txt.split('').map(c => `<span class="char">${c}</span>`).join('');
-                    gsap.from(`#${id} .char`, { y: 100, opacity: 0, duration: 1, stagger: 0.05, ease: "power4.out", delay: 0.2 });
+        // stats count up when they enter view
+        const cio = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                cio.unobserve(e.target);
+                const end = +e.target.dataset.count;
+                const t0 = performance.now();
+                const step = t => {
+                    const p = Math.min((t - t0) / 1400, 1);
+                    e.target.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+                    if (p < 1) requestAnimationFrame(step);
                 };
-                ['nameTop', 'nameTopOutline', 'nameBottom', 'nameBottomOutline'].forEach(animateText);
+                requestAnimationFrame(step);
+            });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('.stat b[data-count]').forEach(el => cio.observe(el));
 
-                document.addEventListener('mousemove', (e) => {
-                    const x = (e.clientX - window.innerWidth / 2) * 0.01; const y = (e.clientY - window.innerHeight / 2) * 0.01;
-                    gsap.to('#heroPill', { x: x * 2, y: y * 2, duration: 1 });
-                    gsap.to('#nameTop', { x: -x * 3, y: -y * 3, duration: 1 });
-                    gsap.to('#nameBottom', { x: x * 1.5, y: y * 1.5, duration: 1 });
-                });
-
-                gsap.registerPlugin(ScrollTrigger);
-                document.querySelectorAll('.reveal-item').forEach(s => {
-                    const items = s.querySelectorAll('.reveal-item, .bento-item, .experience-row, .project-card');
-                    gsap.to(items.length ? items : s, { opacity: 1, y: 0, duration: 1, stagger: 0.15, scrollTrigger: { trigger: s, start: "top 80%" } });
-                });
-
-                function startLoader() {
-                    let p = 0; const i = setInterval(() => {
-                        p += Math.floor(Math.random() * 10) + 2; if (p >= 100) { p = 100; clearInterval(i); revealSite(); }
-                        document.getElementById('loaderPercent').innerText = p.toString().padStart(2, '0');
-                        document.getElementById('loaderProgress').style.width = p + '%';
-                    }, 50);
-                }
-                function revealSite() {
-                    gsap.timeline().to('#loader', { yPercent: -100, duration: 1, ease: "power4.inOut" })
-                        .from('.hero-name .char', { y: 100, opacity: 0, duration: 1, stagger: 0.03 }, "-=0.5")
-                        .from('.pill-container', { scale: 0.6, opacity: 0, duration: 1.5 }, "-=0.8");
-                }
-                startLoader();
-
-                const cards = document.querySelectorAll('[data-tilt]');
-                cards.forEach(c => {
-                    c.addEventListener('mousemove', (e) => {
-                        const r = c.getBoundingClientRect(); const x = e.clientX - r.left; const y = e.clientY - r.top;
-                        const rx = ((y - r.height / 2) / (r.height / 2)) * -10; const ry = ((x - r.width / 2) / (r.width / 2)) * 10;
-                        c.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`;
-                        const g = c.querySelector('.card-glare'); if (g) { g.style.opacity = '1'; g.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent)`; }
-                    });
-                    c.addEventListener('mouseleave', () => { c.style.transform = ''; const g = c.querySelector('.card-glare'); if (g) g.style.opacity = '0'; });
-                });
-            </script>
+        // scroll progress line
+        const progress = document.getElementById('progress');
+        addEventListener('scroll', () => {
+            const max = document.documentElement.scrollHeight - innerHeight;
+            progress.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+        }, { passive: true });
+    </script>
 </body>
 
 </html>
