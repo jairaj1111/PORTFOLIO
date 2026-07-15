@@ -502,6 +502,50 @@
             max-width: 560px;
         }
 
+        .hobby-photos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.4rem;
+            margin-top: 3rem;
+            padding-bottom: 1.8rem;
+        }
+
+        .hobby-photos figure {
+            margin: 0;
+        }
+
+        .hobby-photos figure:nth-child(even) {
+            transform: translateY(1.8rem);
+        }
+
+        .hobby-photos img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            border: 1px solid var(--ink);
+            box-shadow: 6px 6px 0 var(--line);
+            filter: grayscale(0.12) sepia(0.16) saturate(0.7) contrast(0.96);
+            transition: filter 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hobby-photos figure:hover img {
+            filter: none;
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0 var(--line);
+        }
+
+        .hobby-photos figcaption {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.7rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
         .hobbies {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -840,6 +884,16 @@
                 display: none;
             }
 
+            .hobby-photos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding-bottom: 0;
+            }
+
+            .hobby-photos figure:nth-child(even) {
+                transform: none;
+            }
+
             .hobbies {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1057,6 +1111,29 @@
                 Off the clock: <em>pickup basketball</em>, <em>sneaker archives</em>, <em>tabla riyaz</em>, and NBA
                 box scores — and a growing conviction that good products come from <em>taste</em> as much as data.
             </p>
+
+            <div class="hobby-photos">
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1643098979608-1b22614abe88?w=600&q=70&auto=format&fit=crop"
+                        alt="Hands playing the tabla" loading="lazy">
+                    <figcaption><span>Fig. 02</span><span>Tabla</span></figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&q=70&auto=format&fit=crop"
+                        alt="Basketball on an outdoor court" loading="lazy">
+                    <figcaption><span>Fig. 03</span><span>Basketball</span></figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&q=70&auto=format&fit=crop"
+                        alt="Air Jordan 1 sneakers on a court" loading="lazy">
+                    <figcaption><span>Fig. 04</span><span>Sneakers</span></figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?w=600&q=70&auto=format&fit=crop"
+                        alt="Financial newspaper with a stock chart" loading="lazy">
+                    <figcaption><span>Fig. 05</span><span>Markets</span></figcaption>
+                </figure>
+            </div>
 
             <div class="hobbies">
                 <div class="hobby">
