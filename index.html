@@ -481,6 +481,52 @@
             white-space: nowrap;
         }
 
+        .project .meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.45rem;
+        }
+
+        .project .status {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: var(--faint);
+            white-space: nowrap;
+        }
+
+        .project .go {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--faint);
+            opacity: 0;
+            transform: translate(-4px, 3px);
+            transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+        }
+
+        .project:hover .go {
+            opacity: 1;
+            transform: none;
+            color: var(--accent);
+        }
+
+        .project.is-soon {
+            cursor: default;
+        }
+
+        .project.is-soon:hover {
+            transform: none;
+        }
+
+        .project.is-soon:hover h3 {
+            color: inherit;
+            font-style: normal;
+        }
+
         /* ---------- beyond ---------- */
         .beyond-quote {
             font-family: 'Fraunces', serif;
@@ -884,6 +930,13 @@
                 display: none;
             }
 
+            .project .meta {
+                flex-direction: row;
+                align-items: center;
+                gap: 0.8rem;
+                margin-top: 0.5rem;
+            }
+
             .hobby-photos {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -1059,15 +1112,18 @@
                 <span class="rule"></span>
             </div>
 
-            <a href="https://github.com/jairaj1111" target="_blank" rel="noopener" class="project">
+            <div class="project is-soon">
                 <span class="num">i.</span>
                 <div>
                     <h3>HuskyVision</h3>
                     <p>GPS-free visual localization — dual-stream ResNeXt-50 CNNs with a POMDP framework, trained
                         on 27,610 image pairs.</p>
                 </div>
-                <span class="tag">Python · PyTorch · CV</span>
-            </a>
+                <span class="meta">
+                    <span class="tag">Python · PyTorch · CV</span>
+                    <span class="status">Repo coming soon</span>
+                </span>
+            </div>
 
             <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" target="_blank" rel="noopener" class="project">
                 <span class="num">ii.</span>
@@ -1076,7 +1132,10 @@
                     <p>CNN vs. FFN benchmark on 70,000 fashion images — 88% accuracy, 20+ experiments, insights for
                         retail merchandising.</p>
                 </div>
-                <span class="tag">PyTorch · CNNs</span>
+                <span class="meta">
+                    <span class="tag">PyTorch · CNNs</span>
+                    <span class="go">View Repo ↗</span>
+                </span>
             </a>
 
             <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" target="_blank" rel="noopener" class="project">
@@ -1085,18 +1144,24 @@
                     <h3>SPY vs. Crypto</h3>
                     <p>Comparative dashboard of digital assets against traditional equity markets.</p>
                 </div>
-                <span class="tag">React · D3.js · Fintech</span>
+                <span class="meta">
+                    <span class="tag">React · D3.js · Fintech</span>
+                    <span class="go">Live Demo ↗</span>
+                </span>
             </a>
 
-            <a href="https://github.com/jairaj1111" target="_blank" rel="noopener" class="project">
+            <div class="project is-soon">
                 <span class="num">iv.</span>
                 <div>
                     <h3>Birth Weight Prediction</h3>
                     <p>ML regression on a 1,236-record maternal health dataset — KNN and Random Forest, feature
                         importance analysis.</p>
                 </div>
-                <span class="tag">Scikit-learn · Pandas</span>
-            </a>
+                <span class="meta">
+                    <span class="tag">Scikit-learn · Pandas</span>
+                    <span class="status">Repo coming soon</span>
+                </span>
+            </div>
         </section>
 
         <section class="reveal">
