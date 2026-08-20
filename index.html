@@ -19,6 +19,11 @@
             --line: rgba(28, 25, 20, 0.16);
             --accent: #A8431F;
             --chip: #17140F;
+            --sw-1: #A8431F;
+            --sw-2: #3E5C4E;
+            --sw-3: #C98A2E;
+            --sw-4: #34506B;
+            --sw-5: #8B3A4B;
         }
 
         * {
@@ -235,6 +240,29 @@
             padding: 4rem 0 4.5rem;
         }
 
+        .numbered {
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .numbered::before {
+            content: attr(data-num);
+            position: absolute;
+            top: -0.6rem;
+            right: -0.4rem;
+            z-index: -1;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: clamp(6rem, 20vw, 13rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--line);
+            pointer-events: none;
+            user-select: none;
+        }
+
         .sec-head {
             display: flex;
             align-items: baseline;
@@ -350,6 +378,151 @@
         .arrow-link:hover {
             color: var(--accent);
             border-color: var(--accent);
+        }
+
+        /* ---------- box label (shoe-box tag motif) ---------- */
+        .box-label {
+            display: inline-flex;
+            align-items: stretch;
+            margin-top: 2rem;
+            border: 1.5px solid var(--ink);
+            background: var(--paper);
+        }
+
+        .box-label .bl-info {
+            padding: 0.55rem 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            border-right: 1px solid var(--line);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .box-label .bl-info b {
+            font-size: 0.72rem;
+            color: var(--ink);
+        }
+
+        .box-label .bl-info span {
+            font-size: 0.6rem;
+            color: var(--faint);
+        }
+
+        .box-label .bl-barcode {
+            width: 36px;
+            background-image: repeating-linear-gradient(90deg,
+                    var(--ink) 0 2px, transparent 2px 5px,
+                    var(--ink) 5px 6px, transparent 6px 8px,
+                    var(--ink) 8px 11px, transparent 11px 13px,
+                    var(--ink) 13px 14px, transparent 14px 17px);
+        }
+
+        .box-label.mini {
+            margin-top: 0.9rem;
+        }
+
+        .box-label.mini .bl-info {
+            padding: 0.35rem 0.55rem;
+        }
+
+        .box-label.mini .bl-info b {
+            font-size: 0.62rem;
+        }
+
+        .box-label.mini .bl-info span {
+            font-size: 0.54rem;
+        }
+
+        .box-label.mini .bl-barcode {
+            width: 22px;
+        }
+
+        /* ---------- product shelf (tracked silhouettes) ---------- */
+        .shelf {
+            margin-top: 1.8rem;
+        }
+
+        .shelf-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        .shelf-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.85rem 0.45rem 0.6rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.01em;
+            color: var(--muted);
+        }
+
+        .chip::before {
+            content: '';
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--sw);
+            flex-shrink: 0;
+        }
+
+        /* ---------- colorway swatch strip ---------- */
+        .swatch-strip {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 1.6rem;
+        }
+
+        .swatch-strip span {
+            width: 24px;
+            height: 9px;
+            background: var(--sw-1);
+        }
+
+        .swatch-strip span:nth-child(2) {
+            background: var(--sw-2);
+        }
+
+        .swatch-strip span:nth-child(3) {
+            background: var(--sw-3);
+        }
+
+        .swatch-strip span:nth-child(4) {
+            background: var(--sw-4);
+        }
+
+        .swatch-strip span:nth-child(5) {
+            background: var(--sw-5);
+        }
+
+        /* ---------- decorative sneaker line art ---------- */
+        .sneaker-art {
+            position: absolute;
+            right: -30px;
+            bottom: -10px;
+            width: 360px;
+            height: auto;
+            fill: none;
+            stroke: var(--line);
+            stroke-width: 1.5;
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* ---------- experience ---------- */
@@ -972,6 +1145,14 @@
             .nav-links {
                 gap: 1.1rem;
             }
+
+            .sneaker-art {
+                display: none;
+            }
+
+            .numbered::before {
+                font-size: clamp(4rem, 26vw, 7rem);
+            }
         }
     </style>
 </head>
@@ -1023,7 +1204,7 @@
             </figure>
         </div>
 
-        <section class="reveal" id="featured">
+        <section class="reveal numbered" id="featured" data-num="01">
             <div class="sec-head">
                 <span class="index">01</span>
                 <span class="label">Featured — Currently Building</span>
@@ -1045,13 +1226,34 @@
                 <div class="stat"><b data-count="12">0</b><span>Brands ranked</span></div>
                 <div class="stat"><b data-count="0">0</b><span>Humans in the loop</span></div>
             </div>
+
+            <div class="shelf">
+                <span class="shelf-label">A few in the index —</span>
+                <div class="shelf-row">
+                    <span class="chip" style="--sw: var(--sw-1)">Jordan 1 "Bred"</span>
+                    <span class="chip" style="--sw: var(--sw-2)">Dunk Low "Panda"</span>
+                    <span class="chip" style="--sw: var(--sw-3)">Yeezy 350</span>
+                    <span class="chip" style="--sw: var(--sw-4)">NB 550</span>
+                    <span class="chip" style="--sw: var(--sw-5)">Air Max 1</span>
+                </div>
+            </div>
+
             <div class="links">
                 <a href="https://jairaj1111.github.io/solesight/" target="_blank" rel="noopener"
                     class="arrow-link">Live Hype Index ↗</a>
             </div>
+
+            <div class="box-label">
+                <div class="bl-info">
+                    <b>SoleSight</b>
+                    <span>Model No. AI—09</span>
+                    <span>Rebuilt Nightly</span>
+                </div>
+                <div class="bl-barcode"></div>
+            </div>
         </section>
 
-        <section class="reveal" id="work">
+        <section class="reveal numbered" id="work" data-num="02">
             <div class="sec-head">
                 <span class="index">02</span>
                 <span class="label">Experience</span>
@@ -1105,7 +1307,7 @@
             </div>
         </section>
 
-        <section class="reveal" id="projects">
+        <section class="reveal numbered" id="projects" data-num="03">
             <div class="sec-head">
                 <span class="index">03</span>
                 <span class="label">Selected Projects</span>
@@ -1164,7 +1366,15 @@
             </div>
         </section>
 
-        <section class="reveal">
+        <section class="reveal numbered" id="beyond" data-num="04">
+            <svg class="sneaker-art" viewBox="0 0 400 200" aria-hidden="true">
+                <path
+                    d="M20,150 C20,120 60,90 110,85 C140,82 150,60 180,55 C210,50 230,60 250,75 C270,90 300,95 330,100 C355,104 375,115 380,140 C382,150 375,160 360,162 L40,165 C25,165 20,158 20,150 Z" />
+                <path d="M60,150 L340,150" />
+                <path d="M100,90 L120,140" />
+                <path d="M150,72 L165,140" />
+                <path d="M200,60 L210,140" />
+            </svg>
             <div class="sec-head">
                 <span class="index">04</span>
                 <span class="label">Beyond the Work</span>
@@ -1213,6 +1423,13 @@
                     <span class="h-num">iii.</span>
                     <span class="h-name">Sneakers</span>
                     <span class="h-note">Archives · Silhouettes</span>
+                    <div class="box-label mini">
+                        <div class="bl-info">
+                            <b>Size 10</b>
+                            <span>Rotation: Active</span>
+                        </div>
+                        <div class="bl-barcode"></div>
+                    </div>
                 </div>
                 <div class="hobby">
                     <span class="h-num">iv.</span>
@@ -1232,7 +1449,7 @@
             </div>
         </section>
 
-        <footer class="reveal" id="contact">
+        <footer class="reveal numbered" id="contact" data-num="05">
             <div class="sec-head">
                 <span class="index">05</span>
                 <span class="label">Get in Touch</span>
@@ -1240,6 +1457,9 @@
             </div>
 
             <p class="big">Let's build <em>something.</em></p>
+            <div class="swatch-strip" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
 
             <div class="contact-list">
                 <a class="contact-row" href="mailto:narang.ja@northeastern.edu">
