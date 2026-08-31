@@ -309,6 +309,78 @@
             color: var(--muted);
         }
 
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            animation: pulse 2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.6);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .tech-pack {
+            position: relative;
+            margin-top: 2.6rem;
+            padding: 2.2rem 2rem 2rem;
+            border: 1px solid var(--line);
+            background: rgba(28, 25, 20, 0.015);
+        }
+
+        .tech-pack::before {
+            content: 'Tech Pack — SoleSight';
+            position: absolute;
+            top: -0.6rem;
+            left: 1.6rem;
+            background: var(--paper);
+            padding: 0 0.6rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+
+        .tech-pack .stats {
+            margin-top: 0;
+        }
+
         .feature-desc {
             margin-top: 1.6rem;
             max-width: 620px;
@@ -387,6 +459,12 @@
             margin-top: 2rem;
             border: 1.5px solid var(--ink);
             background: var(--paper);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .box-label:hover {
+            transform: translate(-3px, -3px) rotate(-1deg);
+            box-shadow: 5px 5px 0 var(--line);
         }
 
         .box-label .bl-info {
@@ -471,6 +549,13 @@
             font-size: 0.68rem;
             letter-spacing: 0.01em;
             color: var(--muted);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, color 0.2s ease;
+        }
+
+        .chip:hover {
+            transform: translateY(-3px);
+            border-color: var(--sw);
+            color: var(--ink);
         }
 
         .chip::before {
@@ -1057,6 +1142,14 @@
 
         /* ---------- mobile ---------- */
         @media (max-width: 720px) {
+            .status-pill {
+                margin-left: 0;
+            }
+
+            .tech-pack {
+                padding: 1.8rem 1.2rem 1.6rem;
+            }
+
             .hero-grid {
                 grid-template-columns: 1fr;
                 gap: 2.6rem;
@@ -1214,6 +1307,7 @@
             <div class="feature-title">
                 <h2>SoleSight</h2>
                 <span class="tagline">hype, quantified.</span>
+                <span class="status-pill"><span class="pulse-dot"></span>Live — Rebuilt Nightly</span>
             </div>
             <p class="feature-desc">
                 An end-to-end AI data product for the sneaker market: <em>transformer sentiment</em> on community
@@ -1221,35 +1315,38 @@
                 pipeline that pulls fresh data nightly, recomputes every Hype Score, and redeploys itself — no
                 human in the loop.
             </p>
-            <div class="stats">
-                <div class="stat"><b data-count="90">0</b><span>Silhouettes tracked</span></div>
-                <div class="stat"><b data-count="12">0</b><span>Brands ranked</span></div>
-                <div class="stat"><b data-count="0">0</b><span>Humans in the loop</span></div>
-            </div>
 
-            <div class="shelf">
-                <span class="shelf-label">A few in the index —</span>
-                <div class="shelf-row">
-                    <span class="chip" style="--sw: var(--sw-1)">Jordan 1 "Bred"</span>
-                    <span class="chip" style="--sw: var(--sw-2)">Dunk Low "Panda"</span>
-                    <span class="chip" style="--sw: var(--sw-3)">Yeezy 350</span>
-                    <span class="chip" style="--sw: var(--sw-4)">NB 550</span>
-                    <span class="chip" style="--sw: var(--sw-5)">Air Max 1</span>
+            <div class="tech-pack">
+                <div class="stats">
+                    <div class="stat"><b data-count="90">0</b><span>Silhouettes tracked</span></div>
+                    <div class="stat"><b data-count="12">0</b><span>Brands ranked</span></div>
+                    <div class="stat"><b data-count="0">0</b><span>Humans in the loop</span></div>
                 </div>
-            </div>
 
-            <div class="links">
-                <a href="https://solesight.xyz" target="_blank" rel="noopener"
-                    class="arrow-link">Live Hype Index ↗</a>
-            </div>
-
-            <div class="box-label">
-                <div class="bl-info">
-                    <b>SoleSight</b>
-                    <span>Model No. AI—09</span>
-                    <span>Rebuilt Nightly</span>
+                <div class="shelf">
+                    <span class="shelf-label">A few in the index —</span>
+                    <div class="shelf-row">
+                        <span class="chip" style="--sw: var(--sw-1)">Jordan 1 "Bred"</span>
+                        <span class="chip" style="--sw: var(--sw-2)">Dunk Low "Panda"</span>
+                        <span class="chip" style="--sw: var(--sw-3)">Yeezy 350</span>
+                        <span class="chip" style="--sw: var(--sw-4)">NB 550</span>
+                        <span class="chip" style="--sw: var(--sw-5)">Air Max 1</span>
+                    </div>
                 </div>
-                <div class="bl-barcode"></div>
+
+                <div class="links">
+                    <a href="https://solesight.xyz" target="_blank" rel="noopener"
+                        class="arrow-link">Live Hype Index ↗</a>
+                </div>
+
+                <div class="box-label">
+                    <div class="bl-info">
+                        <b>SoleSight</b>
+                        <span>Model No. AI—09</span>
+                        <span>Rebuilt Nightly</span>
+                    </div>
+                    <div class="bl-barcode"></div>
+                </div>
             </div>
         </section>
 
