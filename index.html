@@ -6,1684 +6,515 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jairaj Narang</title>
     <meta name="description"
-        content="Jairaj Narang — rising senior at Northeastern building AI products at the intersection of consumer culture, data, and finance. Currently building SoleSight.">
-
+        content="Jairaj Narang — incoming Merchandise Planning co-op at New Balance and senior at Northeastern. Experience in AI, software engineering and data: Python, SQL, Java, JavaScript, HTML/CSS and data visualization. Building SoleSight.">
+    <meta property="og:title" content="Jairaj Narang">
+    <meta property="og:description" content="Incoming Merchandise Planning co-op at New Balance. Building AI for sneakers.">
+    <meta property="og:image" content="https://jairaj.dev/images/jairaj-illustration.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Space+Grotesk:wght@400;500&family=Mrs+Saint+Delafield&display=swap');
-
         :root {
-            --paper: #F3EFE6;
-            --ink: #1C1914;
-            --muted: #6E6759;
-            --faint: #98917F;
-            --line: rgba(28, 25, 20, 0.16);
-            --accent: #A8431F;
-            --chip: #17140F;
-            --sw-1: #A8431F;
-            --sw-2: #3E5C4E;
-            --sw-3: #C98A2E;
-            --sw-4: #34506B;
-            --sw-5: #8B3A4B;
+            --ink: #0F0F0F;
+            --ink-2: #4E4C49;
+            --mute: #8E8B86;
+            --line: #E6E4E0;
+            --soft: #F5F4F2;
+            --bg: #FFFFFF;
+            --gut: clamp(16px, 3.4vw, 48px);
+            --maxw: 1360px;
+            --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        html, body { overflow-x: hidden; }
+        @supports (overflow: clip) { html, body { overflow-x: clip; } }
+        body { font-family: 'Inter Tight', system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--bg);
+            -webkit-font-smoothing: antialiased; line-height: 1.5; }
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+        .mono { font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; }
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
 
-        ::selection {
-            background: var(--ink);
-            color: var(--paper);
-        }
+        /* editorial hairline grid: 4 columns behind every section */
+        .grid-bg { position: relative; }
+        .grid-bg::before { content: ""; position: absolute; inset: 0 var(--gut); pointer-events: none; z-index: 0;
+            border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+            background-image: linear-gradient(to right, var(--line) 1px, transparent 1px); background-size: 25% 100%; }
+        .grid-bg > * { position: relative; z-index: 1; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        /* barcode (retail motif) */
+        .barcode { height: 28px; width: 110px; background:
+            repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px,
+                var(--ink) 8px 11px, transparent 11px 12px, var(--ink) 12px 13px, transparent 13px 16px); }
 
-        body {
-            font-family: 'Newsreader', serif;
-            background: var(--paper);
-            color: var(--ink);
-            font-weight: 400;
-            font-size: 1.05rem;
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-            /* faint paper grain */
-            background-image: radial-gradient(rgba(28, 25, 20, 0.035) 1px, transparent 0);
-            background-size: 22px 22px;
-        }
+        /* ---------- nav ---------- */
+        .nav { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .9);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        .nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 56px; }
+        .nav-l, .nav-r { display: flex; gap: 22px; font-size: .84rem; color: var(--ink-2); }
+        .nav-r { justify-content: flex-end; }
+        .nav a:hover { color: var(--ink); }
+        .brand { font-weight: 600; letter-spacing: -.02em; font-size: 1rem; }
+        .brand sup { font-family: var(--mono); font-size: .55rem; font-weight: 500; margin-left: 2px; vertical-align: super; }
 
-        .wrap {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+        /* ---------- hero ---------- */
+        .hero { padding: 26px 0 0; }
+        .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); font-size: .84rem; color: var(--ink-2); line-height: 1.35; }
+        .hero-meta > div { padding: 0 14px; }
+        .hero-meta > div:last-child { text-align: right; }
+        .hero-type { display: grid; grid-template-columns: 1fr minmax(280px, 1.05fr) 1fr; grid-template-rows: repeat(3, 1fr);
+            min-height: clamp(420px, 66vh, 640px); margin-top: 18px; column-gap: 10px; }
+        .w { font-size: clamp(2.8rem, 6.6vw, 6.4rem); font-weight: 400; letter-spacing: -.055em; line-height: .95; padding: 0 14px; }
+        .w.l { grid-column: 1; justify-self: start; }
+        .w.r { grid-column: 3; justify-self: end; text-align: right; }
+        .w.r1, .w.l1 { grid-row: 1; align-self: start; }
+        .w.r2, .w.l2 { grid-row: 2; align-self: center; }
+        .w.r3, .w.l3 { grid-row: 3; align-self: end; }
+        .portrait { grid-column: 2; grid-row: 1 / 4; position: relative; background: var(--soft); overflow: hidden; }
+        .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+        .box-label { position: absolute; left: 12px; right: 12px; bottom: 12px; background: #fff; border: 1px solid var(--ink);
+            display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 9px 11px; align-items: center; }
+        .box-label b { display: block; font-family: var(--mono); font-size: .78rem; font-weight: 500; letter-spacing: .04em; }
+        .box-label span { display: block; font-family: var(--mono); font-size: .62rem; color: var(--ink-2); letter-spacing: .05em; text-transform: uppercase; }
+        .box-label .size { text-align: right; }
+        .box-label .size b { font-size: 1.3rem; line-height: 1; }
+        .hero-foot { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 26px; padding-bottom: 30px; font-size: .9rem; }
+        .hero-foot > * { padding: 0 14px; }
+        .hero-foot p { color: var(--ink-2); grid-column: 1 / 2; }
+        .hero-foot .nbtag { grid-column: 2 / 4; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .hero-foot .nbtag img { width: 28px; height: 28px; border-radius: 6px; }
+        .hero-foot .cta { text-align: right; }
+        .link-paren { font-family: var(--mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+        .link-paren:hover { text-decoration: underline; }
 
-        a {
-            color: inherit;
-        }
-
-        .display {
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-        }
-
-        .label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.22em;
-            color: var(--muted);
-        }
-
-        .ital {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 350;
-        }
-
-        /* ---------- top bar ---------- */
-        .topline {
-            border-bottom: 1px solid var(--line);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.4rem 0;
-        }
-
-        .signature {
-            font-family: 'Mrs Saint Delafield', cursive;
-            font-size: 2.3rem;
-            line-height: 1;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: baseline;
-            gap: 1.8rem;
-        }
-
-        .nav-links a {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            text-decoration: none;
-            color: var(--muted);
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        #clock {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--faint);
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* ---------- masthead ---------- */
-        .masthead {
-            padding: 3.5rem 0 0;
-        }
-
-        .masthead-meta {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-            padding-bottom: 1.2rem;
-        }
-
-        h1.masthead-name {
-            font-family: 'Fraunces', serif;
-            font-weight: 350;
-            font-size: clamp(3.4rem, 11vw, 8.2rem);
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 2.5rem;
-        }
-
-        h1 .last {
-            font-style: italic;
-            font-weight: 300;
-            color: var(--accent);
-        }
-
-        /* ---------- hero grid ---------- */
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: 3.5rem;
-            padding: 3.2rem 0 4.5rem;
-            align-items: start;
-        }
-
-        .statement {
-            font-family: 'Fraunces', serif;
-            font-weight: 340;
-            font-size: clamp(1.5rem, 3.4vw, 2.15rem);
-            line-height: 1.28;
-            letter-spacing: -0.015em;
-        }
-
-        .statement em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .bio {
-            margin-top: 1.8rem;
-            color: var(--muted);
-            font-size: 1.02rem;
-            max-width: 480px;
-        }
-
-        .bio strong {
-            color: var(--ink);
-            font-weight: 500;
-        }
-
-        .bio.dropcap::first-letter {
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            float: left;
-            font-size: 3.4rem;
-            line-height: 0.8;
-            padding: 0.35rem 0.55rem 0 0;
-            color: var(--accent);
-        }
-
-
-        /* portrait */
-        figure.portrait {
-            position: relative;
-        }
-
-        .portrait img {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            display: block;
-            border: 1px solid var(--ink);
-            box-shadow: 8px 8px 0 var(--line);
-            filter: saturate(0.92) contrast(1.02);
-        }
-
-        .portrait figcaption {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.8rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
+        /* ---------- silhouettes strip ---------- */
+        .strip { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); overflow: hidden; background: #fff; }
+        .strip-track { display: flex; width: max-content; animation: slide 48s linear infinite; }
+        .shoe { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 18px 34px; border-right: 1px solid var(--line); }
+        .shoe svg { width: 170px; height: 72px; }
+        .shoe path { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+        .shoe path.sole { fill: var(--soft); }
+        .shoe span { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+        @keyframes slide { to { transform: translateX(-50%); } }
 
         /* ---------- sections ---------- */
-        section {
-            border-top: 1px solid var(--line);
-            padding: 4rem 0 4.5rem;
-        }
-
-        .numbered {
-            position: relative;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .numbered::before {
-            content: attr(data-num);
-            position: absolute;
-            top: -0.6rem;
-            right: -0.4rem;
-            z-index: -1;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: clamp(6rem, 20vw, 13rem);
-            line-height: 1;
-            letter-spacing: -0.04em;
-            color: transparent;
-            -webkit-text-stroke: 1.5px var(--line);
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .sec-head {
-            display: flex;
-            align-items: baseline;
-            gap: 1.4rem;
-            margin-bottom: 2.8rem;
-        }
-
-        .index {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: 1.6rem;
-            color: var(--accent);
-        }
-
-        .sec-head .rule {
-            flex: 1;
-            height: 1px;
-            background: var(--line);
-            align-self: center;
-        }
-
-        /* ---------- featured ---------- */
-        .feature-title {
-            display: flex;
-            align-items: baseline;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .feature-title h2 {
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            font-size: clamp(2.6rem, 6vw, 4rem);
-            letter-spacing: -0.02em;
-            line-height: 1;
-        }
-
-        .sight-highlight {
-            position: relative;
-            z-index: 0;
-            display: inline-block;
-            font-style: italic;
-            font-weight: 400;
-        }
-
-        .sight-highlight::before {
-            content: '';
-            position: absolute;
-            inset: 10% -6% 6% -5%;
-            z-index: -1;
-            background: #C6F13E;
-            border-radius: 5px 12px 7px 14px;
-            transform: rotate(-1.4deg);
-        }
-
-        .feature-title .tagline {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: 1.4rem;
-            color: var(--muted);
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: auto;
-            padding: 0.4rem 0.8rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.62rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .pulse-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--accent);
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .pulse-dot::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1px solid var(--accent);
-            animation: pulse 2s ease-out infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.6);
-                opacity: 0.9;
-            }
-
-            100% {
-                transform: scale(1.8);
-                opacity: 0;
-            }
-        }
-
-        .tech-pack {
-            position: relative;
-            margin-top: 2.6rem;
-            padding: 2.2rem 2rem 2rem;
-            border: 1px solid var(--line);
-            background: rgba(28, 25, 20, 0.015);
-        }
-
-        .tech-pack::before {
-            content: 'Tech Pack — SoleSight';
-            position: absolute;
-            top: -0.6rem;
-            left: 1.6rem;
-            background: var(--paper);
-            padding: 0 0.6rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .tech-pack .stats {
-            margin-top: 0;
-        }
-
-        .feature-desc {
-            margin-top: 1.6rem;
-            max-width: 620px;
-            color: var(--muted);
-            font-size: 1.08rem;
-        }
-
-        .feature-desc em {
-            font-style: italic;
-            color: var(--ink);
-        }
-
-        .stats {
-            display: flex;
-            margin-top: 2.6rem;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .stat {
-            flex: 1;
-            padding: 1.4rem 1.6rem 1.4rem 0;
-        }
-
-        .stat+.stat {
-            border-left: 1px solid var(--line);
-            padding-left: 1.6rem;
-        }
-
-        .stat b {
-            display: block;
-            font-family: 'Fraunces', serif;
-            font-weight: 350;
-            font-size: 2.6rem;
-            line-height: 1;
-            letter-spacing: -0.02em;
-        }
-
-        .stat span {
-            display: block;
-            margin-top: 0.5rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.62rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .links {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2.4rem;
-        }
-
-        .arrow-link {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.74rem;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-bottom: 1px solid var(--ink);
-            padding-bottom: 3px;
-            transition: color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .arrow-link:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* ---------- box label (shoe-box tag motif) ---------- */
-        .box-label {
-            display: inline-flex;
-            align-items: stretch;
-            margin-top: 2rem;
-            border: 1.5px solid var(--ink);
-            background: var(--paper);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .box-label:hover {
-            transform: translate(-3px, -3px) rotate(-1deg);
-            box-shadow: 5px 5px 0 var(--line);
-        }
-
-        .box-label .bl-info {
-            padding: 0.55rem 0.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            border-right: 1px solid var(--line);
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        .box-label .bl-info b {
-            font-size: 0.72rem;
-            color: var(--ink);
-        }
-
-        .box-label .bl-info span {
-            font-size: 0.6rem;
-            color: var(--faint);
-        }
-
-        .box-label .bl-barcode {
-            width: 36px;
-            background-image: repeating-linear-gradient(90deg,
-                    var(--ink) 0 2px, transparent 2px 5px,
-                    var(--ink) 5px 6px, transparent 6px 8px,
-                    var(--ink) 8px 11px, transparent 11px 13px,
-                    var(--ink) 13px 14px, transparent 14px 17px);
-        }
-
-        .box-label.mini {
-            margin-top: 0.9rem;
-        }
-
-        .box-label.mini .bl-info {
-            padding: 0.35rem 0.55rem;
-        }
-
-        .box-label.mini .bl-info b {
-            font-size: 0.62rem;
-        }
-
-        .box-label.mini .bl-info span {
-            font-size: 0.54rem;
-        }
-
-        .box-label.mini .bl-barcode {
-            width: 22px;
-        }
-
-        /* ---------- product shelf (tracked silhouettes) ---------- */
-        .shelf {
-            margin-top: 1.8rem;
-        }
-
-        .shelf-label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.62rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .shelf-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.45rem 0.85rem 0.45rem 0.6rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.68rem;
-            letter-spacing: 0.01em;
-            color: var(--muted);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, color 0.2s ease;
-        }
-
-        .chip:hover {
-            transform: translateY(-3px);
-            border-color: var(--sw);
-            color: var(--ink);
-        }
-
-        .chip::before {
-            content: '';
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--sw);
-            flex-shrink: 0;
-        }
-
-        /* ---------- colorway swatch strip ---------- */
-        .swatch-strip {
-            display: flex;
-            gap: 0.4rem;
-            margin-top: 1.6rem;
-        }
-
-        .swatch-strip span {
-            width: 24px;
-            height: 9px;
-            background: var(--sw-1);
-        }
-
-        .swatch-strip span:nth-child(2) {
-            background: var(--sw-2);
-        }
-
-        .swatch-strip span:nth-child(3) {
-            background: var(--sw-3);
-        }
-
-        .swatch-strip span:nth-child(4) {
-            background: var(--sw-4);
-        }
-
-        .swatch-strip span:nth-child(5) {
-            background: var(--sw-5);
-        }
-
-        /* ---------- decorative sneaker line art ---------- */
-        .sneaker-art {
-            position: absolute;
-            right: -30px;
-            bottom: -10px;
-            width: 360px;
-            height: auto;
-            fill: none;
-            stroke: var(--line);
-            stroke-width: 1.5;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* ---------- experience ---------- */
-        .xp-row {
-            display: grid;
-            grid-template-columns: 64px 1fr 70px;
-            gap: 1.6rem;
-            padding: 2rem 0;
-            align-items: start;
-        }
-
-        .xp-row+.xp-row {
-            border-top: 1px solid var(--line);
-        }
-
-        .logo-chip {
-            width: 64px;
-            height: 64px;
-            background: var(--chip);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .logo-chip img {
-            max-width: 74%;
-            max-height: 58%;
-            object-fit: contain;
-        }
-
-        .logo-chip img.inverted {
-            filter: invert(1) grayscale(1) brightness(1.15);
-            max-width: 96%;
-            max-height: 96%;
-        }
-
-        .logo-chip img.round {
-            max-width: 82%;
-            max-height: 82%;
-            border-radius: 50%;
-        }
-
-        .xp-row h3 {
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            font-size: 1.45rem;
-            letter-spacing: -0.01em;
-            line-height: 1.2;
-        }
-
-        .xp-row .org {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 500;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.35rem;
-        }
-
-        .xp-row p {
-            margin-top: 0.55rem;
-            color: var(--muted);
-            font-size: 0.98rem;
-            max-width: 560px;
-        }
-
-        .xp-row .year {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: 1.1rem;
-            color: var(--faint);
-            text-align: right;
-            padding-top: 0.3rem;
-        }
-
-        /* ---------- projects ---------- */
-        .project {
-            display: grid;
-            grid-template-columns: 56px 1fr auto;
-            gap: 1.4rem;
-            align-items: baseline;
-            padding: 1.7rem 0;
-            text-decoration: none;
-        }
-
-        .project+.project {
-            border-top: 1px solid var(--line);
-        }
-
-        .project .num {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: 1rem;
-            color: var(--faint);
-        }
-
-        .project h3 {
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            font-size: 1.5rem;
-            letter-spacing: -0.01em;
-            transition: color 0.2s ease;
-        }
-
-        .project:hover h3 {
-            color: var(--accent);
-            font-style: italic;
-        }
-
-        .project p {
-            margin-top: 0.35rem;
-            color: var(--muted);
-            font-size: 0.95rem;
-            max-width: 540px;
-        }
-
-        .project .tag {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.64rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-            white-space: nowrap;
-        }
-
-        .project .meta {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 0.45rem;
-        }
-
-        .project .status {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: 0.8rem;
-            color: var(--faint);
-            white-space: nowrap;
-        }
-
-        .project .go {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            color: var(--faint);
-            opacity: 0;
-            transform: translate(-4px, 3px);
-            transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
-        }
-
-        .project:hover .go {
-            opacity: 1;
-            transform: none;
-            color: var(--accent);
-        }
-
-        .project.is-soon {
-            cursor: default;
-        }
-
-        .project.is-soon:hover {
-            transform: none;
-        }
-
-        .project.is-soon:hover h3 {
-            color: inherit;
-            font-style: normal;
-        }
-
-        /* ---------- beyond ---------- */
-        .beyond-quote {
-            font-family: 'Fraunces', serif;
-            font-weight: 330;
-            font-size: clamp(1.5rem, 3.6vw, 2.3rem);
-            line-height: 1.35;
-            letter-spacing: -0.015em;
-            max-width: 760px;
-        }
-
-        .beyond-quote em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .beyond-note {
-            margin-top: 1.6rem;
-            color: var(--muted);
-            max-width: 560px;
-        }
-
-        .hobby-photos {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.4rem;
-            margin-top: 3rem;
-            padding-bottom: 1.8rem;
-        }
-
-        .hobby-photos figure {
-            margin: 0;
-        }
-
-        .hobby-photos figure:nth-child(even) {
-            transform: translateY(1.8rem);
-        }
-
-        .hobby-photos img {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            display: block;
-            border: 1px solid var(--ink);
-            box-shadow: 6px 6px 0 var(--line);
-            filter: grayscale(0.12) sepia(0.16) saturate(0.7) contrast(0.96);
-            transition: filter 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .hobby-photos figure:hover img {
-            filter: none;
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 var(--line);
-        }
-
-        .hobby-photos figcaption {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.7rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .hobbies {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            margin-top: 3rem;
-            border-top: 1px solid var(--line);
-            border-left: 1px solid var(--line);
-        }
-
-        .hobby {
-            padding: 1.5rem 1.4rem;
-            border-right: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .hobby .h-num {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: 0.95rem;
-            color: var(--accent);
-            display: block;
-        }
-
-        .hobby .h-name {
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            font-size: 1.2rem;
-            letter-spacing: -0.01em;
-            display: block;
-            margin-top: 0.4rem;
-        }
-
-        .hobby .h-note {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.62rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-            display: block;
-            margin-top: 0.45rem;
-        }
-
-        /* ---------- footer ---------- */
-        footer {
-            border-top: 1px solid var(--line);
-            padding: 5rem 0 0;
-        }
-
-        footer .big {
-            font-family: 'Fraunces', serif;
-            font-weight: 330;
-            font-size: clamp(2.4rem, 7vw, 4.6rem);
-            letter-spacing: -0.025em;
-            line-height: 1.05;
-        }
-
-        footer .big em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .contact-list {
-            margin-top: 3rem;
-            border-top: 1px solid var(--line);
-        }
-
-        .contact-row {
-            display: grid;
-            grid-template-columns: 160px 1fr auto;
-            align-items: baseline;
-            gap: 1.5rem;
-            padding: 1.15rem 0;
-            border-bottom: 1px solid var(--line);
-            text-decoration: none;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .contact-row:hover {
-            transform: translateX(8px);
-        }
-
-        .c-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.66rem;
-            font-weight: 500;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-
-        .c-value {
-            font-family: 'Fraunces', serif;
-            font-size: 1.15rem;
-            letter-spacing: -0.01em;
-            transition: color 0.2s ease, font-style 0.2s ease;
-        }
-
-        .contact-row:hover .c-value {
-            color: var(--accent);
-            font-style: italic;
-        }
-
-        .c-arrow {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            color: var(--faint);
-            transition: color 0.2s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .contact-row:hover .c-arrow {
-            color: var(--accent);
-            transform: translate(3px, -3px);
-        }
-
-        .footer-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 4.5rem;
-            padding: 1.4rem 0;
-            border-top: 1px solid var(--line);
-        }
-
-        .footer-meta,
-        .footer-meta a {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.66rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--faint);
-            text-decoration: none;
-        }
-
-        .footer-meta a {
-            margin-right: 1.4rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-meta a:hover {
-            color: var(--accent);
-        }
-
-        /* ---------- animations ---------- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .reveal.in {
-            opacity: 1;
-            transform: none;
-        }
-
-        /* scroll progress line */
-        #progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            width: 0%;
-            background: var(--accent);
-            z-index: 100;
-        }
-
-        /* masthead letters rise in */
-        .masthead-name .ch {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(0.55em) rotate(2deg);
-            animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: calc(var(--i) * 50ms + 150ms);
-        }
-
-        @keyframes rise {
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        /* hero content fades up on load */
-        .hero-grid>div,
-        .hero-grid figure {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .hero-grid>div {
-            animation-delay: 0.55s;
-        }
-
-        .hero-grid figure {
-            animation-delay: 0.75s;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        /* section rules draw themselves */
-        .sec-head .rule {
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
-        }
-
-        .reveal.in .rule {
-            transform: scaleX(1);
-        }
-
-        /* sweeping underline on nav + footer links */
-        .nav-links a,
-        .footer-meta a {
-            background-image: linear-gradient(var(--accent), var(--accent));
-            background-repeat: no-repeat;
-            background-position: left bottom;
-            background-size: 0% 1px;
-            padding-bottom: 3px;
-            transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
-        }
-
-        .nav-links a:hover,
-        .footer-meta a:hover {
-            background-size: 100% 1px;
-        }
-
-        /* portrait lifts on hover */
-        .portrait img {
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        figure.portrait:hover img {
-            transform: translate(-5px, -5px);
-            box-shadow: 14px 14px 0 var(--line);
-        }
-
-        /* experience rows drift + logo chips tilt */
-        .xp-row {
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .xp-row:hover {
-            transform: translateX(8px);
-        }
-
-        .logo-chip {
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .xp-row:hover .logo-chip {
-            transform: rotate(-4deg) scale(1.06);
-        }
-
-        /* project rows nudge */
-        .project {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .project:hover {
-            transform: translateX(8px);
-        }
-
-        /* hobby cells */
-        .hobby {
-            transition: background 0.35s ease, transform 0.35s ease;
-        }
-
-        .hobby:hover {
-            background: rgba(28, 25, 20, 0.04);
-            transform: translateY(-4px);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-delay: 0s !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* ---------- mobile ---------- */
-        @media (max-width: 720px) {
-            .status-pill {
-                margin-left: 0;
-            }
-
-            .tech-pack {
-                padding: 1.8rem 1.2rem 1.6rem;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 2.6rem;
-                padding: 2.6rem 0 3.5rem;
-            }
-
-            figure.portrait {
-                max-width: 340px;
-            }
-
-            .stats {
-                flex-direction: column;
-            }
-
-            .stat+.stat {
-                border-left: none;
-                border-top: 1px solid var(--line);
-                padding-left: 0;
-            }
-
-            .stat {
-                padding: 1.2rem 0;
-            }
-
-            .xp-row {
-                grid-template-columns: 48px 1fr;
-            }
-
-            .logo-chip {
-                width: 48px;
-                height: 48px;
-            }
-
-            .xp-row .year {
-                display: none;
-            }
-
-            .project {
-                grid-template-columns: 1fr;
-                gap: 0.3rem;
-            }
-
-            .project .num {
-                display: none;
-            }
-
-            .project .meta {
-                flex-direction: row;
-                align-items: center;
-                gap: 0.8rem;
-                margin-top: 0.5rem;
-            }
-
-            .hobby-photos {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding-bottom: 0;
-            }
-
-            .hobby-photos figure:nth-child(even) {
-                transform: none;
-            }
-
-            .hobbies {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hobby {
-                padding: 1.1rem 1rem;
-            }
-
-            .contact-row {
-                grid-template-columns: 90px 1fr auto;
-                gap: 0.8rem;
-            }
-
-            .c-value {
-                font-size: 0.98rem;
-                word-break: break-all;
-            }
-
-            #clock {
-                display: none;
-            }
-
-            .nav-links {
-                gap: 1.1rem;
-            }
-
-            .sneaker-art {
-                display: none;
-            }
-
-            .numbered::before {
-                font-size: clamp(4rem, 26vw, 7rem);
-            }
+        section { padding: clamp(72px, 9vw, 120px) 0; }
+        .sec-top { display: grid; grid-template-columns: repeat(4, 1fr); align-items: end; margin-bottom: 34px; }
+        .sec-top > * { padding: 0 14px; }
+        .sec-top h2 { grid-column: 1 / 4; font-size: clamp(2.3rem, 4.6vw, 4.2rem); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+        .sec-top .mono { text-align: right; color: var(--ink-2); }
+
+        /* next up (New Balance) — hang tag */
+        .next { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; }
+        .next > * { padding: 0 14px; }
+        .next h2 { grid-column: 1 / 3; font-size: clamp(2.4rem, 5vw, 4.6rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; }
+        .next h2 b { font-weight: 600; }
+        .next p { grid-column: 3; color: var(--ink-2); }
+        .tag { grid-column: 4; justify-self: end; width: min(100%, 250px); border: 1px solid var(--ink); background: #fff; position: relative;
+            padding: 30px 16px 16px; }
+        .tag::before { content: ""; position: absolute; top: 10px; left: 50%; width: 10px; height: 10px; margin-left: -5px;
+            border-radius: 50%; border: 1px solid var(--ink); }
+        .tag img { width: 52px; height: 52px; border-radius: 10px; margin: 0 auto 12px; }
+        .tag dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; font-family: var(--mono); font-size: .7rem;
+            text-transform: uppercase; letter-spacing: .04em; border-top: 1px dashed var(--ink); padding-top: 12px; }
+        .tag dt { color: var(--mute); }
+        .tag dd { text-align: right; }
+        .tag .barcode { margin: 14px auto 0; width: 100%; height: 22px; }
+
+        /* work */
+        .work-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+        .card { padding: 14px 14px 22px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--line); }
+        .card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0; padding: 14px 0 26px; }
+        .card.wide > * { padding: 0 14px; }
+        .card.half { grid-column: span 2; }
+        .sku { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .68rem; letter-spacing: .05em;
+            text-transform: uppercase; color: var(--ink-2); }
+        .media { background: var(--soft); aspect-ratio: 16 / 10; overflow: hidden; }
+        .media img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(1);
+            transition: filter .5s, transform .6s; }
+        .card:hover .media img { filter: none; transform: scale(1.02); }
+        .media.type { display: grid; place-items: center; }
+        .media.type b { font-size: clamp(2.2rem, 4.6vw, 3.8rem); font-weight: 300; letter-spacing: -.05em; line-height: 1; text-align: center; }
+        .media.type small { display: block; font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase;
+            color: var(--mute); margin-top: 8px; font-weight: 400; }
+        .card h3 { font-size: 1.35rem; font-weight: 500; letter-spacing: -.03em; }
+        .card.wide h3 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+        .card p { color: var(--ink-2); font-size: .95rem; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chips span { font-family: var(--mono); font-size: .64rem; letter-spacing: .04em; text-transform: uppercase; border: 1px solid var(--line);
+            padding: 4px 8px; }
+        .go { margin-top: auto; font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
+        .card:hover .go { text-decoration: underline; }
+        .go.soon { color: var(--mute); }
+        .wide-info { display: flex; flex-direction: column; gap: 12px; }
+        .stat-col { display: grid; align-content: start; gap: 18px; }
+        .stat-col b { display: block; font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 300; letter-spacing: -.05em; line-height: 1; }
+        .stat-col span { font-family: var(--mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: var(--mute); }
+
+        /* focus 01–04 */
+        .focus { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+        .focus > div { padding: 18px 14px 24px; border-bottom: 1px solid var(--line); }
+        .focus .n { font-family: var(--mono); font-size: .72rem; color: var(--mute); }
+        .focus h3 { font-size: 1.35rem; font-weight: 500; letter-spacing: -.03em; margin: 26px 0 8px; }
+        .focus p { color: var(--ink-2); font-size: .92rem; }
+
+        /* spec sheet (skills) */
+        .spec { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+        .spec > div { padding: 16px 14px 22px; border-bottom: 1px solid var(--line); }
+        .spec .n { font-family: var(--mono); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); }
+        .spec ul { list-style: none; margin-top: 18px; }
+        .spec li { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--line);
+            font-size: 1.02rem; font-weight: 500; letter-spacing: -.01em; }
+        .spec li::after { content: "✓"; font-family: var(--mono); font-size: .72rem; color: var(--ink-2); }
+
+        /* track record */
+        .table { border-top: 1px solid var(--ink); }
+        /* 4 equal columns so cells start on the background grid lines */
+        .tr { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; border-bottom: 1px solid var(--line); }
+        .tr > * { padding: 16px 14px; }
+        .tr.head > * { padding: 10px 14px; font-family: var(--mono); font-size: .66rem; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); }
+        .co { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .co .lg { width: 34px; height: 34px; border-radius: 9px; background: #17140F; display: grid; place-items: center; overflow: hidden; flex: none; }
+        .co .lg img { width: 72%; height: 72%; object-fit: contain; }
+        .co .lg.nb { background: #D31F3A; }
+        .co .lg.nb img { width: 100%; height: 100%; }
+        .co .lg.round img { border-radius: 50%; }
+        .co .lg.inverted img { filter: invert(1); }
+        .role b { display: block; font-weight: 500; }
+        .role span { font-size: .86rem; color: var(--ink-2); }
+        .impact { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 300; letter-spacing: -.03em; }
+        .impact small { display: block; font-family: var(--mono); font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); }
+        .yr { text-align: right; font-family: var(--mono); font-size: .78rem; }
+        .yr .now { border: 1px solid var(--ink); padding: 4px 8px; }
+
+        /* about */
+        .about { display: grid; grid-template-columns: repeat(4, 1fr); align-items: start; }
+        .about > * { padding: 0 14px; }
+        .about figure { background: var(--soft); aspect-ratio: 3 / 4; overflow: hidden; position: relative; }
+        .about figure img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+        .about figcaption { position: absolute; left: 10px; bottom: 10px; background: #fff; padding: 4px 8px; }
+        .about .txt { grid-column: 3 / 5; }
+        .about .quote { font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.08; }
+        .about .bio { color: var(--ink-2); margin-top: 18px; }
+        .likes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+        .likes span { font-family: var(--mono); font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; border: 1px solid var(--line); padding: 6px 10px; }
+
+        /* contact — receipt */
+        .contact { display: grid; grid-template-columns: repeat(4, 1fr); align-items: start; padding-bottom: 40px; }
+        .contact > * { padding: 0 14px; }
+        .contact h2 { grid-column: 1 / 3; font-size: clamp(3rem, 7vw, 6.6rem); font-weight: 400; letter-spacing: -.06em; line-height: .92; }
+        .receipt { grid-column: 3 / 5; background: #fff; border: 1px solid var(--ink); padding: 22px 20px 18px; font-family: var(--mono);
+            font-size: .78rem; }
+        .receipt .hd { text-align: center; text-transform: uppercase; letter-spacing: .08em; }
+        .receipt .hd b { display: block; font-size: .95rem; font-weight: 500; }
+        .receipt .rule { border-top: 1px dashed var(--ink); margin: 14px 0; }
+        .receipt a { display: flex; gap: 8px; padding: 5px 0; }
+        .receipt a span:first-child { text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+        .receipt a i { flex: 1; border-bottom: 1px dotted var(--mute); transform: translateY(-4px); min-width: 12px; }
+        .receipt a b { font-weight: 500; word-break: break-all; text-align: right; }
+        .receipt a:hover b { text-decoration: underline; }
+        .receipt .tot { display: flex; justify-content: space-between; text-transform: uppercase; font-weight: 500; }
+        .receipt .barcode { width: 100%; height: 34px; margin: 16px 0 8px; }
+        .receipt .thanks { text-align: center; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); font-size: .7rem; }
+        .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 18px var(--gut);
+            border-top: 1px solid var(--line); font-family: var(--mono); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; color: var(--mute);
+            max-width: var(--maxw); margin: 0 auto; }
+
+        /* motion */
+        .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .strip-track { animation: none; } }
+
+        /* responsive */
+        @media (max-width: 980px) {
+            .nav-l { display: none; }
+            .nav .wrap { grid-template-columns: auto 1fr; }
+            .grid-bg::before { background-size: 50% 100%; }
+            .hero-type { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto auto; min-height: 0; row-gap: 6px; }
+            .w.l { grid-column: 1; } .w.r { grid-column: 2; }
+            .w.l1, .w.r1 { grid-row: 1; } .w.l2, .w.r2 { grid-row: 2; } .w.l3, .w.r3 { grid-row: 3; }
+            .w { align-self: auto !important; }
+            .portrait { grid-column: 1 / -1; grid-row: 4; aspect-ratio: 848 / 1000; margin-top: 18px; }
+            .hero-meta, .hero-foot, .sec-top, .next, .about, .contact { grid-template-columns: 1fr 1fr; row-gap: 18px; }
+            .hero-meta > div:nth-child(n+2):not(:last-child), .hero-foot .cta { display: none; }
+            .hero-foot p { grid-column: 1 / -1; } .hero-foot .nbtag { grid-column: 1 / -1; justify-content: flex-start; }
+            .sec-top h2, .next h2, .next p, .about .txt, .contact h2, .receipt { grid-column: 1 / -1; }
+            .sec-top .mono { grid-column: 1 / -1; text-align: left; }
+            .tag { grid-column: 1 / -1; justify-self: start; }
+            .work-grid, .focus, .spec { grid-template-columns: 1fr 1fr; }
+            .card.wide { grid-template-columns: 1fr 1fr; }
+            .card.wide .media-col { grid-column: 1 / -1; margin-bottom: 14px; }
+            .tr { grid-template-columns: 1.2fr 1fr .5fr; }
+            .tr .what { display: none; }
+        }
+        @media (max-width: 640px) {
+            .work-grid, .focus { grid-template-columns: 1fr; }
+            .spec { grid-template-columns: 1fr 1fr; }
+            .card.half { grid-column: auto; }
+            .card.wide { grid-template-columns: 1fr; }
+            .card.wide .stat-col { display: flex; gap: 22px; margin-top: 14px; }
+            .about figure { aspect-ratio: 1; }
+            .tr { grid-template-columns: 1fr auto; }
+            .tr .impact { display: none; }
+            .tr.head .impact-h { display: none; }
+            .shoe { padding: 14px 22px; } .shoe svg { width: 130px; height: 56px; }
         }
     </style>
 </head>
 
 <body>
-    <div id="progress"></div>
-    <div class="topline">
+    <nav class="nav">
         <div class="wrap">
-            <nav>
-                <a href="#" class="signature">Jairaj</a>
-                <div class="nav-links">
-                    <span id="clock">Boston —:—</span>
-                    <a href="#work">Work</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </nav>
+            <div class="nav-l"><a href="#top">home</a><a href="#work">work</a><a href="#about">about</a></div>
+            <a href="#top" class="brand">jairaj narang<sup>NEU '27</sup></a>
+            <div class="nav-r"><a href="#skills">skills</a><a href="#record">experience</a><a href="#contact">contact</a></div>
         </div>
+    </nav>
+
+    <header class="hero grid-bg" id="top">
+        <div class="wrap">
+            <div class="hero-meta reveal">
+                <div>incoming merchandise planning<br>co-op at New Balance</div>
+                <div></div><div></div>
+                <div>northeastern '27<br>boston, ma</div>
+            </div>
+            <div class="hero-type reveal">
+                <span class="w l l1">i'm</span>
+                <span class="w r r1">Jairaj</span>
+                <span class="w l l2">and i</span>
+                <span class="w r r2">build</span>
+                <span class="w l l3">AI for</span>
+                <span class="w r r3">sneakers.</span>
+                <div class="portrait">
+                    <picture>
+                        <source srcset="images/jairaj-illustration.webp" type="image/webp">
+                        <img src="images/jairaj-illustration.jpg" alt="Illustrated portrait of Jairaj Narang" fetchpriority="high">
+                    </picture>
+                    <div class="box-label">
+                        <div><b>JAIRAJ NARANG</b><span>Style no. NEU-27 · Boston, MA</span><div class="barcode" style="margin-top:6px;height:18px;width:96px"></div></div>
+                        <div class="size"><span>US size</span><b>11</b></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-foot reveal">
+                <p>Senior at Northeastern — Business (Fintech) + CS. Experience in AI, software engineering and data: Python, SQL, Java, JavaScript, HTML/CSS and data visualization.</p>
+                <div class="nbtag"><img src="images/new-balance-logo.png" alt="New Balance logo"><span class="mono">Next stop: New Balance · Merchandise Planning</span></div>
+                <div class="cta"><a href="#contact" class="link-paren">(contact me)</a></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- sneaker silhouettes: original line drawings, no brand marks -->
+    <div class="strip" aria-hidden="true">
+        <div class="strip-track" id="strip"></div>
     </div>
 
-    <div class="wrap">
-        <header class="masthead">
-            <div class="masthead-meta">
-                <span class="label">Portfolio — Vol. 01</span>
-                <span class="label">AI Product · Finance · Tech</span>
-                <span class="label">Boston, MA</span>
-            </div>
-            <h1 class="masthead-name">Jairaj <span class="last">Narang</span></h1>
-        </header>
-
-        <div class="hero-grid">
-            <div>
-                <p class="statement">
-                    I build AI products where <em>consumer culture</em> meets data &amp; finance.
-                </p>
-                <p class="bio dropcap">
-                    Senior at Northeastern — Business Administration (Fintech) + Computer Science, Class of 2027.
-                    I've audited a Fortune 100's retail data at <strong>TJX</strong>, driven product analytics at
-                    <strong>OOFOS</strong>, and evaluated 50+ startups at <strong>Singh Capital Partners</strong>.
-                    Most recently, I built an AI that tracks sneaker demand — it updates itself every night.
-                </p>
-            </div>
-            <figure class="portrait">
-                <img src="images/jairaj-new.png" alt="Portrait of Jairaj Narang">
-                <figcaption>
-                    <span>Fig. 01 — The Author</span>
-                    <span>NEU '27</span>
-                </figcaption>
-            </figure>
-        </div>
-
-        <section class="reveal numbered" id="featured" data-num="01">
-            <div class="sec-head">
-                <span class="index">01</span>
-                <span class="label">Featured — Currently Building</span>
-                <span class="rule"></span>
-            </div>
-
-            <div class="feature-title">
-                <h2>Sole<span class="sight-highlight">Sight</span></h2>
-                <span class="tagline">hype, quantified.</span>
-                <span class="status-pill"><span class="pulse-dot"></span>Live — Rebuilt Nightly</span>
-            </div>
-            <p class="feature-desc">
-                An end-to-end AI data product for the sneaker market: <em>transformer sentiment</em> on community
-                chatter, <em>ML demand forecasts</em>, an <em>LLM insight engine</em>, and a fully autonomous
-                pipeline that pulls fresh data nightly, recomputes every Hype Score, and redeploys itself — no
-                human in the loop.
-            </p>
-
-            <div class="tech-pack">
-                <div class="stats">
-                    <div class="stat"><b data-count="90">0</b><span>Silhouettes tracked</span></div>
-                    <div class="stat"><b data-count="12">0</b><span>Brands ranked</span></div>
-                    <div class="stat"><b data-count="0">0</b><span>Humans in the loop</span></div>
-                </div>
-
-                <div class="shelf">
-                    <span class="shelf-label">A few in the index —</span>
-                    <div class="shelf-row">
-                        <span class="chip" style="--sw: var(--sw-1)">Jordan 1 "Bred"</span>
-                        <span class="chip" style="--sw: var(--sw-2)">Dunk Low "Panda"</span>
-                        <span class="chip" style="--sw: var(--sw-3)">Yeezy 350</span>
-                        <span class="chip" style="--sw: var(--sw-4)">NB 550</span>
-                        <span class="chip" style="--sw: var(--sw-5)">Air Max 1</span>
-                    </div>
-                </div>
-
-                <div class="links">
-                    <a href="https://solesight.xyz" target="_blank" rel="noopener"
-                        class="arrow-link">Live Hype Index ↗</a>
-                </div>
-
-                <div class="box-label">
-                    <div class="bl-info">
-                        <b>SoleSight</b>
-                        <span>Model No. AI—09</span>
-                        <span>Rebuilt Nightly</span>
-                    </div>
-                    <div class="bl-barcode"></div>
+    <main>
+        <section class="grid-bg">
+            <div class="wrap next reveal">
+                <h2>Next up: <b>New Balance.</b></h2>
+                <p>Joining New Balance as a Merchandise Planning co-op — bringing data, analytics and a lifelong sneaker obsession,
+                    after building SoleSight, an AI that reads sneaker demand every night.</p>
+                <div class="tag">
+                    <img src="images/new-balance-logo.png" alt="New Balance logo">
+                    <dl><dt>Role</dt><dd>Merch Planning Co-op</dd><dt>Status</dt><dd>Incoming</dd><dt>Based</dt><dd>Boston, MA</dd></dl>
+                    <div class="barcode"></div>
                 </div>
             </div>
         </section>
 
-        <section class="reveal numbered" id="work" data-num="02">
-            <div class="sec-head">
-                <span class="index">02</span>
-                <span class="label">Experience</span>
-                <span class="rule"></span>
-            </div>
-
-            <div class="xp-row">
-                <div class="logo-chip"><img src="images/tjx-logo.png" alt="TJX logo"></div>
-                <div>
-                    <span class="org">The TJX Companies</span>
-                    <h3>Internal Audit Co-op</h3>
-                    <p>Analyzed 1,000+ consumer transaction and merchandising records for a Fortune 100 retailer;
-                        built Power BI dashboards used by 10+ stakeholders across IT, Finance, and Risk.</p>
-                </div>
-                <span class="year">2026</span>
-            </div>
-
-            <div class="xp-row">
-                <div class="logo-chip"><img src="images/oofos-logo.png" alt="OOFOS logo"></div>
-                <div>
-                    <span class="org">OOFOS Inc.</span>
-                    <h3>Finance &amp; Product Analytics Co-op</h3>
-                    <p>Product performance reporting for merchandising and FP&amp;A; automated dashboards that cut
-                        reporting time by 50% and validated 100% data accuracy across 3 financial systems.</p>
-                </div>
-                <span class="year">2025</span>
-            </div>
-
-            <div class="xp-row">
-                <div class="logo-chip"><img src="images/singh-capital-logo.jpg" alt="Singh Capital Partners logo"
-                        class="inverted"></div>
-                <div>
-                    <span class="org">Singh Capital Partners</span>
-                    <h3>Investment Analyst Intern</h3>
-                    <p>Evaluated 50+ early-stage companies on product-market fit, TAM, and competitive positioning;
-                        synthesized findings into investment memos for senior leadership.</p>
-                </div>
-                <span class="year">2024</span>
-            </div>
-
-            <div class="xp-row">
-                <div class="logo-chip"><img src="images/playlist-push-logo.jpg" alt="Cassette Technologies logo"
-                        class="round"></div>
-                <div>
-                    <span class="org">Cassette Technologies</span>
-                    <h3>Social Media &amp; Digital Analytics Intern</h3>
-                    <p>Drove data-driven audience growth across Reddit (16,625 new members), Instagram, LinkedIn,
-                        and Discord; built 20+ marketing assets and A/B-tested content strategy.</p>
-                </div>
-                <span class="year">2024</span>
-            </div>
-        </section>
-
-        <section class="reveal numbered" id="projects" data-num="03">
-            <div class="sec-head">
-                <span class="index">03</span>
-                <span class="label">Selected Projects</span>
-                <span class="rule"></span>
-            </div>
-
-            <div class="project is-soon">
-                <span class="num">i.</span>
-                <div>
-                    <h3>HuskyVision</h3>
-                    <p>GPS-free visual localization — dual-stream ResNeXt-50 CNNs with a POMDP framework, trained
-                        on 27,610 image pairs.</p>
-                </div>
-                <span class="meta">
-                    <span class="tag">Python · PyTorch · CV</span>
-                    <span class="status">Repo coming soon</span>
-                </span>
-            </div>
-
-            <a href="https://github.com/jairaj1111/FASHIONCLASSIFIER" target="_blank" rel="noopener" class="project">
-                <span class="num">ii.</span>
-                <div>
-                    <h3>AI Fashion Classifier</h3>
-                    <p>CNN vs. FFN benchmark on 70,000 fashion images — 88% accuracy, 20+ experiments, insights for
-                        retail merchandising.</p>
-                </div>
-                <span class="meta">
-                    <span class="tag">PyTorch · CNNs</span>
-                    <span class="go">View Repo ↗</span>
-                </span>
-            </a>
-
-            <a href="https://jairaj1111.github.io/SPYVSCRYPTO/" target="_blank" rel="noopener" class="project">
-                <span class="num">iii.</span>
-                <div>
-                    <h3>SPY vs. Crypto</h3>
-                    <p>Comparative dashboard of digital assets against traditional equity markets.</p>
-                </div>
-                <span class="meta">
-                    <span class="tag">React · D3.js · Fintech</span>
-                    <span class="go">Live Demo ↗</span>
-                </span>
-            </a>
-
-            <div class="project is-soon">
-                <span class="num">iv.</span>
-                <div>
-                    <h3>Birth Weight Prediction</h3>
-                    <p>ML regression on a 1,236-record maternal health dataset — KNN and Random Forest, feature
-                        importance analysis.</p>
-                </div>
-                <span class="meta">
-                    <span class="tag">Scikit-learn · Pandas</span>
-                    <span class="status">Repo coming soon</span>
-                </span>
-            </div>
-        </section>
-
-        <section class="reveal numbered" id="beyond" data-num="04">
-            <svg class="sneaker-art" viewBox="0 0 400 200" aria-hidden="true">
-                <path
-                    d="M20,150 C20,120 60,90 110,85 C140,82 150,60 180,55 C210,50 230,60 250,75 C270,90 300,95 330,100 C355,104 375,115 380,140 C382,150 375,160 360,162 L40,165 C25,165 20,158 20,150 Z" />
-                <path d="M60,150 L340,150" />
-                <path d="M100,90 L120,140" />
-                <path d="M150,72 L165,140" />
-                <path d="M200,60 L210,140" />
-            </svg>
-            <div class="sec-head">
-                <span class="index">04</span>
-                <span class="label">Beyond the Work</span>
-                <span class="rule"></span>
-            </div>
-            <p class="beyond-quote">
-                Off the clock: <em>pickup basketball</em>, <em>sneaker archives</em>, <em>tabla riyaz</em>, and NBA
-                box scores — and a growing conviction that good products come from <em>taste</em> as much as data.
-            </p>
-
-            <div class="hobby-photos">
-                <figure>
-                    <img src="https://images.unsplash.com/photo-1643098979608-1b22614abe88?w=600&q=70&auto=format&fit=crop"
-                        alt="Hands playing the tabla" loading="lazy">
-                    <figcaption><span>Fig. 02</span><span>Tabla</span></figcaption>
-                </figure>
-                <figure>
-                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&q=70&auto=format&fit=crop"
-                        alt="Basketball on an outdoor court" loading="lazy">
-                    <figcaption><span>Fig. 03</span><span>Basketball</span></figcaption>
-                </figure>
-                <figure>
-                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&q=70&auto=format&fit=crop"
-                        alt="Air Jordan 1 sneakers on a court" loading="lazy">
-                    <figcaption><span>Fig. 04</span><span>Sneakers</span></figcaption>
-                </figure>
-                <figure>
-                    <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?w=600&q=70&auto=format&fit=crop"
-                        alt="Financial newspaper with a stock chart" loading="lazy">
-                    <figcaption><span>Fig. 05</span><span>Markets</span></figcaption>
-                </figure>
-            </div>
-
-            <div class="hobbies">
-                <div class="hobby">
-                    <span class="h-num">i.</span>
-                    <span class="h-name">Graphic Design</span>
-                    <span class="h-note">Type · Layout · Brand</span>
-                </div>
-                <div class="hobby">
-                    <span class="h-num">ii.</span>
-                    <span class="h-name">Tabla</span>
-                    <span class="h-note">Indian Classical Music</span>
-                </div>
-                <div class="hobby">
-                    <span class="h-num">iii.</span>
-                    <span class="h-name">Sneakers</span>
-                    <span class="h-note">Archives · Silhouettes</span>
-                    <div class="box-label mini">
-                        <div class="bl-info">
-                            <b>Size 10</b>
-                            <span>Rotation: Active</span>
+        <section class="grid-bg" id="work" style="padding-top:0">
+            <div class="wrap">
+                <div class="sec-top reveal"><h2>Selected work.</h2><span class="mono">05 items · in stock</span></div>
+                <div class="work-grid">
+                    <a class="card wide reveal" href="https://solesight.xyz" target="_blank" rel="noopener">
+                        <div class="media-col">
+                            <div class="sku" style="margin-bottom:10px"><span>SKU 01 — SoleSight</span><span>● Live</span></div>
+                            <div class="media"><img src="images/work-solesight.jpg" alt="SoleSight — the AI sneaker hype index"></div>
                         </div>
-                        <div class="bl-barcode"></div>
+                        <div class="wide-info">
+                            <div class="sku"><span>Featured</span><span>2026 —</span></div>
+                            <h3>SoleSight</h3>
+                            <p>The AI sneaker hype index. An autonomous pipeline scores 110+ sneakers every night on resale prices,
+                                search demand, social sentiment and boutique stock — with ML forecasts, a release calendar and a
+                                reorder tool for sneaker shops.</p>
+                            <div class="chips"><span>Python</span><span>Transformers</span><span>Prophet</span><span>GitHub Actions</span></div>
+                            <span class="go">View work ↗</span>
+                        </div>
+                        <div class="stat-col">
+                            <div><b>110+</b><span>sneakers tracked</span></div>
+                            <div><b>19</b><span>boutiques</span></div>
+                            <div><b>0</b><span>humans in the loop</span></div>
+                        </div>
+                    </a>
+
+                    <a class="card half reveal" href="https://jairaj1111.github.io/SPYVSCRYPTO/" target="_blank" rel="noopener">
+                        <div class="sku"><span>SKU 02</span><span>React · D3.js</span></div>
+                        <div class="media"><img src="images/work-spy-vs-crypto.jpg" alt="SPY vs Crypto dashboard"></div>
+                        <h3>SPY vs. Crypto</h3>
+                        <p>Comparative dashboard of digital assets against traditional equity markets.</p>
+                        <span class="go">Live demo ↗</span>
+                    </a>
+
+                    <a class="card half reveal" href="https://github.com/jairaj1111/FASHIONCLASSIFIER" target="_blank" rel="noopener">
+                        <div class="sku"><span>SKU 03</span><span>PyTorch · CNNs</span></div>
+                        <div class="media type"><b>88%<small>accuracy · 70,000 images</small></b></div>
+                        <h3>AI Fashion Classifier</h3>
+                        <p>Identifies clothing categories from 70,000 low-res, unclear grayscale images — CNN vs. FFN benchmark,
+                            88% accuracy across 20+ experiments.</p>
+                        <span class="go">View repo ↗</span>
+                    </a>
+
+                    <div class="card half reveal">
+                        <div class="sku"><span>SKU 04</span><span>PyTorch · CV</span></div>
+                        <div class="media type"><b>27,610<small>image pairs</small></b></div>
+                        <h3>HuskyVision</h3>
+                        <p>GPS-free visual localization — dual-stream ResNeXt-50 CNNs with a POMDP framework.</p>
+                        <span class="go soon">Repo coming soon</span>
                     </div>
-                </div>
-                <div class="hobby">
-                    <span class="h-num">iv.</span>
-                    <span class="h-name">Sports</span>
-                    <span class="h-note">Basketball · Pickup Runs · The NBA</span>
-                </div>
-                <div class="hobby">
-                    <span class="h-num">v.</span>
-                    <span class="h-name">Weightlifting</span>
-                    <span class="h-note">Strength Training</span>
-                </div>
-                <div class="hobby">
-                    <span class="h-num">vi.</span>
-                    <span class="h-name">Markets</span>
-                    <span class="h-note">Before the Open</span>
+
+                    <div class="card half reveal">
+                        <div class="sku"><span>SKU 05</span><span>Scikit-learn</span></div>
+                        <div class="media type"><b>1,236<small>maternal health records</small></b></div>
+                        <h3>Birth Weight Prediction</h3>
+                        <p>ML regression — KNN and Random Forest, feature importance analysis.</p>
+                        <span class="go soon">Repo coming soon</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <footer class="reveal numbered" id="contact" data-num="05">
-            <div class="sec-head">
-                <span class="index">05</span>
-                <span class="label">Get in Touch</span>
-                <span class="rule"></span>
+        <section class="grid-bg" style="padding-top:0">
+            <div class="wrap">
+                <div class="sec-top reveal"><h2>What I work on.</h2><span class="mono">Focus</span></div>
+                <div class="focus reveal">
+                    <div><span class="n">01</span><h3>AI &amp; software</h3><p>Python, SQL, Java and JavaScript — pipelines and models that run on their own, like SoleSight.</p></div>
+                    <div><span class="n">02</span><h3>Retail data</h3><p>Transaction, merchandising and product data at TJX and OOFOS.</p></div>
+                    <div><span class="n">03</span><h3>Finance &amp; venture</h3><p>Fintech degree; 50+ startups evaluated at Singh Capital Partners.</p></div>
+                    <div><span class="n">04</span><h3>Design</h3><p>Type, layout and brand — and a long-running sneaker archive.</p></div>
+                </div>
             </div>
+        </section>
 
-            <p class="big">Let's build <em>something.</em></p>
-            <div class="swatch-strip" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span>
+        <section class="grid-bg" id="skills" style="padding-top:0">
+            <div class="wrap">
+                <div class="sec-top reveal"><h2>Spec sheet.</h2><span class="mono">Skills · Toolkit</span></div>
+                <div class="spec reveal">
+                    <div><span class="n">Languages</span>
+                        <ul><li>Python</li><li>SQL</li><li>Java</li><li>JavaScript</li><li>HTML / CSS</li></ul></div>
+                    <div><span class="n">AI &amp; ML</span>
+                        <ul><li>PyTorch</li><li>Transformers (NLP)</li><li>Scikit-learn</li><li>Prophet forecasting</li><li>CNNs</li></ul></div>
+                    <div><span class="n">Data &amp; visualization</span>
+                        <ul><li>Power BI</li><li>D3.js</li><li>Pandas</li><li>Dashboards</li><li>Data analysis</li></ul></div>
+                    <div><span class="n">Engineering</span>
+                        <ul><li>Software engineering</li><li>React</li><li>Git &amp; GitHub Actions</li><li>Data pipelines</li><li>APIs</li></ul></div>
+                </div>
             </div>
+        </section>
 
-            <div class="contact-list">
-                <a class="contact-row" href="mailto:narang.ja@northeastern.edu">
-                    <span class="c-label">Email</span>
-                    <span class="c-value">narang.ja@northeastern.edu</span>
-                    <span class="c-arrow">↗</span>
-                </a>
-                <a class="contact-row" href="mailto:jairajnarang1111@gmail.com">
-                    <span class="c-label">Email · Alt</span>
-                    <span class="c-value">jairajnarang1111@gmail.com</span>
-                    <span class="c-arrow">↗</span>
-                </a>
-                <a class="contact-row" href="https://github.com/jairaj1111" target="_blank" rel="noopener">
-                    <span class="c-label">GitHub</span>
-                    <span class="c-value">@jairaj1111</span>
-                    <span class="c-arrow">↗</span>
-                </a>
-                <a class="contact-row" href="https://www.linkedin.com/in/jairaj-singh-narang-730582248/"
-                    target="_blank" rel="noopener">
-                    <span class="c-label">LinkedIn</span>
-                    <span class="c-value">linkedin.com/in/jairaj-singh-narang</span>
-                    <span class="c-arrow">↗</span>
-                </a>
-                <a class="contact-row" href="https://www.instagram.com/jairaj.wav/" target="_blank" rel="noopener">
-                    <span class="c-label">Instagram</span>
-                    <span class="c-value">@jairaj.wav</span>
-                    <span class="c-arrow">↗</span>
-                </a>
+        <section class="grid-bg" id="record" style="padding-top:0">
+            <div class="wrap">
+                <div class="sec-top reveal"><h2>A track record.</h2><span class="mono">Experience</span></div>
+                <div class="table reveal">
+                    <div class="tr head"><span>Company</span><span class="what">Role</span><span class="impact-h">Impact</span><span class="yr">Year</span></div>
+                    <div class="tr">
+                        <div class="co"><span class="lg nb"><img src="images/new-balance-logo.png" alt="New Balance logo"></span>New Balance</div>
+                        <div class="role what"><b>Merchandise Planning Co-op</b><span>Incoming</span></div>
+                        <div class="impact">Next<small>joining soon</small></div>
+                        <div class="yr"><span class="now">Incoming</span></div>
+                    </div>
+                    <div class="tr">
+                        <div class="co"><span class="lg"><img src="images/tjx-logo.png" alt="TJX logo"></span>The TJX Companies</div>
+                        <div class="role what"><b>Internal Audit Co-op</b><span>Power BI dashboards for IT, Finance &amp; Risk</span></div>
+                        <div class="impact">1,000+<small>transaction &amp; merch records</small></div>
+                        <div class="yr">2026</div>
+                    </div>
+                    <div class="tr">
+                        <div class="co"><span class="lg"><img src="images/oofos-logo.png" alt="OOFOS logo"></span>OOFOS Inc.</div>
+                        <div class="role what"><b>Finance &amp; Product Analytics Co-op</b><span>Reporting for merchandising and FP&amp;A</span></div>
+                        <div class="impact">−50%<small>reporting time</small></div>
+                        <div class="yr">2025</div>
+                    </div>
+                    <div class="tr">
+                        <div class="co"><span class="lg inverted"><img src="images/singh-capital-logo.jpg" alt="Singh Capital Partners logo"></span>Singh Capital Partners</div>
+                        <div class="role what"><b>Investment Analyst Intern</b><span>Investment memos for senior leadership</span></div>
+                        <div class="impact">50+<small>startups evaluated</small></div>
+                        <div class="yr">2024</div>
+                    </div>
+                    <div class="tr">
+                        <div class="co"><span class="lg round"><img src="images/playlist-push-logo.jpg" alt="Cassette Technologies logo"></span>Cassette Technologies</div>
+                        <div class="role what"><b>Social Media &amp; Digital Analytics Intern</b><span>A/B-tested content strategy</span></div>
+                        <div class="impact">16,625<small>new Reddit members</small></div>
+                        <div class="yr">2024</div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="footer-meta">
-                <span>Boston, MA</span>
-                <span>© 2026 Jairaj Narang</span>
+        <section class="grid-bg" id="about" style="padding-top:0">
+            <div class="wrap about reveal">
+                <figure><img src="images/tabla.png" alt="Hands playing the tabla" loading="lazy"><figcaption class="mono">Tabla</figcaption></figure>
+                <figure><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=700&q=70&auto=format&fit=crop"
+                        alt="Air Jordan 1 sneakers on a court" loading="lazy"><figcaption class="mono">Size 11</figcaption></figure>
+                <div class="txt">
+                    <span class="mono" style="color:var(--mute)">Beyond the work</span>
+                    <p class="quote" style="margin-top:14px">Good products come from taste as much as data.</p>
+                    <p class="bio">Senior at Northeastern — Business Administration (Fintech) + Computer Science, Class of 2027.
+                        Off the clock: pickup basketball, sneaker archives, tabla riyaz, and NBA box scores.</p>
+                    <div class="likes"><span>Graphic design</span><span>Tabla</span><span>Sneakers</span><span>Basketball</span><span>Weightlifting</span><span>Markets</span></div>
+                </div>
             </div>
-        </footer>
-    </div>
+        </section>
+    </main>
+
+    <footer class="grid-bg" id="contact">
+        <div class="wrap contact reveal">
+            <h2>Let's build something.</h2>
+            <div class="receipt">
+                <div class="hd"><b>Jairaj Narang</b>Boston, MA · jairaj.dev</div>
+                <div class="rule"></div>
+                <a href="mailto:narang.ja@northeastern.edu"><span>Email</span><i></i><b>narang.ja@northeastern.edu</b></a>
+                <a href="mailto:jairajnarang1111@gmail.com"><span>Email alt</span><i></i><b>jairajnarang1111@gmail.com</b></a>
+                <a href="https://www.linkedin.com/in/jairaj-singh-narang-730582248/" target="_blank" rel="noopener"><span>LinkedIn</span><i></i><b>jairaj-singh-narang</b></a>
+                <a href="https://github.com/jairaj1111" target="_blank" rel="noopener"><span>GitHub</span><i></i><b>@jairaj1111</b></a>
+                <a href="https://www.instagram.com/jairaj.wav/" target="_blank" rel="noopener"><span>Instagram</span><i></i><b>@jairaj.wav</b></a>
+                <a href="https://solesight.xyz" target="_blank" rel="noopener"><span>Building</span><i></i><b>solesight.xyz</b></a>
+                <div class="rule"></div>
+                <div class="tot"><span>Next</span><span>NB Merch Planning co-op</span></div>
+                <div class="barcode"></div>
+                <div class="thanks">Thank you for visiting</div>
+            </div>
+        </div>
+        <div class="foot"><span id="clock">Boston, MA</span><span>© 2026 Jairaj Narang</span></div>
+    </footer>
 
     <script>
-        // live Boston clock
+        // sneaker silhouettes (original drawings): low court, runner, high top, trainer
+        // side profiles, heel left / toe right: upper | sole | detail lines
+        const SHOES = [
+            ["Court low", 'M20 72 C16 62 16 48 24 40 C30 34 44 34 56 40 C66 44 74 40 82 30 C86 26 94 26 98 30 L150 50 C176 56 206 58 220 64 C226 67 228 70 226 72 Z|M16 72 L230 72 C232 72 232 80 228 82 L20 82 C16 82 14 78 16 72 Z|M100 34 L94 44 M112 39 L106 48 M124 43 L118 52 M136 47 L130 55|M40 52 C70 60 110 64 170 60|M20 50 L28 48'],
+            ["Runner", 'M22 66 C18 54 20 42 30 36 C38 32 50 34 60 40 C70 44 78 36 86 28 C90 24 98 24 102 28 L152 48 C178 54 204 56 218 60 C226 63 228 66 226 68 Z|M18 66 L230 68 C234 70 232 80 224 84 C190 90 60 92 24 86 C16 84 14 72 18 66 Z|M24 78 C80 82 170 82 226 76|M104 32 L98 42 M116 37 L110 46 M128 41 L122 50|M58 58 L112 44 M84 62 L136 49'],
+            ["High top", 'M22 74 C18 60 18 30 24 14 C26 8 34 6 42 8 L72 14 C80 16 86 22 90 30 L150 52 C176 58 206 60 220 66 C226 69 228 72 226 74 Z|M18 74 L230 74 C232 74 232 82 228 84 L22 84 C18 84 16 80 18 74 Z|M76 20 L68 28 M84 28 L76 36 M96 34 L88 42 M110 40 L102 48 M124 45 L116 53|M24 44 C40 40 56 44 66 50|M170 58 C186 62 204 66 220 72'],
+            ["Trainer", 'M20 70 C16 58 18 44 26 38 C34 32 48 34 58 40 C66 44 74 36 84 28 C88 24 96 24 100 28 L150 48 C176 54 206 56 220 62 C226 65 228 68 226 70 Z|M16 70 L230 70 L230 78 L220 82 L24 82 L16 78 Z|M40 82 L44 78 M70 82 L74 78 M100 82 L104 78 M130 82 L134 78 M160 82 L164 78 M190 82 L194 78|M102 32 L96 42 M114 37 L108 46 M126 41 L120 50|M176 56 C190 60 206 64 220 70'],
+        ];
+        const shoe = ([name, d], i) => {
+            const [upper, sole, ...lines] = d.split("|");
+            return `<div class="shoe"><svg viewBox="0 0 240 92"><path class="sole" d="${sole}"/><path d="${upper}"/>${lines.map((l) => `<path d="${l}"/>`).join("")}</svg>
+                <span>${String(i % SHOES.length + 1).padStart(2, "0")} — ${name}</span></div>`;
+        };
+        const set = [...SHOES, ...SHOES];
+        document.getElementById("strip").innerHTML = [...set, ...set].map(shoe).join("");
+
         function tick() {
-            const t = new Date().toLocaleTimeString('en-US', {
-                timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit'
-            });
-            document.getElementById('clock').textContent = 'Boston ' + t;
+            const t = new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit' });
+            document.getElementById('clock').textContent = 'Boston, MA · ' + t;
         }
-        tick();
-        setInterval(tick, 30000);
-
-        // fade-in on scroll
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-        // masthead letters rise in one by one
-        (() => {
-            let i = 0;
-            const wrap = (node) => {
-                [...node.childNodes].forEach(n => {
-                    if (n.nodeType === 3) {
-                        const frag = document.createDocumentFragment();
-                        [...n.textContent].forEach(c => {
-                            if (c.trim() === '') {
-                                frag.appendChild(document.createTextNode(c));
-                                return;
-                            }
-                            const s = document.createElement('span');
-                            s.className = 'ch';
-                            s.style.setProperty('--i', i++);
-                            s.textContent = c;
-                            frag.appendChild(s);
-                        });
-                        n.replaceWith(frag);
-                    } else if (n.nodeType === 1) {
-                        wrap(n);
-                    }
-                });
-            };
-            wrap(document.querySelector('.masthead-name'));
-        })();
-
-        // stats count up when they enter view
-        const cio = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (!e.isIntersecting) return;
-                cio.unobserve(e.target);
-                const end = +e.target.dataset.count;
-                const t0 = performance.now();
-                const step = t => {
-                    const p = Math.min((t - t0) / 1400, 1);
-                    e.target.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
-                    if (p < 1) requestAnimationFrame(step);
-                };
-                requestAnimationFrame(step);
-            });
-        }, { threshold: 0.6 });
-        document.querySelectorAll('.stat b[data-count]').forEach(el => cio.observe(el));
-
-        // scroll progress line
-        const progress = document.getElementById('progress');
-        addEventListener('scroll', () => {
-            const max = document.documentElement.scrollHeight - innerHeight;
-            progress.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
-        }, { passive: true });
+        tick(); setInterval(tick, 30000);
+        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+            { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     </script>
 </body>
 
